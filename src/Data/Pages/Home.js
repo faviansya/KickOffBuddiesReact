@@ -8,8 +8,10 @@ class Home extends Component {
     render() {
     return (
       <div>
-        <section class="section-main bg padding-top-sm">
-            Ini Home
+        <section className="section-main bg padding-top-sm">
+            Ini HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni Home
+
+
         </section>
       </div>
     );

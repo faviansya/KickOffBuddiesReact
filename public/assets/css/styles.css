@@ -43,7 +43,7 @@ section .section-title {
 	color:grey;
 }
 #footer ul.social li a:hover, #footer ul.quick-links li a:hover{
-	color:#94c347;
+	color:#B2DEEC;
 }
 #footer ul.quick-links li{
 	padding: 3px 0;
@@ -147,14 +147,14 @@ section .section-title {
 }
 
 #navbar a:hover {
-  background-color: #B9E474;
+  background-color: #B2DEEC;
   color: black;
   border-radius: 25px;
   transition: 0.5s;
 }
 
 #navbar a.active {
-  background-color: #4CAF50;
+  background-color: #197391;
   color: white;
 
 }
@@ -184,7 +184,7 @@ section .section-title {
     font-weight: bold;
 }
 .green-font:hover{
-    color:#4CAF50;
+    color:#197391;
     font-weight: bold;
 
 }
