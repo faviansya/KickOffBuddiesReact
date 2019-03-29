@@ -3,16 +3,18 @@ import { Link,Redirect,withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../../store";
 import axios from "axios";
+import Slider from "../Components/Slider";
+import Groups from "../Components/Groups";
+import Fields from "../Components/Fields";
+
 
 class Home extends Component {
     render() {
     return (
       <div>
-        <section className="section-main bg padding-top-sm">
-            Ini HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni HomeIni Home
-
-
-        </section>
+        <Slider />
+        <Groups />
+        <Fields />
       </div>
     );
   }

@@ -234,3 +234,146 @@ section .section-title {
   .display-none {
     display: none;
   }
+
+
+  
+/*********************************
+3.7 Main Slider
+*********************************/
+
+.main_slider
+{
+	width: 100%;
+	height: 510px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	margin-top: 126px;
+	background-image: url(../img/step.jpg);
+	
+}
+.main_slider_content
+{
+	width: 60%;
+	/* background: rgba(255,182,193, 0.99); */
+}
+.main_slider_content h6
+{
+	font-weight: 500;
+	text-transform: uppercase;
+	margin-bottom: 10px;
+	padding: 20px 0 0 195px
+}
+.main_slider_content h1
+{
+	font-weight: 400;
+	line-height: 1;
+	padding-left: 25px;
+}
+
+.shop_now{
+	margin-left: 240px;
+}
+.red_button
+{
+	margin-bottom: 25px;
+	display: -webkit-inline-box;
+	display: -moz-inline-box;
+	display: -ms-inline-flexbox;
+	display: -webkit-inline-flex;
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: auto;
+	height: 40px;
+	background: #fe4c50;
+	border-radius: 3px;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+.red_button:hover
+{
+	background: #FE7C7F !important;
+}
+.red_button a
+{
+	display: block;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 500;
+	text-align: center;
+	line-height: 40px;
+	width: 100%;
+}
+.shop_now_button
+{
+	width: 140px;
+	margin-top: 32px;
+}
+
+
+
+/*********************************
+5. New Arrivals
+*********************************/
+
+.new_arrivals
+{
+	width: 100%;
+}
+.new_arrivals_title
+{
+	margin-top: 74px;
+}
+
+/*********************************
+5.1 New Arrivals Sorting
+*********************************/
+
+.new_arrivals_sorting
+{
+	display: inline-block;
+	border-radius: 3px;
+	margin-top: 59px;
+	overflow: visible;
+}
+.grid_sorting_button
+{
+	height: 40px;
+	min-width: 102px;
+	padding-left: 25px;
+	padding-right: 25px;
+	cursor: pointer;
+	border: solid 1px #ebebeb;
+	font-size: 14px;
+	font-weight: 500;
+	text-transform: uppercase;
+	background: #FFFFFF;
+	border-radius: 3px;
+	margin: 0;
+	float: left;
+	margin-left: -1px;
+}
+.grid_sorting_button:first-child
+{
+	margin-left: 0px;
+}
+.grid_sorting_button:last-child
+{
+
+}
+.grid_sorting_button.active:hover
+{
+	background: #FE7C7F !important;
+}
+.grid_sorting_button.active
+{
+	color: #FFFFFF;
+	background: rgb(51, 132, 159);
+}
+
