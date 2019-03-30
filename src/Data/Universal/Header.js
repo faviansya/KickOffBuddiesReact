@@ -180,7 +180,7 @@ class Header extends Component {
                   <div className="widgets-wrap float-right row no-gutters py-1">
                     <LoginBar signout={this.signout} />
                     <div className="col-lg-4 col-md-12">
-                      <Link to="/cart" className="widget-header">
+                      <Link to="/mybooking" className="widget-header">
                         <div className="icontext">
                           <div className="icon-wrap">
                             <i

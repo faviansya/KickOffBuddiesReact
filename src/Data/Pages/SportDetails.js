@@ -18,7 +18,7 @@ class Details extends Component {
     this.state = {
       listDetails: [],
       listPemain: [],
-      status:"",
+      status: ""
     };
   }
   componentDidMount = async () => {
@@ -40,7 +40,6 @@ class Details extends Component {
       });
   };
   JoinSport = async () => {
-    console.log(this.props.bookingId)
     const self = this;
     const reqJoin = {
       method: "post",
@@ -53,22 +52,52 @@ class Details extends Component {
       }
     };
     await axios(reqJoin)
-      .then(function(response) {
-
-        })
+      .then(function(response) {})
       .catch(function(error) {
         console.log("ASEM", error);
         self.setState({ status: "failed" });
-
       });
-      const req = {
+    const req = {
+      method: "get",
+      url: Host + "/api/playerlist/" + self.props.bookingId,
+      headers: {
+        Authorization: "Bearer " + self.props.Bearer
+      }
+    };
+    await axios(req)
+      .then(function(response) {
+        self.setState({ listDetails: response.data.data });
+        self.setState({ listPemain: response.data.pemain });
+      })
+      .catch(function(error) {
+        console.log("ASEM", error);
+      });
+  };
+  cancelLobby= async (id)=> {
+    const self = this;
+    const DeleteData = {
+      method: "delete",
+      url: Host + "/api/playerlist/" + id,
+      headers: {
+        Authorization: "Bearer " + self.props.Bearer
+      }
+    };
+     await axios(DeleteData)
+      .then(function(response) {
+        console.log("Success");
+
+      })
+      .catch(function(error) {
+        console.log("ASEM", error);
+      });
+      const GetNewData = {
         method: "get",
         url: Host + "/api/playerlist/" + self.props.bookingId,
         headers: {
           Authorization: "Bearer " + self.props.Bearer
         }
       };
-      await axios(req)
+       await axios(GetNewData)
         .then(function(response) {
           self.setState({ listDetails: response.data.data });
           self.setState({ listPemain: response.data.pemain });
@@ -76,17 +105,39 @@ class Details extends Component {
         .catch(function(error) {
           console.log("ASEM", error);
         });
-  };
+  }
+
+  deleteRoom = async (id)=>{
+    const self = this;
+    const DeleteData = {
+      method: "delete",
+      url: Host + "/api/playerlist/" + id,
+      headers: {
+        Authorization: "Bearer " + self.props.Bearer
+      }
+    };
+     await axios(DeleteData)
+      .then(function(response) {
+        console.log("Success");
+
+      })
+      .catch(function(error) {
+        console.log("ASEM", error);
+      });
+
+  }
   render() {
-    if(this.state.status == "failed")
-    {alert("Kamu Telah Join Di Game Ini");
-    this.setState({ status: "" });}
+    var counter = 0;
+    if (this.state.status == "failed") {
+      alert("Kamu Telah Join Di Game Ini");
+      this.setState({ status: "" });
+    }
     return (
-      <div onClick = {()=>{}}>
+      <div onClick={() => {}}>
         <section className="section-topbar border-top padding-y-sm wow slideInUp">
           <div className="container-fluid">
-            <span>Kick Off Buddies The Best Of The Best</span> {"  "}
-            <span className="text-success">Best Of The Year</span>
+            <span>Player Room</span> {"  "} <br />
+            <span className="text-success">Waiting for more players to join</span>
           </div>
         </section>
         <section className="section-content bg padding-y-sm">
@@ -106,15 +157,13 @@ class Details extends Component {
                       address={item.address}
                       img={arc_img}
                       favourite_sport={item.favourite_sport}
+                      ismyself={item.isThisMyself}
+                      cancel = {this.cancelLobby}
+                      listId = {item.ListId}
                     />
                   );
-                }
-                else{
-                  return (
-                  <Empty
-                  JoinSport={this.JoinSport}
-                  />
-                  );
+                } else {
+                  return <Empty JoinSport={this.JoinSport} />;
                 }
               })}
             </div>
