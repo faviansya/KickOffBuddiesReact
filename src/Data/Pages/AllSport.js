@@ -15,16 +15,22 @@ class Home extends Component {
               <span>... Booking "Ditemukan"</span>
             </div>
             <div class="row-sm">
-            <AllSport />
-              {/* {this.props.categoryItem.map((item, key) => {
+              {this.props.categoryItem.map((item, key) => {
                 const arc_img =
-                  item.urlimages === null
+                  item.url_image === null
                     ? "User Not Upload Data"
-                    : item.urlimages;
+                    : item.url_image;
                 return (
-                  <AllSport />
+                  <AllSport 
+                  key={key}
+                  id={item.id}
+                  title={item.sport}
+                  player={item.player}
+                  img={arc_img}
+                  sport={item.sport}
+                  />
                 );
-              })} */}
+              })}
             </div>
           </div>
         </section>{" "}
@@ -34,6 +40,6 @@ class Home extends Component {
 }
 
 export default connect(
-  "",
+  "categoryItem",
   actions
 )(withRouter(Home));

@@ -7,6 +7,18 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 
 class Carousel extends Component {
+  handleInputChange = e => {
+    let value = e.target.value;
+    this.props.history.push("/allsport");
+    this.setState(
+      {
+        search: value
+      },
+      () => {
+        this.props.searchItems(value);
+      }
+    );
+  };
   render() {
     return (
       <div className="col-lg-11-24 col-sm-8">
@@ -19,6 +31,7 @@ class Carousel extends Component {
               <option value="">Terbaru</option>
             </select>
             <input
+              onChange={this.handleInputChange}
               type="text"
               className="form-control"
               style={{ width: "50%" }}
