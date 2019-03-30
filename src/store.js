@@ -9,7 +9,7 @@ const initialState = {
     mySelf: "",
     categoryItem: [],
     bookingId:"",
-
+    playlistID:"",
 }
 
 
@@ -23,6 +23,10 @@ export const actions = store => ({
     changeBookingId: (state, id) => {
       store.setState({ bookingId: id });
       // console.log("ID",id)
+    },
+    changePlaylistId: (state, id) => {
+      store.setState({ playlistID: id });
+      console.log("ID",id)
     },
     //GLOBAL HEADER METHOD-----------------------------
     //THIS METHOD IS FOR HEADER ONLY-------------------

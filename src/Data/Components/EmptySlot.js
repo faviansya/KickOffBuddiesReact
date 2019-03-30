@@ -14,7 +14,7 @@ class Profile extends Component {
       <aside onClick = {()=>{this.joinsport()}} className="col-xl-3 col-lg-3 col-md-6 col-sm-12 text-center wow fadeInUp" >
         <div className="card" >
           <Link to="/details">
-            <div className="card-header" style={{color:"black"}}>EmptySlot</div>
+            <div className="card-header" style={{color:"black"}}>Empty Slot</div>
             <div className="card-body small">
               <div >
                 <u>
@@ -36,7 +36,6 @@ class Profile extends Component {
               <hr />
               -
               <br />
-              <hr />
               </div>
               {/* <Link href="">Kunjungi Profil</Link> */}
             </div>
