@@ -8,6 +8,10 @@ import Search from "../Components/Search";
 import LoginBar from "./LoginBar";
 
 class Header extends Component {
+  signout = () => {
+    this.props.postSignout();
+  };
+
   render() {
     return (
       <div>
@@ -55,8 +59,11 @@ class Header extends Component {
                       <li>
                         <Link
                           className="dropdown-item medianav"
-                          to="/bestplayer"
+                          to="/allsport"
                           id="inside"
+                          onClick={() => {
+                            this.props.changeCategory("badminton");
+                          }}
                         >
                           Badminton
                         </Link>
@@ -64,8 +71,11 @@ class Header extends Component {
                       <li>
                         <Link
                           className="dropdown-item"
-                          to="/bestitem"
+                          to="/allsport"
                           id="inside"
+                          onClick={() => {
+                            this.props.changeCategory("basket");
+                          }}
                         >
                           Basket{" "}
                         </Link>
@@ -80,17 +90,17 @@ class Header extends Component {
 
                     <ul className="dropdown-menu Navbar" style={{ marginTop: "-2px" }}>
                       <li>
-                        <Link className="dropdown-item" to="/pembayaranAtm" id="inside">
+                        <Link className="dropdown-item" to="/" id="inside">
                           All User
                         </Link>
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="/pembayaranIndomaret" id="inside">
+                        <Link className="dropdown-item" to="/" id="inside">
                           Beberapa User{" "}
                         </Link>
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="/pembayaranMBanking" id="inside">
+                        <Link className="dropdown-item" to="/" id="inside">
                           My User
                         </Link>
                       </li>
@@ -103,17 +113,17 @@ class Header extends Component {
                     </Link>
                     <ul className="dropdown-menu Navbar" style={{ marginTop: "-2px" }}>
                       <li>
-                        <Link className="dropdown-item" to="/pertanyaanumum" id="inside">
+                        <Link className="dropdown-item" to="/" id="inside">
                           Pertanyaan Umum
                         </Link>
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="/masalahpelapak" id="inside">
+                        <Link className="dropdown-item" to="/" id="inside">
                           Masalah Lapangan{" "}
                         </Link>
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="/masalahpenjualan" id="inside">
+                        <Link className="dropdown-item" to="/" id="inside">
                           Masalah Booking{" "}
                         </Link>
                       </li>
@@ -122,7 +132,7 @@ class Header extends Component {
                 </ul>
                 <ul className="navbar-nav">
                   <li className="nav-item">
-                    <Link to="/contact" className="nav-link">
+                    <Link to="/" className="nav-link">
                       {" "}
                       Contact Us{" "}
                     </Link>
@@ -146,18 +156,18 @@ class Header extends Component {
                     <div className="dropdown-menu " style={{ marginTop: "-2px" }}>
                     <Link
                         className="dropdown-item"
-                        to="/allitems"
+                        to="/allsport"
                         onClick={() => {
-                          
+                          this.props.changeCategory("basket");
                         }}
                       >
                         Basket{" "}
                       </Link>
                       <Link
                         className="dropdown-item"
-                        to="/allitems"
+                        to="/allsport"
                         onClick={() => {
-                          
+                          this.props.changeCategory("badminton");
                         }}
                       >
                         Badminton{" "}

@@ -6,21 +6,24 @@ import { actions } from "../../store";
 import { withRouter } from "react-router-dom";
 
 class Item extends Component {
+  changeBookingIds = () => {
+    this.props.changeBookingId(this.props.id);
+  };
   render() {
     return (
-        <div class="col-md-4 col-sm-6 col-lg-3 wow bounceIn">
+        <div onClick={this.changeBookingIds} class="col-md-4 col-sm-6 col-lg-3 wow bounceIn">
           <Link to="/details" class="title">
             <figure class="card card-product">
               <div class="img-wrap">
                 {" "}
-                <img class="d-block h-100 w-100" src="http://indodjaja.com/KickOffBuddies/badminton.jpg" />
+                <img class="d-block h-100 w-100" src={this.props.img} />
               </div>
               <figcaption class="info-wrap">
                 <Link to="" class="title" style={{ color: "black" }}>
-                Badminton
+                {this.props.title}
                 </Link>
                 <div class="price-wrap">
-                  <span class="price-new" style={{ color: "forestgreen" }}>Lapangan RajaBasa</span>
+                  <span class="price-new" style={{ color: "navyblue" }}>Gresik</span>
                 </div>
               </figcaption>
             </figure>

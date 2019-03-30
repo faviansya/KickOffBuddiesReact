@@ -1,1 +1,1 @@
-export var Host = "http://localhost:5000";
+export var Host = "http://localhost:8010/proxy";
