@@ -377,3 +377,88 @@ section .section-title {
 	background: rgb(51, 132, 159);
 }
 
+/*-- welcome --*/ 
+.welcome-agileits,.w3about,.news,.subscribe,.about,.team,.gallery,.codes,.contact,.single,.blog{
+  padding:5em 0;
+}
+h3.w3ls-title {
+    font-size: 4em;
+    color: #673ab7;
+    font-weight: 200;
+    margin-bottom: 0.8em;
+    text-align: center;
+}
+p {
+    font-size: 1em;
+    color: #999;
+    line-height: 1.8em;
+}
+.welcome-wthreegrid {
+    text-align: center;
+}
+.welcome-wthreegrid h4 {
+    font-size: 1.8em;
+    color: #242424;
+}
+.welcome-wthreegrid img.img-responsive {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%; 
+  border-radius: 50%;
+    border-radius: 50%;
+    margin: 1em auto;
+  -webkit-transition: .5s all;
+  -moz-transition: .5s all;
+  transition: .5s all;
+}
+.welcome-wthreegrid img.img-responsive:hover {
+  -webkit-transform: rotate(20deg);
+  -moz-transform: rotate(20deg);
+  -o-transform: rotate(20deg);
+  -ms-transform: rotate(20deg);
+    transform: rotate(20deg);
+} 
+/*-- //welcome --*/ 
+/*-- banner-about --*/ 
+.w3about {
+    background: url(../images/slid.jpg)no-repeat 0px fixed; 
+    background-size: cover;
+  text-align: right;
+  position:relative;
+}
+.w3about-agileinfo p {
+    color: #fff;
+    text-align: right;
+    width: 78%;
+    margin: 0 0 0 auto;
+    font-size: 1.3em;
+    letter-spacing: 2px;
+}
+a.w3layouts-more {
+    color: #fff;
+    font-size: 1.1em;
+    border: 1px solid #fff;
+    padding: .7em 2em;
+    margin-top: 1.5em;
+    display: inline-block;
+  text-decoration:none;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all; 
+}
+a.w3layouts-more:hover {
+    background: #673ab7;
+    color: #fff;
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05); 
+  -ms-transform: scale(1.05); 
+  -o-transform: scale(1.05); 
+    transform: scale(1.05);
+}
+img.w3slid-img {
+    position: absolute;
+    top: -46px;
+    width: 300px;
+    left: 110px;
+}

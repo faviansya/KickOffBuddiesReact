@@ -6,13 +6,14 @@ import axios from "axios";
 import Slider from "../Components/Slider";
 import Groups from "../Components/Groups";
 import Fields from "../Components/Fields";
-
+import Content from "../Components/Content";
 
 class Home extends Component {
     render() {
     return (
       <div>
         <Slider />
+        <Content />
         <Groups />
         <Fields />
       </div>

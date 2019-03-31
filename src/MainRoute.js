@@ -10,6 +10,7 @@ import NewEvent from "./Data/Post/PostNewEvent"
 import NewUser from "./Data/Post/PostUser"
 
 import PatNolPat from "./Data/Components/404";
+import FAQ from './Data/Pages/FAQ';
 
 
 const MainRoute = () => {
@@ -21,6 +22,7 @@ const MainRoute = () => {
             <Route exact path = "/userprofile" component = {UserProfile}/>
             <Route exact path = "/mybooking" component = {MyBooking}/>
             <Route exact path = "/newevent" component = {NewEvent}/>
+            <Route exact path = "/faq" component = {FAQ}/>
             <Route exact path = "/newuser" component = {NewUser}/>
 
             <Route component = {PatNolPat}/>
