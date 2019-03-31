@@ -3,6 +3,10 @@ import {Link} from "react-router-dom";
 
 
 class Groups extends Component {
+    handleClick = async (value) => {
+        this.props.handleClick(value)
+    }
+
     render() {
       return (
             <section className="section-main bg padding-top-sm ">
@@ -12,10 +16,10 @@ class Groups extends Component {
                             <div className="new_arrivals_sorting">
                                 <ul className="arrivals_grid_sorting clearfix button-group filters-button-group">
                                     <li className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked"
-                                    data-filter="*"><a onClick={this.handleClick}>All Sports</a></li>
-                                    <li className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"><a>Futsal</a></li>
-                                    <li className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories"><a>Basketball</a></li>
-                                    <li className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men"><a>Badminton</a></li>
+                                    data-filter="*"><a >All Sports</a></li>
+                                    <li className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" id="futsal" onClick={() => this.handleClick("futsal")}><a>Futsal</a></li>
+                                    <li className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" id="basketball" onClick={() => this.handleClick("basketball")} data-filter=".accessories"><a>Basketball</a></li>
+                                    <li className="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" id="badminton" onClick={() => this.handleClick("badminton")} data-filter=".men"><a>Badminton</a></li>
                                 </ul>
                             </div>
                         </div>
