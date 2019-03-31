@@ -1,7 +1,7 @@
 /* Footer --------------------------------------------*/
 /* @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'); */
 section {
-    padding: 60px 0;
+    padding: 0px 0;
 }
 section .section-title {
     text-align: center;
@@ -383,7 +383,7 @@ section .section-title {
 }
 h3.w3ls-title {
     font-size: 4em;
-    color: #673ab7;
+    color: rgb(51, 132, 159);
     font-weight: 200;
     margin-bottom: 0.8em;
     text-align: center;
@@ -462,3 +462,4 @@ img.w3slid-img {
     width: 300px;
     left: 110px;
 }
+

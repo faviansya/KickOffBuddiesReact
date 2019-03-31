@@ -29,7 +29,7 @@ class Header extends Component {
   render() {
     if (!this.props.is_login) {
       return (
-        <div className="col-auto col-lg-8">
+        <div className="col-lg-6 col-md-6 col-sm-12" >
           <div className="widget-header dropdown">
             <div className="icontext">
               <div className="icon-wrap">
@@ -38,10 +38,10 @@ class Header extends Component {
                   style={{ color: "#33849F" }}
                 />
               </div>
-              <div className="text-wrap text-dark">
+              {/* <div className="text-wrap text-dark">
                 Login to <br />
                 My account <i className="fa fa-caret-down" />
-              </div>
+              </div> */}
             </div>
             <div className="dropdown-menu" style={{ marginTop: "-2px" }}>
               <form className="px-4 py-3" onSubmit={e => e.preventDefault()}>
@@ -85,7 +85,7 @@ class Header extends Component {
 
               <hr className="dropdown-divider" />
               <Link className="dropdown-item" to="/newuser">
-                Don't Have account? Sign up
+                Don't have an account yet? Sign up
               </Link>
               <Link className="dropdown-item" to="">
                 Forgot password?
@@ -97,7 +97,8 @@ class Header extends Component {
     } else {
       return (
         <sec>
-          <div class="col-auto col-lg-12">
+          <div className="row">
+          <div class="col-lg-2 col-md-2 col-sm-2">
             <div class="widget-header dropdown">
               <Link to="/userprofile" data-offset="20,10">
                 <div class="icontext">
@@ -107,14 +108,14 @@ class Header extends Component {
                       style={{ color: "#33849F" }}
                     />
                   </div>
-                  <div class="text-wrap text-dark">
+                  {/* <div class="text-wrap text-dark">
                     <span class="badge badge-secondary">
                       {" "}
                       {this.props.newTransactionCount} New Transaksi
                     </span>
                     <br />
                     {this.props.mySelf.name} <i class="fa fa-heart" />
-                  </div>
+                  </div> */}
                 </div>
               </Link>
               <div class="dropdown-menu" style={{ marginTop: "-2px" }}>
@@ -159,10 +160,12 @@ class Header extends Component {
               </div>
             </div>
           </div>
-          <div className="col-lg-3 col-md-12">
+          {" "}
+          <div className="col-lg-4 col-md-4 col-sm-4">
             <Link to="/newevent" className="widget-header">
               <div className="icontext">
                 <div className="icon-wrap">
+                  {" "}
                   <i
                     className="icon-sm fa fa-plus"
                     style={{ color: "#33849F" }}
@@ -173,6 +176,22 @@ class Header extends Component {
                 </div>
               </div>
             </Link>
+          </div>
+          <div className="col-lg-4 col-md-4 col-sm-4">
+            <Link to="/mybooking" className="widget-header">
+              <div className="icontext">
+                <div className="icon-wrap">
+                  <i
+                    className="icon-sm fa fa-list-alt"
+                    style={{ color: "#33849F" }}
+                  />
+                </div>
+                <div className="text-wrap text-dark">
+                  My <br /> Booking
+                </div>
+              </div>
+            </Link>
+          </div>
           </div>
         </sec>
       );
