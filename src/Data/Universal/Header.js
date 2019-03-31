@@ -18,15 +18,7 @@ class Header extends Component {
         <header>
           <nav className="navbar navbar-expand-lg navbar-light fixed-top sticky" id="navbar">
             <div className="container">
-              <Link className="navbar-brand" to="/">
-                <img
-                  className="logo"
-                  src=""
-                  height="100%"
-                  alt="Kick Off Buddies"
-                  title="Kick Off Buddies"
-                />
-              </Link>
+              
               <button
                 className="navbar-toggler"
                 style={{
@@ -46,7 +38,14 @@ class Header extends Component {
 
               <div className="collapse navbar-collapse" id="navbarTop">
                 <ul className="navbar-nav mr-auto">
-                  <li className="nav-item dropdown">
+                  <li>
+                    <h6 style={{color:"white"}}>
+                      Welcome to our website. Keep on playing!
+                    </h6>
+                  </li>
+                </ul>
+                <ul className="navbar-nav">
+                <li className="nav-item dropdown">
                     <Link
                       to="#"
                       className="nav-link dropdown-toggle"
@@ -82,30 +81,6 @@ class Header extends Component {
                       </li>
                     </ul>
                   </li>
-                  {/* <li className="nav-item dropdown" >
-                    <Link to="" className="nav-link dropdown-toggle">
-                      {" "}
-                      List User{" "}
-                    </Link>
-
-                    <ul className="dropdown-menu Navbar" style={{ marginTop: "-2px" }}>
-                      <li>
-                        <Link className="dropdown-item" to="/" id="inside">
-                          All User
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="/" id="inside">
-                          Beberapa User{" "}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="/" id="inside">
-                          My User
-                        </Link>
-                      </li>
-                    </ul>
-                  </li> */}
                   <li className="nav-item dropdown">
                     <Link to="" className="nav-link dropdown-toggle">
                       {" "}
@@ -129,8 +104,6 @@ class Header extends Component {
                       </li>
                     </ul>
                   </li>
-                </ul>
-                <ul className="navbar-nav">
                   <li className="nav-item">
                     <Link to="/" className="nav-link">
                       {" "}
@@ -141,45 +114,25 @@ class Header extends Component {
               </div>
             </div>
           </nav>
-          <section className="header-main shadow-sm">
+          <section className="header-main shadow-sm" style={{marginTop:"-12px"}}>
             <div className="container">
               <div className="row-sm align-items-center">
                 <div className="col-lg-4-24 col-sm-3">
-                  <div className="category-wrap dropdown py-1">
-                    <button
-                      type="button"
-                      className="btn btn-light dropdown-toggle"
-                      data-toggle="dropdown"
-                    >
-                      <i className="fa fa-bars" /> Categories
-                    </button>
-                    <div className="dropdown-menu " style={{ marginTop: "-2px" }}>
-                    <Link
-                        className="dropdown-item"
-                        to="/allsport"
-                        onClick={() => {
-                          this.props.changeCategory("basket");
-                        }}
-                      >
-                        Basket{" "}
-                      </Link>
-                      <Link
-                        className="dropdown-item"
-                        to="/allsport"
-                        onClick={() => {
-                          this.props.changeCategory("badminton");
-                        }}
-                      >
-                        Badminton{" "}
-                      </Link>
-                    </div>
-                  </div>
+                  <Link className="navbar-brand" to="/">
+                    <img
+                      className="logo"
+                      src="https://i.postimg.cc/3JKbyy2X/Logo-Makr-1n2-C9x.png"
+                      height="100%"
+                      alt="Kick Off Buddies"
+                      title="Kick Off Buddies"
+                    />
+                  </Link>
                 </div>
                 <Search />
-                <div className="col-lg-7-24 col-12">
-                  <div className="widgets-wrap float-right row no-gutters py-1">
+                {/* <div className="col-lg-6-24 col-6"> */}
+                  <div className="widgets-wrap float-right row no-gutters py-1 mr-auto">
                     <LoginBar signout={this.signout} />
-                    <div className="col-lg-4 col-md-12">
+                    {/* <div className="col-lg-4 col-md-12">
                       <Link to="/mybooking" className="widget-header">
                         <div className="icontext">
                           <div className="icon-wrap">
@@ -193,9 +146,9 @@ class Header extends Component {
                           </div>
                         </div>
                       </Link>
-                    </div>
+                    </div> */}
                   </div>
-                </div>
+                {/* </div> */}
               </div>
             </div>
           </section>

@@ -61,8 +61,8 @@ class PostItem extends Component {
       <div class="card mb-3">
         <section class="section-pagetop bg-dark-50">
           <div class="container clearfix">
-            <strong><h2 class=" text-white">Post New Item</h2></strong>
-            <h5 class=" text-white">Isikan Semua Field Agar Keterangan Barang Anda Lengkap</h5>
+            <strong><h2 class=" text-white">Create a New Player Room</h2></strong>
+            <h5 class=" text-white">Isikan Semua Field Agar Keterangan Player Room Anda Lengkap</h5>
 
           </div>
         </section>
@@ -113,7 +113,7 @@ class PostItem extends Component {
               </select>
             </div>
             <div class="form-group col-lg-6">
-              <label for="location">location</label>
+              <label for="location">Location</label>
               <select
                 onChange={e => {
                   this.changeLocation(e);

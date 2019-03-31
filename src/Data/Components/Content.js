@@ -5,6 +5,7 @@ class Content extends Component {
     return (
         <section>
             <div className="container">
+                <br /><br />
                 <h3 class="w3ls-title center">Welcome !</h3>  
                 <div className="row">
                     <div className="col-lg-4 col-md-6 cold-sm-12" style={{textAlign:"center"}}>

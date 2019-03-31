@@ -79,91 +79,17 @@ class FAQ extends Component {
                 </div>
                 <div id="collapseThree" className="panel-collapse collapse">
                     <div className="panel-body">
-                        Ya. Pendaftarannya gratis. 
+                        Ya. Pendaftarannya gratis. Langkah-langkah yang perlu dilakukan untuk mendaftar sebagai berikut: 
                         <ul>
-                            <li>Register an account</li>
-                            {/* <li>Activate your account</li> */}
-                            <li>Go to the <strong>Add Product</strong> section and upload your product with all product details.</li>
-                            <li>The next step is the approval step, which usually takes about 12 hours.</li>
+                            <li>Sign up</li>
+                            <li>Isi data diri</li>
+                            <li>Kemudian kamu bisa melakukan pencarian teman untuk olahraga lewat my booking.</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div className="panel panel-default">
-                <div className="panel-heading">
-                    <h5 className="panel-title">
-                        <br />
-                        <a className="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">How much do I get from each sale?</a>
-                    </h5>
-                </div>
-                <div id="collapseFive" className="panel-collapse collapse">
-                    <div className="panel-body">
-                        Here, at <strong>FatimahFashion</strong>, we offer a great, 70% rate for each seller, regardless of any restrictions, such as category, date of entry, etc.
-                        <br />
-                    </div>
-                </div>
-            </div>
-            <div className="panel panel-default">
-                <div className="panel-heading">
-                    <h5 className="panel-title">
-                        <a className="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">Why sell my items here?</a>
-                    </h5>
-                </div>
-                <div id="collapseSix" className="panel-collapse collapse">
-                    <div className="panel-body">
-                        There are a number of reasons why you should join us:
-                        <ul>
-                            <li>A great 70% flat rate for your items.</li>
-                            <li>Fast response/approval times. Many sites take weeks to process a seller. And if it gets rejected, there is another iteration. We have aliminated this, and made the process very fast. It only takes up to 72 hours for a template/theme to get reviewed.</li>
-                            <li>We are not an exclusive marketplace. This means that you can sell your items on <strong>PrepBootstrap</strong>, as well as on any other marketplate, and thus increase your earning potential.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div className="panel panel-default">
-                <div className="panel-heading">
-                    <h5 className="panel-title">
-                        <br />
-                        <a className="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight">What are the payment options?</a>
-                    </h5>
-                </div>
-                <div id="collapseEight" className="panel-collapse collapse">
-                    <div className="panel-body">
-                        The best way to transfer funds is via Bank Transer. This secure platform ensures timely payments and a secure environment. 
-                    </div>
-                </div>
-            </div>
-    
-            {/* <div className="faqHeader">Buyers</div> */}
-            <div className="panel panel-default">
-                <div className="panel-heading">
-                    <h5 className="panel-title">
-                        <br />
-                        <a className="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">I want to buy a fashion product - what are the steps?</a>
-                    </h5>
-                </div>
-                <div id="collapseFour" className="panel-collapse collapse">
-                    <div className="panel-body">
-                        Buying a product on <strong>FatimahFashion</strong> is really simple. Each product has a live preview. 
-                        Once you have selected a product or template, which is to your liking, you can quickly and securely pay via Paypal.
-                        <br />
-                        Once the transaction is complete, you gain full access to the purchased product. 
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h5 class="panel-title">
-                        <br />
-                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">Is this the latest version of an item</a>
-                    </h5>
-                </div>
-                <div id="collapseSeven" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        Each item in <strong>FatimahFashion</strong> is maintained to its latest version. This ensures its smooth operation.
-                    </div>
-                </div>
-            </div>
+            <br />
+            <br />
         </div>
         </div>
         </div>
