@@ -15,6 +15,8 @@ class Header extends Component {
   };
   postLogin = function() {
     this.props.Login(this.state.username, this.state.password).then(() => {
+      this.state.username = "";
+      this.state.password = "";
       this.props.history.push("/userprofile");
     });
   };
@@ -70,7 +72,7 @@ class Header extends Component {
                 >
                   Sign in
                 </button>
-                <Link to="/daftar">
+                <Link to="/newuser">
                   <button
                     type="submit"
                     className="btn btn-outline-primary ml-1"
@@ -82,7 +84,7 @@ class Header extends Component {
               </form>
 
               <hr className="dropdown-divider" />
-              <Link className="dropdown-item" to="/daftar">
+              <Link className="dropdown-item" to="/newuser">
                 Don't Have account? Sign up
               </Link>
               <Link className="dropdown-item" to="">
