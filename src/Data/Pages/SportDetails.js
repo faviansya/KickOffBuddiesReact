@@ -80,12 +80,14 @@ class Details extends Component {
       url: Host + "/api/playerlist/" + id,
       headers: {
         Authorization: "Bearer " + self.props.Bearer
+      },
+      data: {
+        booking_id: this.props.bookingId
       }
     };
      await axios(DeleteData)
       .then(function(response) {
         console.log("Success");
-
       })
       .catch(function(error) {
         console.log("ASEM", error);
@@ -104,30 +106,12 @@ class Details extends Component {
         })
         .catch(function(error) {
           console.log("ASEM", error);
+          alert("Room Has Been Deleted Because No One Here, You Directed To Home")
+          self.props.history.push("/");
         });
   }
 
-  deleteRoom = async (id)=>{
-    const self = this;
-    const DeleteData = {
-      method: "delete",
-      url: Host + "/api/playerlist/" + id,
-      headers: {
-        Authorization: "Bearer " + self.props.Bearer
-      }
-    };
-     await axios(DeleteData)
-      .then(function(response) {
-        console.log("Success");
-
-      })
-      .catch(function(error) {
-        console.log("ASEM", error);
-      });
-
-  }
   render() {
-    var counter = 0;
     if (this.state.status == "failed") {
       alert("Kamu Telah Join Di Game Ini");
       this.setState({ status: "" });
