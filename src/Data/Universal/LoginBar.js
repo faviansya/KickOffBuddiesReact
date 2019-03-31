@@ -15,7 +15,7 @@ class Header extends Component {
   };
   postLogin = function() {
     this.props.Login(this.state.username, this.state.password).then(() => {
-      this.props.history.push("/myprofile");
+      this.props.history.push("/userprofile");
     });
   };
   changeUser(e) {
