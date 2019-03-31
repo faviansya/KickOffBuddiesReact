@@ -6,7 +6,27 @@ import { actions } from "../../store";
 import { withRouter } from "react-router-dom";
 
 class Profile extends Component {
+  changePlaylistIds = () => {
+    this.props.cancel(this.props.listId);
+  };
   render() {
+    const button = {
+      buttonDelete: ""
+    };
+    if (this.props.ismyself == "yes") {
+      button.buttonDelete = (
+        <button
+          onClick={e => this.changePlaylistIds()}
+          type="submit"
+          className="btn btn-danger"
+        >
+          Cancel Booking
+        </button>
+      );
+    }
+    else{
+      button.buttonDelete = ""
+    }
     return (
       <aside className="col-xl-3 col-lg-3 col-md-6 col-sm-12 text-center wow fadeInUp" >
         <div className="card" >
@@ -34,6 +54,7 @@ class Profile extends Component {
               Booking Pending:5
               <br />
               <hr />
+              {button.buttonDelete}
               </div>
               {/* <Link href="">Kunjungi Profil</Link> */}
             </div>

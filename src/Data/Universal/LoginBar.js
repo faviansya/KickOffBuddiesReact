@@ -97,7 +97,7 @@ class Header extends Component {
         <sec>
           <div class="col-auto col-lg-12">
             <div class="widget-header dropdown">
-              <Link to="/myprofile" data-offset="20,10">
+              <Link to="/userprofile" data-offset="20,10">
                 <div class="icontext">
                   <div class="icon-wrap">
                     <i
@@ -118,9 +118,9 @@ class Header extends Component {
               <div class="dropdown-menu" style={{ marginTop: "-2px" }}>
                 <form class="px-4 py-3" onSubmit={e => e.preventDefault()}>
                   <center>
-                    <Link to="/myprofile" data-offset="20,10">
+                    <Link to="/userprofile" data-offset="20,10">
                       <div class="form-group">
-                        <img src="" height="130px" />
+                        <img src={this.props.mySelf.url_image} height="130px" />
                       </div>
                     </Link>
 
@@ -158,7 +158,7 @@ class Header extends Component {
             </div>
           </div>
           <div className="col-lg-3 col-md-12">
-            <Link to="/postitem" className="widget-header">
+            <Link to="/newevent" className="widget-header">
               <div className="icontext">
                 <div className="icon-wrap">
                   <i

@@ -12,9 +12,9 @@ class UserProfile extends Component {
     return (
     <section>
         <div className="container">    
-        <h4 style={{textAlign:"center"}}>Tutik Sulistiawati</h4><br/>
+        <h4 style={{textAlign:"center"}}>{this.props.mySelf.name}</h4><br/>
         <div className="row">
-                <img alt="User Pic" src="https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-760x506.jpg" id="profile-image1" 
+                <img alt="User Pic" src={this.props.mySelf.url_image} id="profile-image1" 
                 className="img-circle img-responsive center" style={{height:"300px", width:"300", borderRadius:"50%"}}/> 
         </div>
         <div className="row">
@@ -23,23 +23,23 @@ class UserProfile extends Component {
                 <tbody className="text-center">
                     <tr>
                         <td>Username</td>
-                        <td>Tutik</td>
+                        <td>{this.props.mySelf.username}</td>
                     </tr>
                     <tr>
                         <td>Address</td>
-                        <td>Tidar Malang</td>
+                        <td>{this.props.mySelf.address}</td>
                     </tr>
                     <tr>
                         <td>Phone</td>
-                        <td>0891917937383</td>
+                        <td>{this.props.mySelf.phone_no}</td>
                     </tr>
                     <tr>
                         <td>Email</td>
-                        <td>tutik@gmail.com</td>
+                        <td>{this.props.mySelf.email}</td>
                     </tr>
                     <tr>
                         <td>Favorite Sport</td>
-                        <td>Basket</td>
+                        <td>{this.props.mySelf.favourite_sport}</td>
                     </tr>
                 </tbody>
             </table>
@@ -70,7 +70,7 @@ class UserProfile extends Component {
 }
 
 export default connect(
-  "",
+  "mySelf",
   actions
 )(withRouter(UserProfile));
 
