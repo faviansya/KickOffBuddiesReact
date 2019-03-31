@@ -82,7 +82,7 @@ class Header extends Component {
                       </li>
                     </ul>
                   </li>
-                  <li className="nav-item dropdown" >
+                  {/* <li className="nav-item dropdown" >
                     <Link to="" className="nav-link dropdown-toggle">
                       {" "}
                       List User{" "}
@@ -105,7 +105,7 @@ class Header extends Component {
                         </Link>
                       </li>
                     </ul>
-                  </li>
+                  </li> */}
                   <li className="nav-item dropdown">
                     <Link to="" className="nav-link dropdown-toggle">
                       {" "}
@@ -113,7 +113,7 @@ class Header extends Component {
                     </Link>
                     <ul className="dropdown-menu Navbar" style={{ marginTop: "-2px" }}>
                       <li>
-                        <Link className="dropdown-item" to="/" id="inside">
+                        <Link className="dropdown-item" to="/faq" id="inside">
                           Pertanyaan Umum
                         </Link>
                       </li>
