@@ -17,7 +17,7 @@ class Header extends Component {
     this.props.Login(this.state.username, this.state.password).then(() => {
       this.state.username = "";
       this.state.password = "";
-      this.props.history.push("/userprofile");
+      this.props.history.push("/");
     });
   };
   changeUser(e) {
