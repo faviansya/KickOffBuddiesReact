@@ -463,3 +463,20 @@ img.w3slid-img {
     left: 110px;
 }
 
+/* HIDE RADIO */
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + i {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + i {
+  outline: 2px solid #f00;
+}
