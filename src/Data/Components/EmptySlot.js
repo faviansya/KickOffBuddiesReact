@@ -31,10 +31,10 @@ class Profile extends Component {
               </label>
               <br />
               -
-              <hr />
+              {/* <hr />
               -
               <hr />
-              -
+              - */}
               <br />
               </div>
               {/* <Link href="">Kunjungi Profil</Link> */}

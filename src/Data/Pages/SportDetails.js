@@ -6,11 +6,16 @@ import { actions } from "../../store";
 import { withRouter } from "react-router-dom";
 import Profile from "../Universal/Profile";
 import Empty from "../Components/EmptySlot";
-import DetailComponent from "../Components/DetailsComponent";
+// import DetailComponent from "../Components/DetailsComponent";
+import DetailsLocation from "../Components/DetailsLocation";
+import DetailsTime from "../Components/DetailsTime";
+
 
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Host } from "../../Host";
+import DetailsJumlahPemain from "../Components/DetailsJumlahPemain";
+import DetailsOlahRaga from "../Components/DetailsOlahRaga";
 
 class Details extends Component {
   constructor(props) {
@@ -118,10 +123,10 @@ class Details extends Component {
     }
     return (
       <div onClick={() => {}}>
-        <section className="section-topbar border-top padding-y-sm wow slideInUp">
+        <section className="section-topbar border-top padding-y-sm wow slideInUp" style={{textAlign:"center"}}>
           <div className="container-fluid">
-            <span>Player Room</span> {"  "} <br />
-            <span className="text-success">Waiting for more players to join</span>
+            <h5>Player Room</h5> {"  "}
+            <span style={{color:"rgb(51, 132, 159)"}}><strong>Waiting for more players to join</strong></span>
           </div>
         </section>
         <section className="section-content bg padding-y-sm">
@@ -154,10 +159,10 @@ class Details extends Component {
           </div>
         </section>
         <div class="row mt-5 ">
-          <DetailComponent />
-          <DetailComponent />
-          <DetailComponent />
-          <DetailComponent />
+          <DetailsOlahRaga />          
+          <DetailsLocation />
+          <DetailsTime />
+          <DetailsJumlahPemain />
         </div>
       </div>
     );
