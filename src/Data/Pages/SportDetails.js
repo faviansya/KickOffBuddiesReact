@@ -41,6 +41,8 @@ class Details extends Component {
         self.setState({ listPemain: response.data.pemain });
       })
       .catch(function(error) {
+        alert("Your Room Has Been Deleted Because It's Empty")
+        self.props.history.push("/");
         console.log("ASEM", error);
       });
   }
@@ -56,7 +58,7 @@ class Details extends Component {
         Authorization: "Bearer " + self.props.Bearer
       },
       data: {
-        booking_id: this.props.bookingId
+        booking_id: self.props.bookingId
       }
     };
     await axios(reqJoin)
@@ -76,7 +78,7 @@ class Details extends Component {
         Authorization: "Bearer " + self.props.Bearer
       },
       data: {
-        booking_id: this.props.bookingId
+        booking_id: self.props.bookingId
       }
     };
      await axios(DeleteData)
