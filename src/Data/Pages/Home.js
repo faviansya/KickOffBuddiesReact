@@ -26,7 +26,7 @@ class Home extends Component {
     await axios(req)
       .then(function(response) {
         self.setState({ listTempat: response.data.results });
-        console.log(response.data)
+        // console.log(response.data)
         // self.setState({ listPemain: response.data.pemain });
       })
       .catch(function(error) {
