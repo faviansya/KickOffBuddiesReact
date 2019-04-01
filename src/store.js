@@ -39,8 +39,8 @@ export const actions = store => ({
             "Content-Type":"application/json",
           },
           data: {
-            username: username,
-            password: password
+            username: "vian",
+            password: "vian"
           }
         };
         await axios(req)
