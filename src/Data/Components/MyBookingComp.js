@@ -10,8 +10,36 @@ class MyBookingComp extends Component {
   };
   render() {
     return (
-      <div class="col-12 col-lg-4 col-md-6 mt-5">
-        <div class="card" onClick={this.changeBookingIds}>
+      <div class="col-12 col-lg-6 col-md-6 mt-5">
+        <div class="product-card">
+          <div class="product-image">
+            <img src={this.props.img} />
+          </div>
+          <div class="product-details">
+            <h1>{this.props.title}</h1>
+            <p>Player Needed: {this.props.player}</p>
+            <p>Status: {this.props.status}</p>
+            <p>Location: {this.props.locationing}</p>
+
+            <Link to="/details">
+              <button type="button" class="btn" onClick={this.changeBookingIds}>
+                Go To Lobby
+              </button>
+            </Link>
+          </div>
+        </div>
+
+        {/* <div class="product-card">
+  <div class="product-details">
+    <h1>Product title</h1>
+    <p>Great product title for a great product and all of the extra things a product might need to make it fill an entire card.</p>
+    <button type="button" class="btn">Go To Lobby</button>
+  </div>
+  <div class="product-image">
+    <img src={this.props.img}/>
+  </div>
+</div> */}
+        {/* <div class="card" onClick={this.changeBookingIds}>
           <img
             class="card-img-top"
             src={this.props.img}
@@ -28,7 +56,7 @@ class MyBookingComp extends Component {
               Check Lobby
             </Link>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }

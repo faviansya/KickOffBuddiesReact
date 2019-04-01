@@ -21,13 +21,15 @@ class Home extends Component {
                     ? "User Not Upload Data"
                     : item.url_image;
                 return (
-                  <AllSport 
-                  key={key}
-                  id={item.id}
-                  title={item.sport}
-                  player={item.player}
-                  img={arc_img}
-                  sport={item.sport}
+                  <AllSport
+                    key={key}
+                    id={item.id}
+                    title={item.sport}
+                    player={item.player}
+                    img={arc_img}
+                    pemain_now={item.pemain_saat_ini}
+                    player={item.player}
+                    locationssss={item.location}
                   />
                 );
               })}
