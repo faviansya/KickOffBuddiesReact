@@ -26,7 +26,7 @@ export const actions = store => ({
     },
     changePlaylistId: (state, id) => {
       store.setState({ playlistID: id });
-      console.log("ID",id)
+      // console.log("ID",id)
     },
     //GLOBAL HEADER METHOD-----------------------------
     //THIS METHOD IS FOR HEADER ONLY-------------------
@@ -39,8 +39,8 @@ export const actions = store => ({
             "Content-Type":"application/json",
           },
           data: {
-            username: "vian",
-            password: "vian"
+            username: username,
+            password: password
           }
         };
         await axios(req)
@@ -116,6 +116,23 @@ export const actions = store => ({
           }
         },
     //END OF HEADER METHOD-------------------
-
+    GetMyOwnData: async (state) => {
+      // console.log("GetMyOwn Data")
+      const getMyData = {
+        method: "get",
+        url: Host+ "/api/pemain/me",
+        headers: {
+          Authorization: "Bearer " + store.getState().Bearer,
+          "Content-Type":"application/json",
+        }
+      };
+      await axios(getMyData)
+        .then(function(response) {
+          store.setState({ mySelf: response.data.data });
+        })
+        .catch(function(error) {
+          console.log("ASEM", error);
+        });
+    },
 
 })
