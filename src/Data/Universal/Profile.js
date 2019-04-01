@@ -48,11 +48,11 @@ class Profile extends Component {
               </label>
               <br />
               Alamat: {this.props.address}
-              <hr />
-              Accept Booking: 5
+              {/* <hr /> */}
+              {/* Accept Booking: 5
               <hr />
               Booking Pending:5
-              <br />
+              <br /> */}
               <hr />
               {button.buttonDelete}
               </div>

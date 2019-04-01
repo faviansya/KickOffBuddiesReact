@@ -12,6 +12,7 @@ import EditUser from "./Data/Post/EditUser"
 
 import PatNolPat from "./Data/Components/404";
 import FAQ from './Data/Pages/FAQ';
+import Contact from './Data/Pages/Contact';
 
 
 const MainRoute = () => {
@@ -25,6 +26,7 @@ const MainRoute = () => {
             <Route exact path = "/newevent" component = {NewEvent}/>
             <Route exact path = "/faq" component = {FAQ}/>
             <Route exact path = "/newuser" component = {NewUser}/>
+            <Route exact path = "/contact-us" component = {Contact}/>
             <Route exact path = "/edituser" component = {EditUser}/>
 
             <Route component = {PatNolPat}/>

@@ -88,6 +88,27 @@ class FAQ extends Component {
                     </div>
                 </div>
             </div>
+            <div className="panel panel-default">
+                <div className="panel-heading">
+                    <h5 className="panel-title">
+                        <br />
+                        <a className="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Apa itu player room?</a>
+                    </h5>
+                </div>
+                <div id="collapseFour" className="panel-collapse collapse">
+                    <div className="panel-body">
+                        Player room merupakan ruang untuk kamu bertemu dan bergabung dengan pemain lain untuk berolahraga bersama di waktu dan tempat yang diinginkan 
+                        dengan langkah-langkah sebagai berikut:
+                        <ul>
+                            <li>Tinggal click di empty slot.</li>
+                            <li>Profile kamu akan muncul dan tergabung di ruang pemain tersebut.</li>
+                            <li>Tunggu sampai jumlah pemain yang diinginkan sudah terpenuhi. Data di ruang player kamu akan muncul di user profile sebelah kanan bawah
+                                di bagian current booking.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <br />
             <br />
         </div>

@@ -45,6 +45,12 @@ class Header extends Component {
                   </li>
                 </ul>
                 <ul className="navbar-nav">
+                <li className="nav-item">
+                  <Link to="/">
+                      {" "}
+                      Home{" "}
+                    </Link>
+                </li>
                 <li className="nav-item dropdown">
                     <Link
                       to="#"
@@ -81,10 +87,10 @@ class Header extends Component {
                       </li>
                     </ul>
                   </li>
-                  <li className="nav-item dropdown">
-                    <Link to="" className="nav-link dropdown-toggle">
+                  <li className="nav-item">
+                    <Link to="/faq">
                       {" "}
-                      Hubungi Customer Service{" "}
+                      Pertanyaan Umum{" "}
                     </Link>
                     <ul className="dropdown-menu Navbar" style={{ marginTop: "-2px" }}>
                       <li>
@@ -105,7 +111,7 @@ class Header extends Component {
                     </ul>
                   </li>
                   <li className="nav-item">
-                    <Link to="/" className="nav-link">
+                    <Link to="/contact-us" className="nav-link">
                       {" "}
                       Contact Us{" "}
                     </Link>
