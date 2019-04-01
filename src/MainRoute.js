@@ -8,6 +8,7 @@ import UserProfile from "./Data/Pages/UserProfile"
 import MyBooking from "./Data/Pages/MyBooking"
 import NewEvent from "./Data/Post/PostNewEvent"
 import NewUser from "./Data/Post/PostUser"
+import EditUser from "./Data/Post/EditUser"
 
 import PatNolPat from "./Data/Components/404";
 import FAQ from './Data/Pages/FAQ';
@@ -24,6 +25,7 @@ const MainRoute = () => {
             <Route exact path = "/newevent" component = {NewEvent}/>
             <Route exact path = "/faq" component = {FAQ}/>
             <Route exact path = "/newuser" component = {NewUser}/>
+            <Route exact path = "/edituser" component = {EditUser}/>
 
             <Route component = {PatNolPat}/>
         </Switch>

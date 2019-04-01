@@ -5,13 +5,12 @@ import { connect } from "unistore/react";
 import { actions } from "../../store";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
-import { Host } from "../../Host"
+import { Host } from "../../Host";
 
 class PostItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
       password: "",
       name: "",
       email: "",
@@ -19,29 +18,59 @@ class PostItem extends Component {
       alamat: "",
       favoritSport: "",
       urlimage: "",
+      UserData: [],
+
     };
   }
-
+  componentDidMount = async id => {
+    const self = this;
+    const getMyData = {
+      method: "get",
+      url: Host + "/api/pemain/me",
+      headers: {
+        Authorization: "Bearer " + self.props.Bearer,
+        "Content-Type": "application/json"
+      }
+    };
+    await axios(getMyData)
+      .then(function(response) {
+        self.setState({ UserData: response.data.data });
+        self.setState({ password: response.data.data.password });
+        self.setState({ name: response.data.data.name });
+        self.setState({ email: response.data.data.email });
+        self.setState({ urlimage: response.data.data.url_image });
+        self.setState({ alamat: response.data.data.address });
+        self.setState({ favoritSport: response.data.data.favourite_sport });
+        self.setState({ phoneNumber: response.data.data.phone_no });
+        // console.log("MySelf", Bearer);
+      })
+      .catch(function(error) {
+        console.log("ASEM", error);
+      });
+  };
   PostItem = async event => {
     event.preventDefault();
     const self = this;
     const req = {
-      method: "post",
-      url: Host+"/api/pemain",
+      method: "put",
+      url: Host + "/api/pemain",
+      headers: {
+        Authorization: "Bearer " + self.props.Bearer,
+        "Content-Type": "application/json"
+      },
       data: {
-        username: self.state.username,
-        password: self.state.password,
+        // password: self.state.password,
         name: self.state.name,
         email: self.state.email,
         phone_no: self.state.phoneNumber,
         address: self.state.alamat,
-        url_image: self.state.urlimage,
         favourite_sport: self.state.favoritSport,
+        url_image: self.state.urlimage
       }
     };
     await axios(req)
       .then(function(response) {
-        self.props.Login(self.state.username, self.state.password)
+        self.props.GetMyOwnData();
         self.props.history.push("/userprofile");
       })
       .catch(function(error) {
@@ -49,82 +78,87 @@ class PostItem extends Component {
       });
   };
 
-  changeUsername = e => {
-    this.setState({ username: e.target.value });
-  };
   changePassword = e => {
     this.setState({ password: e.target.value });
+    console.log("password", e.target.value);
   };
   changeName = e => {
     this.setState({ name: e.target.value });
+    console.log("nama", e.target.value);
   };
   changeEmail = e => {
     this.setState({ email: e.target.value });
+    console.log("email", e.target.value);
   };
-  changephoneNumber= e => {
+  changephoneNumber = e => {
     this.setState({ phoneNumber: e.target.value });
+    console.log("phoneNumber", e.target.value);
   };
   changeAlamat = e => {
     this.setState({ alamat: e.target.value });
+    console.log("alamat", e.target.value);
   };
 
   changeUrlimage = e => {
     this.setState({ urlimage: e.target.value });
+    console.log("urlimage", e.target.value);
   };
-
   changefavoritSport = e => {
     this.setState({ favoritSport: e.target.value });
+    console.log("favoritSport", e.target.value);
   };
 
   render() {
     return (
       <div class="card mb-3">
-        <section class="section-pagetop bg-dark-50" style={{backgroundImage:`url("https://indodjaja.com/1mages/Banner/foodBanner.jpg")`}}>
-          <div class="container clearfix" >
-            <strong><h2 class=" text-dark" > <label style={{backgroundColor:"greenyellow"}}>Daftar Baru</label></h2></strong>
-            <h5 class=" text-dark"><label style={{backgroundColor:"greenyellow"}}>Isikan Semua Keterangan Anda Dibawah</label></h5>
-
+        <section
+          class="section-pagetop bg-dark-50"
+          style={{
+            backgroundImage: `url("https://indodjaja.com/1mages/Banner/foodBanner.jpg")`
+          }}
+        >
+          <div class="container clearfix">
+            <strong>
+              <h2 class=" text-dark">
+                {" "}
+                <label style={{ backgroundColor: "greenyellow" }}>
+                  Daftar Baru
+                </label>
+              </h2>
+            </strong>
+            <h5 class=" text-dark">
+              <label style={{ backgroundColor: "greenyellow" }}>
+                Isikan Semua Keterangan Anda Dibawah
+              </label>
+            </h5>
           </div>
         </section>
 
         <div class="container mt-5">
           <form>
-            <div class="form-group col-lg-6">
-              <label for="username">Masukkan Username</label>
-              <input
-                onChange={e => {
-                  this.changeUsername(e);
-                }}
-                type="title"
-                class="form-control"
-                id="username"
-                placeholder="Username"
-                required
-              />
-            </div>
-            <div class="form-group col-lg-6">
-              <label for="password">Masukkan Password</label>
+            {/* <div class="form-group col-lg-6">
+              <label for="Passoword">Masukkan Password</label>
               <input
                 onChange={e => {
                   this.changePassword(e);
                 }}
                 type="password"
                 class="form-control"
-                id="password"
-                placeholder="Password"
+                id="Passoword"
+                placeholder="New Password"
                 required
               />
             </div>
             <div class="form-group col-lg-6">
-              <label for="Cpassword">Confirm Password</label>
+              <label for="ConfirmPassowrd">Confirm Password</label>
               <input
                 type="password"
                 class="form-control"
-                id="Cpassword"
-                placeholder="Confirm Password"
+                id="ConfirmPassowrd"
+                placeholder="Confirm New Password"
                 required
               />
-            </div>
+            </div> */}
 
             <div class="form-group col-lg-6">
               <label for="name">Masukkan Nama</label>
@@ -135,7 +169,7 @@ class PostItem extends Component {
                 type="title"
                 class="form-control"
                 id="name"
-                placeholder="name"
+                placeholder={this.state.UserData.name}
                 required
               />
             </div>
@@ -148,10 +182,10 @@ class PostItem extends Component {
                 }}
                 type="title"
                 class="form-control"
-                placeholder="Email"
+                placeholder={this.state.UserData.email}
                 id="Email"
                 required
-                />
+              />
             </div>
 
             <div class="form-group col-lg-6">
@@ -162,10 +196,10 @@ class PostItem extends Component {
                 }}
                 type="number"
                 class="form-control"
-                placeholder="Phone"
+                placeholder={this.state.UserData.phone_no}
                 id="Phone"
                 required
-                />
+              />
             </div>
 
             <div class="form-group col-lg-6">
@@ -176,10 +210,10 @@ class PostItem extends Component {
                 }}
                 type="title"
                 class="form-control"
-                placeholder="Alamat"
+                placeholder={this.state.UserData.address}
                 id="Alamat"
                 required
-                />
+              />
             </div>
 
             <div class="form-group col-lg-6">
@@ -190,10 +224,10 @@ class PostItem extends Component {
                 }}
                 type="title"
                 class="form-control"
-                placeholder="Urlimage"
+                placeholder={this.state.UserData.url_image}
                 id="urlimage"
                 required
-                />
+              />
             </div>
 
             <div class="form-group col-lg-6">
@@ -205,7 +239,7 @@ class PostItem extends Component {
                 type="title"
                 class="form-control"
                 id="favoritSport"
-                placeholder="favoritSport"
+                placeholder={this.state.UserData.favourite_sport}
                 required
               />
             </div>
@@ -227,6 +261,6 @@ class PostItem extends Component {
 }
 
 export default connect(
-  "itemId,Bearer",
+  "Bearer,mySelf",
   actions
 )(withRouter(PostItem));

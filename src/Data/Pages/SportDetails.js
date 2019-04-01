@@ -21,7 +21,7 @@ class Details extends Component {
       status: ""
     };
   }
-  componentDidMount = async () => {
+  GetPlayerList = async ()=>{
     const self = this;
     const req = {
       method: "get",
@@ -38,6 +38,9 @@ class Details extends Component {
       .catch(function(error) {
         console.log("ASEM", error);
       });
+  }
+  componentDidMount = async () => {
+    this.GetPlayerList();
   };
   JoinSport = async () => {
     const self = this;
@@ -57,21 +60,7 @@ class Details extends Component {
         console.log("ASEM", error);
         self.setState({ status: "failed" });
       });
-    const req = {
-      method: "get",
-      url: Host + "/api/playerlist/" + self.props.bookingId,
-      headers: {
-        Authorization: "Bearer " + self.props.Bearer
-      }
-    };
-    await axios(req)
-      .then(function(response) {
-        self.setState({ listDetails: response.data.data });
-        self.setState({ listPemain: response.data.pemain });
-      })
-      .catch(function(error) {
-        console.log("ASEM", error);
-      });
+      this.GetPlayerList();
   };
   cancelLobby= async (id)=> {
     const self = this;
@@ -87,28 +76,12 @@ class Details extends Component {
     };
      await axios(DeleteData)
       .then(function(response) {
-        console.log("Success");
+        // console.log("Success");
       })
       .catch(function(error) {
         console.log("ASEM", error);
       });
-      const GetNewData = {
-        method: "get",
-        url: Host + "/api/playerlist/" + self.props.bookingId,
-        headers: {
-          Authorization: "Bearer " + self.props.Bearer
-        }
-      };
-       await axios(GetNewData)
-        .then(function(response) {
-          self.setState({ listDetails: response.data.data });
-          self.setState({ listPemain: response.data.pemain });
-        })
-        .catch(function(error) {
-          console.log("ASEM", error);
-          alert("Room Has Been Deleted Because No One Here, You Directed To Home")
-          self.props.history.push("/");
-        });
+      this.GetPlayerList();
   }
 
   render() {
