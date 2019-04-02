@@ -17,7 +17,7 @@ class DetailsOlahRaga extends Component {
             <figcaption class="text-wrap">
               <h5 class="title">Olah Raga</h5>
               <p class="text-muted">
-                Badminton{" "}
+                {this.props.sport}
               </p>
             </figcaption>
           </figure>

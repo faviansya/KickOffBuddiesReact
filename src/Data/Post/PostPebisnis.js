@@ -14,10 +14,11 @@ class PostItem extends Component {
       username: "",
       password: "",
       name: "",
+      nama_tempat: "",
       email: "",
       phoneNumber: "",
       alamat: "",
-      favoritSport: "",
+      deskripsi: "",
       urlimage: "",
     };
   }
@@ -27,22 +28,23 @@ class PostItem extends Component {
     const self = this;
     const req = {
       method: "post",
-      url: Host+"/api/pemain",
+      url: Host+"/api/pebisnis",
       data: {
         username: self.state.username,
         password: self.state.password,
         name: self.state.name,
+        nama_tempat: self.state.nama_tempat,
         email: self.state.email,
         phone_no: self.state.phoneNumber,
         address: self.state.alamat,
+        deskripsi: self.state.deskripsi,
         url_image: self.state.urlimage,
-        favourite_sport: self.state.favoritSport,
       }
     };
     await axios(req)
       .then(function(response) {
-        self.props.Login(self.state.username, self.state.password)
-        self.props.history.push("/userprofile");
+        self.props.LoginPebisnis(self.state.username, self.state.password)
+        self.props.history.push("/pebisnisprofile");
       })
       .catch(function(error) {
         console.log("ASEM", error);
@@ -58,6 +60,9 @@ class PostItem extends Component {
   changeName = e => {
     this.setState({ name: e.target.value });
   };
+  changeNamaTempat = e => {
+    this.setState({ nama_tempat: e.target.value });
+  };
   changeEmail = e => {
     this.setState({ email: e.target.value });
   };
@@ -68,20 +73,20 @@ class PostItem extends Component {
     this.setState({ alamat: e.target.value });
   };
 
-  changeUrlimage = e => {
-    this.setState({ urlimage: e.target.value });
+  changeDeskripsi = e => {
+    this.setState({ deskripsi: e.target.value });
   };
 
-  changefavoritSport = e => {
-    this.setState({ favoritSport: e.target.value });
+  changeUrlimage = e => {
+    this.setState({ urlimage: e.target.value });
   };
 
   render() {
     return (
       <div class="card mb-3">
-        <section class="section-pagetop bg-dark-50" style={{backgroundImage:`url("https://s3-us-west-1.amazonaws.com/urbanpitch/wp-content/uploads/2018/01/09104139/transfer-stories-slider.jpg")`}}>
+        <section class="section-pagetop bg-dark-50" style={{backgroundImage:`url("http://magneum.online/wp-content/uploads/2018/07/CroppedImage1200533-Web7.jpg")`}}>
           <div class="container clearfix col-lg-4 col-md-4 col-sm-10" style={{backgroundColor:"peachpuff", opacity:"0.75", padding:"10px"}}>
-            <strong><h2 class=" text-dark" > <label><strong>Daftar Baru</strong></label></h2></strong>
+            <strong><h2 class=" text-dark" > <label><strong>Daftar Pebisnis Baru</strong></label></h2></strong>
             <h5 class=" text-dark"><label>Isikan Semua Keterangan Anda Dibawah</label></h5>
           </div>
           <div className="col-lg-8 col-md-8 col-sm-2"></div>
@@ -135,7 +140,21 @@ class PostItem extends Component {
                 type="title"
                 class="form-control"
                 id="name"
-                placeholder="name"
+                placeholder="Nama Anda"
+                required
+              />
+            </div>
+
+            <div class="form-group col-lg-6">
+              <label for="name">Masukkan Nama Tempat Bisnis Anda</label>
+              <input
+                onChange={e => {
+                  this.changeNamaTempat(e);
+                }}
+                type="title"
+                class="form-control"
+                id="nama_tempat"
+                placeholder="Nama tempat bisnis"
                 required
               />
             </div>
@@ -183,6 +202,20 @@ class PostItem extends Component {
             </div>
 
             <div class="form-group col-lg-6">
+              <label for="Deskripsi">Masukkan Deskripsi Tempat Anda</label>
+              <input
+                onChange={e => {
+                  this.changeDeskripsi(e);
+                }}
+                type="title"
+                class="form-control"
+                placeholder="Deskripsi tempat"
+                id="Deskripsi"
+                required
+                />
+            </div>
+
+            <div class="form-group col-lg-6">
               <label for="urlimage">Masukkan URL Image Anda</label>
               <input
                 onChange={e => {
@@ -194,20 +227,6 @@ class PostItem extends Component {
                 id="urlimage"
                 required
                 />
-            </div>
-
-            <div class="form-group col-lg-6">
-              <label for="favoritSport">Masukkan Olahraga Favorit Anda</label>
-              <input
-                onChange={e => {
-                  this.changefavoritSport(e);
-                }}
-                type="title"
-                class="form-control"
-                id="favoritSport"
-                placeholder="favoritSport"
-                required
-              />
             </div>
 
             <div class="form-group ml-3">
