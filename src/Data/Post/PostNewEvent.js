@@ -8,7 +8,8 @@ import axios from "axios";
 import { Host } from "../../Host"
 import Map from '../Components/Map'
 import GoogleMapReact from 'google-map-react';
-
+import DatePicker from 'react-datepicker'
+import "react-datepicker/dist/react-datepicker.css";
 
 const CurrentLocation = ({text}) => <div className="row"><span>{text}</span><i class="fas fa-street-view fa-2x"></i></div>;
 class PostItem extends Component {
@@ -24,7 +25,8 @@ class PostItem extends Component {
       lat: "",
       lng:"",
       ip:"",
-      listTempat:[]
+      listTempat:[],
+      calendar:""
     };
   }
 
@@ -105,8 +107,24 @@ class PostItem extends Component {
   changePlayer = e => {
     this.setState({ player: e.target.value });
   };
-  changeTime = e => {
-    this.setState({ time: e.target.value });
+  changeTime = date => {
+    var string = JSON.stringify(date);
+    var realdate = string.split(" ")
+    var Tanggal = realdate[0].split("T")
+    var Jam = Tanggal[1].split(".")
+    var TanggalFix = Tanggal[0].replace('"2','2');
+    var JamGMT = Jam[0].split(":")
+    var JamFix = Number(JamGMT[0]) + 7
+    if (JamFix > 24) {
+      JamFix = JamFix -24;
+  } else {
+      JamFix  = JamFix;
+  }
+    var JamSTR = JamFix.toString()
+    var JamWIB = JamSTR + ":00:00"
+    var DateFix = TanggalFix + ' ' + JamWIB
+
+    this.setState({ time: DateFix, calendar: date });
   };
   changeLocation = e => {
     this.setState({ location: e });
@@ -157,36 +175,18 @@ class PostItem extends Component {
               />
             </div>
             <div class="form-group col-lg-6">
-              <label for="location">Waktu Olahraga</label>
-              <select
-                onChange={e => {
-                  this.changeTime(e);
-                }}
-                class="form-control form-control-sm"
-                placeholder="Masukkan time"
-                id="time"
-              >
-                <option disabled selected value>Waktu</option>
-                <option>Pagi</option>
-                <option>Sore</option>
-              </select>
+              <label for="location">Waktu Olahraga</label><br/>
+              <DatePicker 
+                  selected={this.state.calendar}
+                  showTimeSelect
+                  timeFormat="HH:mm"
+                  timeIntervals={60}
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                  timeCaption="time"
+                  onChange={e => {this.changeTime(e)}}                  
+                  inline
+              />
             </div>
-            {/* <div class="form-group col-lg-6">
-              <label for="location">Location</label>
-              <select
-                onChange={e => {
-                  this.changeLocation(e);
-                }}
-                class="form-control form-control-sm"
-                placeholder="Masukkan location"
-                id="location"
-              >
-                <option disabled selected value>Pilih Location</option>
-                <option>Gresik</option>
-                <option>Malang</option>
-                <option>Surabaya</option>
-              </select>
-            </div> */}
             <div class="form-group col-lg-6 col-md-6 col-sm-12" style={{ height: '500px', width: '100%' }}>
             <label for="location">Location</label>
         <GoogleMapReact
