@@ -19,7 +19,7 @@ class DetailsLocation extends Component {
               
               Tempat</h5>
               <p class="text-muted">
-                Lapangan Rajabasa, Malang.{" "}
+              {this.props.DetailsLocation}
               </p>
             </figcaption>
           </figure>

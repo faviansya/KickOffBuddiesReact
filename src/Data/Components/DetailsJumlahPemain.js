@@ -17,7 +17,7 @@ class DetailsJumlahPemain extends Component {
             <figcaption class="text-wrap">
               <h5 class="title">Pemain</h5>
               <p class="text-muted">
-                3 orang{" "}
+              {this.props.player} Pemain
               </p>
             </figcaption>
           </figure>

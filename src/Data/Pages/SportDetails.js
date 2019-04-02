@@ -104,6 +104,12 @@ class Details extends Component {
             <span style={{color:"rgb(51, 132, 159)"}}><strong>Waiting for more players to join</strong></span>
           </div>
         </section>
+        <div class="row ">
+          <DetailsOlahRaga  sport={this.state.listDetails.sport}/>          
+          <DetailsLocation DetailsLocation={this.state.listDetails.location}/>
+          <DetailsTime time={this.state.listDetails.time}/>
+          <DetailsJumlahPemain player={this.state.listDetails.player}/>
+        </div>
         <section className="section-content bg padding-y-sm">
           <div className="container-fluid">
             <div className="row wow slideInUp">
@@ -133,12 +139,6 @@ class Details extends Component {
             </div>
           </div>
         </section>
-        <div class="row mt-5 ">
-          <DetailsOlahRaga />          
-          <DetailsLocation />
-          <DetailsTime />
-          <DetailsJumlahPemain />
-        </div>
       </div>
     );
   }

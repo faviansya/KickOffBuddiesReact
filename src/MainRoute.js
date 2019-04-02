@@ -4,15 +4,18 @@ import { Switch,Route } from 'react-router-dom';
 import Home from "./Data/Pages/Home";
 import AllSport from "./Data/Pages/AllSport";
 import Details from "./Data/Pages/SportDetails";
-import UserProfile from "./Data/Pages/UserProfile"
-import MyBooking from "./Data/Pages/MyBooking"
-import NewEvent from "./Data/Post/PostNewEvent"
-import NewUser from "./Data/Post/PostUser"
-import EditUser from "./Data/Post/EditUser"
-
+import UserProfile from "./Data/Pages/UserProfile";
+import MyBooking from "./Data/Pages/MyBooking";
+import NewEvent from "./Data/Post/PostNewEvent";
+import NewUser from "./Data/Post/PostUser";
+import EditUser from "./Data/Post/EditUser";
+import NewField from "./Data/Post/PostNewField";
 import PatNolPat from "./Data/Components/404";
 import FAQ from './Data/Pages/FAQ';
 import Contact from './Data/Pages/Contact';
+import PebisnisProfile from './Data/Pages/PebisnisProfile';
+import MyFields from './Data/Pages/MyFields';
+import NewPebisnis from "./Data/Post/PostPebisnis";
 
 
 const MainRoute = () => {
@@ -28,6 +31,10 @@ const MainRoute = () => {
             <Route exact path = "/newuser" component = {NewUser}/>
             <Route exact path = "/contact-us" component = {Contact}/>
             <Route exact path = "/edituser" component = {EditUser}/>
+            <Route exact path = "/pebisnisprofile" component = {PebisnisProfile}/>
+            <Route exact path = "/newfield" component = {NewField}/>
+            <Route exact path = "/myfields" component = {MyFields}/>
+            <Route exact path = "/newpebisnis" component = {NewPebisnis}/>
 
             <Route component = {PatNolPat}/>
         </Switch>

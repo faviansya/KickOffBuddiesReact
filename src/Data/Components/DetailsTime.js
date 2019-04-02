@@ -17,7 +17,7 @@ class DetailsTime extends Component {
             <figcaption class="text-wrap">
               <h5 class="title">Waktu</h5>
               <p class="text-muted">
-                Sabtu, 6 April 2019, pagi hari.{" "}
+                {this.props.time}
               </p>
             </figcaption>
           </figure>
