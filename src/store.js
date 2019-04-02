@@ -10,6 +10,7 @@ const initialState = {
     categoryItem: [],
     bookingId:"",
     playlistID:"",
+    userType: ""
 }
 
 
@@ -18,7 +19,7 @@ export const store = createStore(initialState)
 export const actions = store => ({
     postLogout: state => {
         store.setState({ Bearer: "" });
-        return { is_login: false };
+        return { is_login: false, userType: "" };
     },
     changeBookingId: (state, id) => {
       store.setState({ bookingId: id });
@@ -64,7 +65,10 @@ export const actions = store => ({
           };
           await axios(getMyData)
             .then(function(response) {
-              store.setState({ mySelf: response.data.data });
+              store.setState({ 
+                mySelf: response.data.data,
+                userType: response.data.data.user_type
+               });
             })
             .catch(function(error) {
               console.log("ASEM", error);
@@ -135,5 +139,48 @@ export const actions = store => ({
           console.log("ASEM", error);
         });
     },
+
+    //Login Pebisnis To Get Bearer Token
+    LoginPebisnis: async (state, username, password) => {
+      const req = {
+        method: "post",
+        url: Host+ "/api/login/pebisnis",
+        headers: {
+          "Content-Type":"application/json",
+        },
+        data: {
+          username: username,
+          password: password
+        }
+      };
+      await axios(req)
+        .then(function(response) {
+          store.setState({ Bearer: response.data.token });
+          store.setState({ is_login: true });
+
+        })
+        .catch(function(error) {
+          console.log("ASEM1", error);
+        });
+
+      //   Get My Dataa
+        const getMyData = {
+          method: "get",
+          url: Host+ "/api/pebisnis",
+          headers: {
+            Authorization: "Bearer " + store.getState().Bearer,
+            "Content-Type":"application/json",
+          }
+        };
+        await axios(getMyData)
+          .then(function(response) {
+            store.setState({ 
+              mySelf: response.data.data,
+              userType: response.data.data.user_type});
+          })
+          .catch(function(error) {
+            console.log("ASEM", error);
+          });
+      },
 
 })

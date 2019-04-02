@@ -15,7 +15,7 @@ class Header extends Component {
     this.props.postSignout();
   };
   render() {
-
+    if (this.props.userType != "pebisnis") {
     return (
       <div>
         <header>
@@ -143,38 +143,115 @@ class Header extends Component {
                   </Link>
                 </div>
                 <Search />
-                {/* <div className="col-lg-6-24 col-6"> */}
-                <div className="widgets-wrap float-right row no-gutters py-1 mr-auto">
-                  <LoginBar signout={this.signout} />
-
-
-                  {/* <div className="col-lg-4 col-md-12">
-                      <Link to="/mybooking" className="widget-header">
-                        <div className="icontext">
-                          <div className="icon-wrap">
-                            <i
-                              className="icon-sm fa fa-list-alt"
-                              style={{ color: "#33849F" }}
-                            />
-                          </div>
-                          <div className="text-wrap text-dark">
-                            My <br /> Booking
-                          </div>
-                        </div>
-                      </Link>
-                    </div> */}
-                </div>
-                {/* </div> */}
+                  <div className="widgets-wrap float-right row no-gutters py-1 mr-auto">
+                    <LoginBar signout={this.signout} />
+                  </div>
               </div>
             </div>
           </section>
         </header>
       </div>
     );
+    } else {
+      return (
+        <div>
+        <header>
+          <nav className="navbar navbar-expand-lg navbar-light fixed-top sticky" id="navbar">
+            <div className="container">
+              
+              <button
+                className="navbar-toggler"
+                style={{
+                  background: "none",
+                  border: "none",
+                  backgroundColor: "white"
+                }}
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarTop"
+                aria-controls="navbarTop"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span className="navbar-toggler-icon" />
+              </button>
+
+              <div className="collapse navbar-collapse" id="navbarTop">
+                <ul className="navbar-nav mr-auto">
+                  <li>
+                    <h6 style={{color:"white"}}>
+                      Welcome to our website. Keep on playing!
+                    </h6>
+                  </li>
+                </ul>
+                <ul className="navbar-nav">
+                <li className="nav-item">
+                  <Link to="/">
+                      {" "}
+                      Home{" "}
+                    </Link>
+                </li>
+                  <li className="nav-item">
+                    <Link to="/faq">
+                      {" "}
+                      Pertanyaan Umum{" "}
+                    </Link>
+                    <ul className="dropdown-menu Navbar" style={{ marginTop: "-2px" }}>
+                      <li>
+                        <Link className="dropdown-item" to="/faq" id="inside">
+                          Pertanyaan Umum
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item" to="/" id="inside">
+                          Masalah Lapangan{" "}
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item" to="/" id="inside">
+                          Masalah Booking{" "}
+                        </Link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/contact-us" className="nav-link">
+                      {" "}
+                      Contact Us{" "}
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <section className="header-main shadow-sm" style={{marginTop:"-12px"}}>
+            <div className="container">
+              <div className="row-sm align-items-center">
+                <div className="col-lg-4 col-sm-3">
+                  <Link className="navbar-brand" to="/">
+                    <img
+                      className="logo"
+                      src="https://i.postimg.cc/3JKbyy2X/Logo-Makr-1n2-C9x.png"
+                      height="100%"
+                      alt="Kick Off Buddies"
+                      title="Kick Off Buddies"
+                    />
+                  </Link>
+                </div>
+                  <div className="widgets-wrap float-right row no-gutters py-1 mr-auto">
+                    <LoginBar signout={this.signout} />
+                  </div>
+              </div>
+            </div>
+          </section>
+        </header>
+      </div>
+      );
+    }
   }
 }
 
 export default connect(
-  "",
+  "userType",
   actions
 )(withRouter(Header));
