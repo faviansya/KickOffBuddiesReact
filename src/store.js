@@ -39,8 +39,8 @@ export const actions = store => ({
             "Content-Type":"application/json",
           },
           data: {
-            username: "vian",
-            password: "vian"
+            username: username,
+            password: password
           }
         };
         await axios(req)
@@ -107,7 +107,7 @@ export const actions = store => ({
                       name: keyword
                     }
                 };
-              const response = await 
+              const response = await
               axios(req)
               store.setState({ categoryItem: response.data.data });
             }

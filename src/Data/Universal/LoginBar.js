@@ -4,13 +4,16 @@ import { connect } from "unistore/react";
 import { actions } from "../../store";
 import { withRouter } from "react-router-dom";
 import { Host } from "../../Host"
+import axios from "axios";
+import GoogleLogin from "react-google-login";
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      DataGoogle: ""
     };
   };
   postLogin = function() {
@@ -26,7 +29,36 @@ class Header extends Component {
   changePassword(e) {
     this.state.password = e.target.value;
   };
+  GetGoogleStatus = async Datas => {
+    const self = this;
+    const req = {
+      method: "post",
+      url: Host + "/api/google",
+      data: {
+        email: Datas.email,
+        name: Datas.name,
+        url_image: Datas.imageUrl,
+        googleID: Datas.googleId
+      }
+    };
+    await axios(req)
+      .then(function(response) {
+        console.log(response.data);
+      })
+      .catch(function(error) {
+        console.log("ASEM", error);
+      });
+  };
   render() {
+    const responseGoogle = async response => {
+      console.log(response.profileObj);
+      await this.setState({ DataGoogle: response.profileObj });
+      await this.GetGoogleStatus(this.state.DataGoogle);
+      await this.props.Login(
+        this.state.DataGoogle.email,
+        this.state.DataGoogle.googleId + "Rekt$"
+      );
+    };
     if (!this.props.is_login) {
       return (
         <div className="col-lg-6 col-md-6 col-sm-12" >
@@ -38,6 +70,7 @@ class Header extends Component {
                   style={{ color: "#33849F" }}
                 />
               </div>
+
               {/* <div className="text-wrap text-dark">
                 Login to <br />
                 My account <i className="fa fa-caret-down" />
@@ -81,6 +114,12 @@ class Header extends Component {
                     Sign Up
                   </button>
                 </Link>
+                <GoogleLogin className="w-100 h-100 mt-2"
+                    clientId="741246057517-i3ced26b23scc7r4vk7rng3kol938brd.apps.googleusercontent.com"
+                    buttonText="LOGIN WITH GOOGLE"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                  />
               </form>
 
               <hr className="dropdown-divider" />

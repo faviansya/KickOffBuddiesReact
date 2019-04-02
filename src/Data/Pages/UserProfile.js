@@ -4,8 +4,8 @@ import { connect } from "unistore/react";
 import { actions } from "../../store";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 import { Host } from "../../Host";
+import { Redirect } from "react-router-dom";
 import ListData from "../Components/MyAcceptList";
 
 class UserProfile extends Component {

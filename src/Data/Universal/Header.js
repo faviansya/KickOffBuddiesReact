@@ -6,19 +6,24 @@ import { actions } from "../../store";
 import { withRouter } from "react-router-dom";
 import Search from "../Components/Search";
 import LoginBar from "./LoginBar";
+import GoogleLogin from "react-google-login";
+import axios from "axios";
+import { Host } from "../../Host";
 
 class Header extends Component {
   signout = () => {
     this.props.postSignout();
   };
-
   render() {
+
     return (
       <div>
         <header>
-          <nav className="navbar navbar-expand-lg navbar-light fixed-top sticky" id="navbar">
+          <nav
+            className="navbar navbar-expand-lg navbar-light fixed-top sticky"
+            id="navbar"
+          >
             <div className="container">
-              
               <button
                 className="navbar-toggler"
                 style={{
@@ -39,19 +44,16 @@ class Header extends Component {
               <div className="collapse navbar-collapse" id="navbarTop">
                 <ul className="navbar-nav mr-auto">
                   <li>
-                    <h6 style={{color:"white"}}>
+                    <h6 style={{ color: "white" }}>
                       Welcome to our website. Keep on playing!
                     </h6>
                   </li>
                 </ul>
                 <ul className="navbar-nav">
-                <li className="nav-item">
-                  <Link to="/">
-                      {" "}
-                      Home{" "}
-                    </Link>
-                </li>
-                <li className="nav-item dropdown">
+                  <li className="nav-item">
+                    <Link to="/"> Home </Link>
+                  </li>
+                  <li className="nav-item dropdown">
                     <Link
                       to="#"
                       className="nav-link dropdown-toggle"
@@ -60,7 +62,10 @@ class Header extends Component {
                       {" "}
                       Olahraga{" "}
                     </Link>
-                    <ul className="dropdown-menu Navbar" style={{ marginTop: "-2px" }}>
+                    <ul
+                      className="dropdown-menu Navbar"
+                      style={{ marginTop: "-2px" }}
+                    >
                       <li>
                         <Link
                           className="dropdown-item medianav"
@@ -88,11 +93,11 @@ class Header extends Component {
                     </ul>
                   </li>
                   <li className="nav-item">
-                    <Link to="/faq">
-                      {" "}
-                      Pertanyaan Umum{" "}
-                    </Link>
-                    <ul className="dropdown-menu Navbar" style={{ marginTop: "-2px" }}>
+                    <Link to="/faq"> Pertanyaan Umum </Link>
+                    <ul
+                      className="dropdown-menu Navbar"
+                      style={{ marginTop: "-2px" }}
+                    >
                       <li>
                         <Link className="dropdown-item" to="/faq" id="inside">
                           Pertanyaan Umum
@@ -120,7 +125,10 @@ class Header extends Component {
               </div>
             </div>
           </nav>
-          <section className="header-main shadow-sm" style={{marginTop:"-12px"}}>
+          <section
+            className="header-main shadow-sm"
+            style={{ marginTop: "-12px" }}
+          >
             <div className="container">
               <div className="row-sm align-items-center">
                 <div className="col-lg-4-24 col-sm-3">
@@ -136,9 +144,11 @@ class Header extends Component {
                 </div>
                 <Search />
                 {/* <div className="col-lg-6-24 col-6"> */}
-                  <div className="widgets-wrap float-right row no-gutters py-1 mr-auto">
-                    <LoginBar signout={this.signout} />
-                    {/* <div className="col-lg-4 col-md-12">
+                <div className="widgets-wrap float-right row no-gutters py-1 mr-auto">
+                  <LoginBar signout={this.signout} />
+
+
+                  {/* <div className="col-lg-4 col-md-12">
                       <Link to="/mybooking" className="widget-header">
                         <div className="icontext">
                           <div className="icon-wrap">
@@ -153,7 +163,7 @@ class Header extends Component {
                         </div>
                       </Link>
                     </div> */}
-                  </div>
+                </div>
                 {/* </div> */}
               </div>
             </div>
