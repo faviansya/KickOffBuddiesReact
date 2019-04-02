@@ -16,6 +16,7 @@ import Contact from './Data/Pages/Contact';
 import PebisnisProfile from './Data/Pages/PebisnisProfile';
 import MyFields from './Data/Pages/MyFields';
 import NewPebisnis from "./Data/Post/PostPebisnis";
+import EditPebisnis from './Data/Post/EditPebisnis';
 
 
 const MainRoute = () => {
@@ -35,6 +36,7 @@ const MainRoute = () => {
             <Route exact path = "/newfield" component = {NewField}/>
             <Route exact path = "/myfields" component = {MyFields}/>
             <Route exact path = "/newpebisnis" component = {NewPebisnis}/>
+            <Route exact path = "/editpebisnis" component = {EditPebisnis}/>
 
             <Route component = {PatNolPat}/>
         </Switch>

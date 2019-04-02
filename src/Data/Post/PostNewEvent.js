@@ -135,7 +135,7 @@ class PostItem extends Component {
     const center = {lat: this.state.lat, lng: this.state.lng}
     return (
       <div class="card mb-3">
-        <section class="section-pagetop bg-dark-50">
+        <section class="section-pagetop bg-dark-50" style={{backgroundImage:`url("https://www.sportslaw.org/images/SliderImg-04.jpg")`,  backgroundPosition:"center"}}>
           <div class="container clearfix">
             <strong><h2 class=" text-white">Create a New Player Room</h2></strong>
             <h5 class=" text-white">Isikan Semua Field Agar Keterangan Player Room Anda Lengkap</h5>
@@ -174,6 +174,12 @@ class PostItem extends Component {
                 required
               />
             </div>
+
+            <div class="form-group col-lg-6">
+              <label for="tanggal olahraga">Tanggal Olahraga</label>
+            <input class="form-control" type="date" name="bday" id="datePicker" />
+            </div>
+
             <div class="form-group col-lg-6">
               <label for="location">Waktu Olahraga</label><br/>
               <DatePicker 

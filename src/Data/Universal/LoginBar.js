@@ -356,7 +356,7 @@ class Header extends Component {
                       <br />
                     </div>
                     <div class="form-group">
-                      <Link to="/edituser">
+                      <Link to="/editpebisnis">
                         <button type="button" class="btn btn-success w-50">
                           Edit Profile
                         </button>

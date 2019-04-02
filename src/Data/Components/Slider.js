@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 class Slider extends Component {
     render() {
       return (
-            <section className="section-main bg">
+            <section className="section-main bg d-none d-lg-block d-md-block">
                 <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                     <div className="carousel-inner">
                         <div className="carousel-item active">

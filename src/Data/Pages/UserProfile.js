@@ -40,53 +40,45 @@ class UserProfile extends Component {
           <h4 style={{ textAlign: "center" }}>{this.props.mySelf.name}</h4>
           <br />
           <div className="row">
-            <img
-              alt="User Pic"
-              src={this.props.mySelf.url_image}
-              id="profile-image1"
-              className="img-circle img-responsive center"
-              style={{ height: "300px", width: "300", borderRadius: "50%" }}
-            />
-          </div>
-          <div className="row">
-            <div className="col-lg-3 col-md-3" />
-            <table
-              className="center table table-striped col-lg-6 col-md-6 col-sm-12"
-              style={{ marginTop: "50px" }}
-            >
-              <tbody className="text-center">
-                <tr>
-                  <td>Username</td>
-                  <td>{this.props.mySelf.username}</td>
-                </tr>
-                <tr>
-                  <td>Address</td>
-                  <td>{this.props.mySelf.address}</td>
-                </tr>
-                <tr>
-                  <td>Phone</td>
-                  <td>{this.props.mySelf.phone_no}</td>
-                </tr>
-                <tr>
-                  <td>Email</td>
-                  <td>{this.props.mySelf.email}</td>
-                </tr>
-                <tr>
-                  <td>Favorite Sport</td>
-                  <td>{this.props.mySelf.favourite_sport}</td>
-                </tr>
-              </tbody>
-            </table>
-            <div className="col-lg-3 col-md-3" />
-          </div>
-          <br />
-          <div className="row">
-            <div className="col-lg-6 col-md-6 col-sm-12">
-              <div class="card">
-                <div class="card-body">Booking History.</div>
-              </div>
+            <div className="col-lg-6 col-md-6 col-sm-6">
+              <img
+                alt="User Pic"
+                src={this.props.mySelf.url_image}
+                id="profile-image1"
+                className="img-circle img-responsive center"
+                style={{ height: "150px", width: "150px", borderRadius: "50%" }}
+              />
+            {/* </div>
+            <div className="col-lg-5 col-md-5 col-sm-5"> */}
+              <table
+                className="center table table-striped col-lg-6 col-md-6 col-sm-12"
+                style={{ marginTop: "50px" }}
+              >
+                <tbody className="text-center">
+                  <tr>
+                    <td>Username</td>
+                    <td>{this.props.mySelf.username}</td>
+                  </tr>
+                  <tr>
+                    <td>Address</td>
+                    <td>{this.props.mySelf.address}</td>
+                  </tr>
+                  <tr>
+                    <td>Phone</td>
+                    <td>{this.props.mySelf.phone_no}</td>
+                  </tr>
+                  <tr>
+                    <td>Email</td>
+                    <td>{this.props.mySelf.email}</td>
+                  </tr>
+                  <tr>
+                    <td>Favorite Sport</td>
+                    <td>{this.props.mySelf.favourite_sport}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div className="col-lg-6 col-md-6 col-sm-12">
+            <div className="col-lg-6 col-md-6 col-sm-6">
               <div class="card">
                 <div class="card-body">Current Booking.</div>
                 <a
