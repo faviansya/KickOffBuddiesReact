@@ -111,7 +111,7 @@ export const actions = store => ({
                       name: keyword
                     }
                 };
-              const response = await 
+              const response = await
               axios(req)
               store.setState({ categoryItem: response.data.data });
             }
