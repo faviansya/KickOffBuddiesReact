@@ -26,7 +26,6 @@ class ChatRoom extends Component {
         await axios(req)
           .then(function(response) {
             self.setState({ chatRoomList: response.data.data });
-            console.log("chatplayerlist", response.data.data);
           })
           .catch(function(error) {
             console.log("ASEM", error);
@@ -41,7 +40,6 @@ class ChatRoom extends Component {
     return (
       <div class="container">
               {this.state.chatRoomList.map((item, key) => {
-                console.log("player tok",item.player)
                 return (
                   <MyRoom
                     key={key}

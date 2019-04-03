@@ -27,7 +27,6 @@ class UserProfile extends Component {
     await axios(req)
       .then(function(response) {
         self.setState({ ListDatas: response.data.data });
-        // console.log("Responn", response.data.data);
       })
       .catch(function(error) {
         console.log("ASEM", error);

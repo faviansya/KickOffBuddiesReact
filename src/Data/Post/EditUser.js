@@ -80,32 +80,25 @@ class PostItem extends Component {
 
   changePassword = e => {
     this.setState({ password: e.target.value });
-    console.log("password", e.target.value);
   };
   changeName = e => {
     this.setState({ name: e.target.value });
-    console.log("nama", e.target.value);
   };
   changeEmail = e => {
     this.setState({ email: e.target.value });
-    console.log("email", e.target.value);
   };
   changephoneNumber = e => {
     this.setState({ phoneNumber: e.target.value });
-    console.log("phoneNumber", e.target.value);
   };
   changeAlamat = e => {
     this.setState({ alamat: e.target.value });
-    console.log("alamat", e.target.value);
   };
 
   changeUrlimage = e => {
     this.setState({ urlimage: e.target.value });
-    console.log("urlimage", e.target.value);
   };
   changefavoritSport = e => {
     this.setState({ favoritSport: e.target.value });
-    console.log("favoritSport", e.target.value);
   };
 
   render() {
