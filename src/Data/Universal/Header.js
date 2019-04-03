@@ -131,7 +131,7 @@ class Header extends Component {
           >
             <div className="container">
               <div className="row-sm align-items-center">
-                <div className="col-lg-4-24 col-sm-3">
+                <div className="col-lg-3-24 col-sm-3">
                   <Link className="navbar-brand" to="/">
                     <img
                       className="logo"
