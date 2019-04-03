@@ -31,7 +31,6 @@ export const actions = store => ({
       // console.log("ID",id)
     },
     ChangeRoom: (state, IDSSSS) =>{
-      console.log("IDDDDDDDDDDDCOKKK",IDSSSS);
       store.setState({ RoomId: IDSSSS });
     },
     //GLOBAL HEADER METHOD-----------------------------
@@ -95,8 +94,6 @@ export const actions = store => ({
           await axios(req)
             .then(function(response) {
               store.setState({ categoryItem: response.data.data });
-              console.log(response.data.data)
-
             })
             .catch(function(error) {
               console.log("ASEM", error);

@@ -28,35 +28,6 @@ class MyBookingComp extends Component {
             </Link>
           </div>
         </div>
-
-        {/* <div class="product-card">
-  <div class="product-details">
-    <h1>Product title</h1>
-    <p>Great product title for a great product and all of the extra things a product might need to make it fill an entire card.</p>
-    <button type="button" class="btn">Go To Lobby</button>
-  </div>
-  <div class="product-image">
-    <img src={this.props.img}/>
-  </div>
-</div> */}
-        {/* <div class="card" onClick={this.changeBookingIds}>
-          <img
-            class="card-img-top"
-            src={this.props.img}
-            alt="Card image cap"
-            height="250px"
-          />
-          <div class="card-body">
-            <h4 class="card-title">{this.props.title}</h4>
-            <p class="card-text">Player: {this.props.player}</p>
-            <p class="card-text">Status: {this.props.status}</p>
-            <p class="card-text">Location: {this.props.locationing}</p>
-
-            <Link to="/details" class="btn btn-primary">
-              Check Lobby
-            </Link>
-          </div>
-        </div> */}
       </div>
     );
   }

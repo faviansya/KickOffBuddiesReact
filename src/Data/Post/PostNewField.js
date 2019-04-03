@@ -37,7 +37,6 @@ class PostItem extends Component {
     await axios(req)
       .then(function(response) {
         self.setState({ ip: response.data.ip });
-        console.log(response.data)
       })
       .catch(function(error) {
         console.log("ASEM", error);
@@ -51,7 +50,6 @@ class PostItem extends Component {
       self.setState({ lat: response.data.location.lat,
                       lng: response.data.location.lng
        });
-      console.log(response.data)
     })
     .catch(function(error) {
       console.log("ASEM", error);
@@ -95,8 +93,6 @@ class PostItem extends Component {
     await axios(req3)
       .then(function(response) {
         self.setState({ listTempat: response.data.results });
-        console.log(response.data)
-        // self.setState({ listPemain: response.data.pemain });
       })
       .catch(function(error) {
         console.log("ASEM", error);

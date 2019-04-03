@@ -107,7 +107,6 @@ class Details extends Component {
   }
 
   render() {
-    console.log('aa', this.state.listDetails)
     if (this.state.status == "failed") {
       alert("Kamu Telah Join Di Game Ini");
       this.setState({ status: "" });

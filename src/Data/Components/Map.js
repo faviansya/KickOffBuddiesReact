@@ -8,7 +8,6 @@ const AnyReactComponent = ({text}) => <div className="row"><span>{text}</span><i
  
 class Map extends Component {
   changeLocation = async event => {
-    console.log(event.target.value)
     this.props.doClick(event.target.value)
     };
   render() {

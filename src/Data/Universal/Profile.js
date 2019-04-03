@@ -48,27 +48,6 @@ class Profile extends Component {
           </div>
           <div class="gradient-overlay" />
           <div class="color-overlay" />
-            {/* <div className="card-header" style={{color:"black"}}>Pemain</div>
-            <div className="card-body small">
-              <div >
-                <u>
-                  <b style={{color:"black"}}>{this.props.name}</b>
-                </u>
-              </div>
-              <Link to="/details" className="img-wrap mt-3">
-                <img src={this.props.img} height="250px" />
-              </Link>
-              <hr />
-              <div style={{color:"black"}}>
-              <label >
-              Olahraga Favorit : {this.props.favourite_sport}
-              </label>
-              <br />
-              Alamat: {this.props.address}
-              <hr />
-              {button.buttonDelete}
-              </div>
-            </div> */}
          </div>
         </div> 
       </aside>

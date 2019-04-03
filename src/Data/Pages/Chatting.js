@@ -30,7 +30,6 @@ class ChatRoom extends Component {
       };
       axios(req)
         .then(function(response) {
-          console.log(response.data.data);
           self.setState({ ChatData: response.data.data });
         })
         .catch(function(error) {});

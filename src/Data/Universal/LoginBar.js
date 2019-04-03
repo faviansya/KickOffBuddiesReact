@@ -27,7 +27,6 @@ class Header extends Component {
     this.props.LoginPebisnis(this.state.username, this.state.password).then(() => {
       this.state.username = "";
       this.state.password = "";
-      console.log("ini userType", this.props.userType)
       this.props.history.push("/pebisnisprofile");
     });
   };
@@ -51,7 +50,6 @@ class Header extends Component {
     };
     await axios(req)
       .then(function(response) {
-        console.log(response.data);
       })
       .catch(function(error) {
         console.log("ASEM", error);
@@ -59,7 +57,6 @@ class Header extends Component {
   };
   render() {
     const responseGoogle = async response => {
-      console.log(response.profileObj);
       await this.setState({ DataGoogle: response.profileObj });
       await this.GetGoogleStatus(this.state.DataGoogle);
       await this.props.Login(

@@ -14,7 +14,7 @@ class MyBookingComp extends Component {
               <td>
                 <img
                   src={this.props.image}
-                  alt="barbarian"
+                  alt="Images"
                   width= "30px"
                   height= "30px"
                 />

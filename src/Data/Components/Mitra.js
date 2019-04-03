@@ -7,7 +7,6 @@ import { withRouter } from "react-router-dom";
 
 class Mitra extends Component {
   changeLocationMitra = async event => {
-    console.log(event.target.value)
     this.props.doClick(event.target.value)
     };
 
