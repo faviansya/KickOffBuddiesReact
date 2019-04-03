@@ -80,7 +80,7 @@ class Header extends Component {
                 /> {" "}
               </div>
             </div>
-            <div className="dropdown-menu" style={{ marginTop: "2px" }}>
+            <div className="dropdown-menu" style={{ marginTop: "-2px" }}>
               <form className="px-4 py-3" onSubmit={e => e.preventDefault()}>
                 <div className="form-group">
                   <label>Username</label>
@@ -202,7 +202,20 @@ class Header extends Component {
       return (
         <sec>
           <div className="row" >
-          {" "}
+          <div className="col-3 ">
+            <Link to="/chatrooms" className="widget-header">
+              <div className="icontext">
+                <div className="icon-wrap">
+                  {" "}
+                  <i
+                    className="icon-sm fa fa-comment-dots"
+                    style={{ color: "#33849F" }}
+                  />
+                </div>
+
+              </div>
+            </Link>
+          </div>
           <div className="col-4 ">
             <Link to="/newevent" className="widget-header">
               <div className="icontext">
@@ -234,7 +247,7 @@ class Header extends Component {
               </div>
             </Link>
           </div>
-          <div class="col-4">
+          <div class="col-3">
             <div class="widget-header dropdown" style={{ marginTop: "-2px" }}>
               <Link to="/userprofile" data-offset="20,10">
                 <div class="icontext">
