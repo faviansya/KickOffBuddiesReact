@@ -202,37 +202,38 @@ class Header extends Component {
       return (
         <sec>
           <div className="row" >
-          <div className="col-3 ">
+          <div className="col-3" style={{marginRight:"-20px"}}>
             <Link to="/chatrooms" className="widget-header">
               <div className="icontext">
                 <div className="icon-wrap">
-                  {" "}
                   <i
                     className="icon-sm fa fa-comment-dots"
                     style={{ color: "#33849F" }}
                   />
                 </div>
-
+                <div className="text-wrap text-dark" style={{marginLeft:"-5px"}}>
+                  Chat 
+                  <br /> Group
+                </div>
               </div>
             </Link>
           </div>
-          <div className="col-4 ">
+          <div className="col-3" style={{marginRight:"-8px"}}>
             <Link to="/newevent" className="widget-header">
               <div className="icontext">
                 <div className="icon-wrap">
-                  {" "}
                   <i
                     className="icon-sm fa fa-plus"
                     style={{ color: "#33849F" }}
                   />
                 </div>
-                <div className="text-wrap text-dark">
+                <div className="text-wrap text-dark" style={{marginLeft:"-5px"}}>
                   Create <br /> Booking
                 </div>
               </div>
             </Link>
           </div>
-          <div className="col-4">
+          <div className="col-3" style={{marginRight:"-8px"}}>
             <Link to="/mybooking" className="widget-header">
               <div className="icontext">
                 <div className="icon-wrap">
@@ -241,7 +242,7 @@ class Header extends Component {
                     style={{ color: "#33849F" }}
                   />
                 </div>
-                <div className="text-wrap text-dark">
+                <div className="text-wrap text-dark" style={{marginLeft:"-5px"}}>
                   My <br /> Booking
                 </div>
               </div>
