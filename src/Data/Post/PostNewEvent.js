@@ -138,7 +138,7 @@ class PostItem extends Component {
         <section class="section-pagetop bg-dark-50" style={{backgroundImage:`url("https://www.sportslaw.org/images/SliderImg-04.jpg")`,  backgroundPosition:"center"}}>
           <div class="container clearfix">
             <strong><h2 class=" text-white">Create a New Player Room</h2></strong>
-            <h5 class=" text-white">Isikan Semua Field Agar Keterangan Player Room Anda Lengkap</h5>
+            <h5 class=" text-white" style={{textShadow:"1px 1px black"}}>Isikan Semua Field Agar Keterangan Player Room Anda Lengkap</h5>
 
           </div>
         </section>
@@ -146,7 +146,7 @@ class PostItem extends Component {
         <div class="container mt-5">
           <form>
             <div class="form-group col-lg-6">
-              <label for="location">Olahraga</label>
+              <label for="location" style={{color:"#007bff"}}><h4>Olahraga</h4></label>
               <select
                 onChange={e => {
                   this.changeOlagraga(e);
@@ -162,7 +162,7 @@ class PostItem extends Component {
               </select>
             </div>
             <div class="form-group col-lg-6">
-              <label for="player">Jumlah Pemain</label>
+              <label for="player" style={{color:"#007bff"}}><h4>Jumlah Pemain</h4></label>
               <input
                 onChange={e => {
                   this.changePlayer(e);
@@ -170,18 +170,13 @@ class PostItem extends Component {
                 type="number"
                 class="form-control"
                 id="player"
-                placeholder="Masukkan Jumlah Player"
+                placeholder="Masukkan Jumlah Pemain"
                 required
               />
             </div>
 
             <div class="form-group col-lg-6">
-              <label for="tanggal olahraga">Tanggal Olahraga</label>
-            <input class="form-control" type="date" name="bday" id="datePicker" />
-            </div>
-
-            <div class="form-group col-lg-6">
-              <label for="location">Waktu Olahraga</label><br/>
+              <label for="waktu olahraga" style={{color:"#007bff"}}><h4>Waktu Olahraga</h4></label><br/>
               <DatePicker 
                   selected={this.state.calendar}
                   showTimeSelect
@@ -193,27 +188,77 @@ class PostItem extends Component {
                   inline
               />
             </div>
-            <div class="form-group col-lg-6 col-md-6 col-sm-12" style={{ height: '500px', width: '100%' }}>
-            <label for="location">Location</label>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyB3GHH--AbFb9XDA16VX56gMUjQYSKlviQ" }}
-          center={center}
-          defaultZoom={this.state.zoom}
-        >
-        <CurrentLocation
-    lat={this.state.lat}
-    lng={this.state.lng}
-    text="You're here"
-        />
-        {this.state.listTempat.map((item, key) => {
-          return (
-        <Map key={key} doClick={this.changeLocation} lat={item.geometry.location.lat} lng={item.geometry.location.lng} name={item.name}/>
-        )
-      })}
-        </GoogleMapReact>
-      </div>  
+
+
+            <div class="form-group col-lg-6">
+              <label for="waktu olahraga" style={{color:"#007bff"}}><h4>Tempat Olahraga</h4></label><br/>
+              <span>Pilih salah satu: mitra kami atau tempat olahraga terdekat</span>
+            </div>
+            <div class="container">
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#first">Mitra Kami</a>
+                </h4>
+            </div>
+            <div id="first" class="panel-collapse collapse in">
+                <div class="panel-body">
+                <label>
+                        <input type="checkbox" />
+                        <span>{" "}GOR Badminton</span>
+                      </label><br />
+                      <label>
+                        <input type="checkbox" />
+                        <span>{" "}GOR Futsal</span>
+                      </label><br />
+                      <label>
+                        <input type="checkbox" />
+                        <span>{" "}GOR Basketball</span>
+                      </label><br />				 
+                </div>
+            </div>
+        </div>
+        <div id="map-acc" class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#second">Tempat Olahraga Terdekat </a>
+                </h4>
+            </div>
+            <div id="second" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <div id="mapcanvas">
+                  <GoogleMapReact
+                    bootstrapURLKeys={{ key: "AIzaSyB3GHH--AbFb9XDA16VX56gMUjQYSKlviQ" }}
+                    center={center}
+                    defaultZoom={this.state.zoom}
+                  >
+                  <CurrentLocation
+                    lat={this.state.lat}
+                    lng={this.state.lng}
+                    text="You're here"
+                  />
+                  {this.state.listTempat.map((item, key) => {
+                    return (
+                  <Map key={key} doClick={this.changeLocation} lat={item.geometry.location.lat} lng={item.geometry.location.lng} name={item.name}/>
+                  )
+                })}
+                </GoogleMapReact>
+                  
+                    
+                  
+                  </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+
+
+        
       <div class="form-group ml-3">
-            <br />
+            <br /><br />
+            <br /><br />
             <br />
               <button
                 onClick={this.PostItem}
