@@ -8,11 +8,6 @@ class MyBookingComp extends Component {
 
   render() {
     return (
-            // <tr>
-            //   <th scope="row">1</th>
-            //   <td>{this.props.name}</td>
-            //   <td>
-    
                 <div className="col-lg-3 col-md-3 col-sm-6" style={{textAlign:"center"}}>
                   <img
                     src={this.props.image}
@@ -23,9 +18,6 @@ class MyBookingComp extends Component {
                   /><br />
                   <span >{this.props.name}</span>
             </div>
-
-            // </td>
-            // </tr>
     );
   }
 }

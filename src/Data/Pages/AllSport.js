@@ -28,14 +28,13 @@ class Home extends Component {
                     player={item.player}
                     img={arc_img}
                     pemain_now={item.pemain_saat_ini}
-                    player={item.player}
                     locationssss={item.location}
                   />
                 );
               })}
             </div>
           </div>
-        </section>{" "}
+        </section>
       </div>
     );
   }

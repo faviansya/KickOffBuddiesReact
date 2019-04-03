@@ -27,8 +27,6 @@ class Home extends Component {
         await axios(req)
           .then(function(response) {
             self.setState({ listBooking: response.data.booking });
-            // console.log(response.data)
-            // self.setState({ listPemain: response.data.pemain });
           })
           .catch(function(error) {
             console.log("ASEM", error);
