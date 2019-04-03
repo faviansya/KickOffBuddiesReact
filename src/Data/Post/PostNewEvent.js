@@ -10,6 +10,7 @@ import Map from '../Components/Map'
 import GoogleMapReact from 'google-map-react';
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
+import Mitra from '../Components/Mitra'
 
 const CurrentLocation = ({text}) => <div className="row"><span>{text}</span><i class="fas fa-street-view fa-2x"></i></div>;
 class PostItem extends Component {
@@ -26,7 +27,8 @@ class PostItem extends Component {
       lng:"",
       ip:"",
       listTempat:[],
-      calendar:""
+      calendar:"",
+      listLapangan:[],
     };
   }
 
@@ -58,6 +60,20 @@ class PostItem extends Component {
     .catch(function(error) {
       console.log("ASEM", error);
     });
+    const req3 = {
+      method: "get",
+      url: Host+ "/api/pebisnis",
+      headers: {
+        "Content-Type":"application/json",
+      }
+    };
+    await axios(req3)
+      .then(function(response) {
+        self.setState({ listLapangan: response.data.data });
+      })
+      .catch(function(error) {
+        console.log("ASEM1", error);
+      });
   };
 
   PostItem = async event => {
@@ -129,6 +145,9 @@ class PostItem extends Component {
   changeLocation = e => {
     this.setState({ location: e });
 
+  };
+  changeLocationMitra = e => {
+    this.setState({ location: e });
   };
 
   render() {
@@ -204,18 +223,11 @@ class PostItem extends Component {
             </div>
             <div id="first" class="panel-collapse collapse in">
                 <div class="panel-body">
-                <label>
-                        <input type="checkbox" />
-                        <span>{" "}GOR Badminton</span>
-                      </label><br />
-                      <label>
-                        <input type="checkbox" />
-                        <span>{" "}GOR Futsal</span>
-                      </label><br />
-                      <label>
-                        <input type="checkbox" />
-                        <span>{" "}GOR Basketball</span>
-                      </label><br />				 
+                {this.state.listLapangan.map((item, key) => {
+                    return (
+                  <Mitra key={key} doClick={this.changeLocationMitra} name={item.nama_tempat}/>
+                  )
+                })}
                 </div>
             </div>
         </div>
