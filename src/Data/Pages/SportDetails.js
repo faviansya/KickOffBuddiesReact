@@ -37,8 +37,23 @@ class Details extends Component {
     };
     await axios(req)
       .then(function(response) {
-        self.setState({ listDetails: response.data.data });
         self.setState({ listPemain: response.data.pemain });
+      })
+      .catch(function(error) {
+        alert("Your Room Has Been Deleted Because It's Empty")
+        self.props.history.push("/");
+        console.log("ASEM", error);
+      });
+      const req2 = {
+        method: "get",
+        url: Host + "/api/booking/" + self.props.bookingId,
+        headers: {
+          Authorization: "Bearer " + self.props.Bearer
+        }
+      };
+      await axios(req2)
+      .then(function(response) {
+        self.setState({ listDetails: response.data.data });
       })
       .catch(function(error) {
         alert("Your Room Has Been Deleted Because It's Empty")
@@ -92,6 +107,7 @@ class Details extends Component {
   }
 
   render() {
+    console.log('aa', this.state.listDetails)
     if (this.state.status == "failed") {
       alert("Kamu Telah Join Di Game Ini");
       this.setState({ status: "" });
