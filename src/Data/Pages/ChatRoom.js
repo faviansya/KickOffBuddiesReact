@@ -38,18 +38,28 @@ class ChatRoom extends Component {
       }
   render() {
     return (
-      <div class="container">
-              {this.state.chatRoomList.map((item, key) => {
-                return (
-                  <MyRoom
-                    key={key}
-                    id={item.room_id}
-                    ChangeRoomsId = {this.ChangeRoomsId}
-                    pemain = {item.player}
-                  />
-                );
-              })}
+      <section>
+      <h5 style={{textAlign:"center"}}>Your Chat Room</h5><br/><br/>
+      <div className="row">
+        <div className="col-lg-3 col-md-3 col-sm-3"></div>
+        <div className="col-lg-6 col-md-6 col-sm-6">
+          {/* <div class="container"> */}
+                  {this.state.chatRoomList.map((item, key) => {
+                    console.log("player tok",item.player)
+                    return (
+                      <MyRoom
+                        key={key}
+                        id={item.room_id}
+                        ChangeRoomsId = {this.ChangeRoomsId}
+                        pemain = {item.player}
+                      />
+                    );
+                  })}
+          {/* </div> */}
+        </div>
+        <div className="col-lg-3 col-md-3 col-sm-3"></div>
       </div>
+      </section>
     );
   }
 }

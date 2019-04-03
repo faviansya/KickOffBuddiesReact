@@ -12,11 +12,8 @@ class MyBookingComp extends Component {
   render() {
     const players = this.props.pemain
     return (
-      <div class="col-12 col-lg-6 col-md-6 mt-5" 
-      onClick= {(e) =>{this.ChangeRoomId()}}
-      >
-      <Link to="/chatting">
-        <table class="table">
+      <div>
+        {/* <table class="table">
           <thead>
             <tr>
               <th scope="col">Number</th>
@@ -24,19 +21,40 @@ class MyBookingComp extends Component {
               <th scope="col">photos</th>
             </tr>
           </thead>
-          <tbody>
-          {players.map((item, key) => {
-                return (
-                  <ListPlayer
-                    key={key}
-                    name = {item.name}
-                    image = {item.url_image}
-                  />
-                );
-              })}
-          </tbody>
-        </table>
-        </Link>
+          <tbody> */}
+          <div class="card">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Location: , Time: </li>
+                <li class="list-group-item">
+                  <div className="row">
+                    {players.map((item, key) => {
+                          return (
+                            <ListPlayer
+                              key={key}
+                              name = {item.name}
+                              image = {item.url_image}
+                            />
+                          );
+                        })}
+                  </div>    
+                </li>
+                <li class="list-group-item" style={{textAlign:"center"}}>
+                  <Link to="/chatting">
+                    <button onClick= {(e) =>{this.ChangeRoomId()}} 
+                      type="button" class="btn btn-primary"
+                    >
+                      Join Group Chat
+                    </button>
+                  </Link>
+                </li>
+            </ul>
+          </div>
+
+          {/* </tbody>
+        </table> */}
+        
+        <br />
+        <br/><br/>
       </div>
     );
   }
