@@ -22,7 +22,6 @@ class FAQ extends Component {
         <br />
     
         <div className="panel-group" id="accordion">
-            {/* <div className="faqHeader">Pertanyaan Umum</div> */}
             <div className="panel panel-default">
                 <div className="panel-heading">
                     <h5 className="panel-title">
@@ -55,7 +54,6 @@ class FAQ extends Component {
                 </div>
             </div>
     
-            {/* <div className="faqHeader">Penyedia Lapangan Olahraga</div> */}
             <div className="panel panel-default">
                 <div className="panel-heading">
                     <h5 className="panel-title">
