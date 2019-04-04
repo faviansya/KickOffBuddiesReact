@@ -690,3 +690,8 @@ textarea:hover
 .multiselect-container>li>a>label {
   padding: 4px 20px 3px 20px;
 }
+.scrollable-menu {
+	height: auto;
+	max-height: 200px;
+	overflow-x: hidden;
+}
