@@ -39,16 +39,16 @@ class UserProfile extends Component {
           <h4 style={{ textAlign: "center" }}>{this.props.mySelf.name}</h4>
           <br />
           <div className="row">
-            <div className="col-sm-12 col-lg-6 col-md-6 col-sm-6">
-            <center>
+            <div className="col-lg-6 col-md-6 col-sm-6">
+              <div style={{textAlign:"center"}}>
               <img
                 alt="User Pic"
                 src={this.props.mySelf.url_image}
                 id="profile-image1"
                 className="img-circle img-responsive center"
-                style={{ height: "150px", width: "150px", borderRadius: "50%" }}
+                style={{ height: "150px", width: "150px", borderRadius: "50%"}}
               />
-              </center>
+              </div>
               <table
                 className="center table table-striped col-lg-6 col-md-6 col-sm-12"
                 style={{ marginTop: "50px" }}
