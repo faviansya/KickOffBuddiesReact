@@ -363,10 +363,7 @@ section .section-title {
 {
 	margin-left: 0px;
 }
-.grid_sorting_button:last-child
-{
 
-}
 .grid_sorting_button.active:hover
 {
 	background: #FE7C7F !important;

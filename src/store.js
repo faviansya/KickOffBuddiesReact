@@ -81,7 +81,7 @@ export const actions = store => ({
       method: "get",
       url: Host + "/api/notification",
       headers: {
-        Authorization: "Bearer " + store.getState().Bearer,
+        Authorization: "Bearer " + Bearer,
         "Content-Type": "application/json"
       }
     };
@@ -96,11 +96,12 @@ export const actions = store => ({
       });
   },
   getNotificationsss: state => {
+    const Bearer = localStorage.getItem("Bearer");
     const getMyNotification = {
       method: "get",
       url: Host + "/api/notification",
       headers: {
-        Authorization: "Bearer " + store.getState().Bearer,
+        Authorization: "Bearer " + Bearer,
         "Content-Type": "application/json"
       }
     };
@@ -183,9 +184,9 @@ export const actions = store => ({
   LoginPebisnis: async (state, username, password) => {
     const req = {
       method: "post",
-      url: Host + "/api/login/pebisnis",
+      url: Host+ "/api/login/pebisnis",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type":"application/json",
       },
       data: {
         username: username,
@@ -194,33 +195,30 @@ export const actions = store => ({
     };
     await axios(req)
       .then(function(response) {
-        store.setState({ Bearer: response.data.token });
-        store.setState({ is_login: true });
-        console.log(response.data);
+        localStorage.setItem("Bearer", response.data.token);
+        localStorage.setItem("is_login", true);
+
       })
       .catch(function(error) {
         console.log("ASEM1", error);
       });
 
-    //   Get My Dataa
-    const getMyData = {
-      method: "get",
-      url: Host + "/api/pebisnis/myprofile",
-      headers: {
-        Authorization: "Bearer " + store.getState().Bearer,
-        "Content-Type": "application/json"
-      }
-    };
-    await axios(getMyData)
-      .then(function(response) {
-        store.setState({
-          mySelf: response.data.data,
-          userType: response.data.data.user_type
+      const Bearer = localStorage.getItem("Bearer")
+      const getMyData = {
+        method: "get",
+        url: Host+ "/api/pebisnis/myprofile",
+        headers: {
+          Authorization: "Bearer " + Bearer,
+          "Content-Type":"application/json",
+        }
+      };
+      await axios(getMyData)
+        .then(function(response) {
+            localStorage.setItem("mySelf", JSON.stringify(response.data.data));
+            localStorage.setItem("userType", response.data.data.user_type);
+       })
+        .catch(function(error) {
+          console.log("ASEM", error);
         });
-        console.log(response.data);
-      })
-      .catch(function(error) {
-        console.log("ASEM", error);
-      });
-  }
+      },
 });

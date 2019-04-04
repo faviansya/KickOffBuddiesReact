@@ -227,6 +227,6 @@ class PostItem extends Component {
 }
 
 export default connect(
-  "itemId,Bearer",
+  "",
   actions
 )(withRouter(PostItem));
