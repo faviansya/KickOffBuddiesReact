@@ -12,10 +12,13 @@ class Mitra extends Component {
 
   render() {
     return (
-    <label class="container"> {" "}{this.props.name}
-        <input type="radio" name="radio" onClick={e => {this.changeLocationMitra(e)}} value={this.props.name}/>
-        <span class="checkmark"></span>
-    </label>    
+    <div className="radio">
+      <label className="container">
+        <input type="radio" name="optradio" onClick={e => {this.changeLocationMitra(e)}} value={this.props.name}/>
+        <i class="fas fa-volleyball-ball"></i>{" "}
+        {this.props.name}
+      </label>
+    </div>
     );
   }
 }

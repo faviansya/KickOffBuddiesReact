@@ -234,7 +234,7 @@ class PostItem extends Component {
             </div>
             <div id="second" class="panel-collapse collapse">
                 <div class="panel-body">
-                  <div id="mapcanvas">
+                  <div id="mapcanvas" style={{ height: '500px', width: '100%' }}>
                   <GoogleMapReact
                     bootstrapURLKeys={{ key: "AIzaSyB3GHH--AbFb9XDA16VX56gMUjQYSKlviQ" }}
                     center={center}
@@ -251,9 +251,7 @@ class PostItem extends Component {
                   )
                 })}
                 </GoogleMapReact>
-                  
-                    
-                  
+
                   </div>
                 </div>
             </div>
