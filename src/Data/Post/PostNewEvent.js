@@ -207,15 +207,14 @@ class PostItem extends Component {
             <div class="form-group col-lg-6">
               <label for="waktu olahraga" style={{color:"#007bff"}}><h4>Tempat Olahraga</h4></label><br/>
               <span>Pilih salah satu: mitra kami atau tempat olahraga terdekat</span>
-            </div>
             <div class="container">
-    <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#first">Mitra Kami</a>
-                </h4>
-            </div>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#first">Mitra Kami</a>
+                    </h4>
+                </div>
             <div id="first" class="panel-collapse collapse in">
                 <div class="panel-body">
                 {this.state.listLapangan.map((item, key) => {
@@ -225,7 +224,7 @@ class PostItem extends Component {
                 })}
                 </div>
             </div>
-        </div>
+                </div>
         <div id="map-acc" class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
@@ -251,14 +250,12 @@ class PostItem extends Component {
                   )
                 })}
                 </GoogleMapReact>
-                  
-                    
-                  
                   </div>
                 </div>
             </div>
         </div>        
     </div>
+</div>
 </div>
 
 
