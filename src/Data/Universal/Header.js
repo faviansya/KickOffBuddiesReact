@@ -132,10 +132,10 @@ class Header extends Component {
                     />
                   </Link>
                 </div>
-                <Search />
                   <div className="widgets-wrap float-right row no-gutters py-1 mr-auto">
                     <LoginBar signout={this.signout} />
                   </div>
+                  <Search />
               </div>
             </div>
           </section>

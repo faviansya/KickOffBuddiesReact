@@ -13,18 +13,12 @@ class MyBookingComp extends Component {
     const players = this.props.pemain
     return (
       <div>
-        {/* <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Number</th>
-              <th scope="col">Name</th>
-              <th scope="col">photos</th>
-            </tr>
-          </thead>
-          <tbody> */}
           <div class="card">
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Location: , Time: </li>
+              <li class="list-group-item"> <center><h5>{this.props.olahraga}</h5></center></li>
+
+              {/* <h5>{this.props.olahraga}</h5> */}
+                <li class="list-group-item">Location: {this.props.locationss} , Time: {this.props.waktu} </li>
                 <li class="list-group-item">
                   <div className="row">
                     {players.map((item, key) => {

@@ -199,7 +199,8 @@ class Header extends Component {
       return (
         <sec>
           <div className="row" >
-          <div className="col-3" style={{marginRight:"-20px"}}>
+          <div className="col-2" >
+          {/* style={{marginRight:"-20px"}} */}
             <Link to="/chatrooms" className="widget-header">
               <div className="icontext">
                 <div className="icon-wrap">
@@ -207,15 +208,16 @@ class Header extends Component {
                     className="icon-sm fa fa-comment-dots"
                     style={{ color: "#33849F" }}
                   />
-                </div>
-                <div className="text-wrap text-dark" style={{marginLeft:"-5px"}}>
+                                  <div className="text-wrap text-dark" >
                   Chat 
                   <br /> Group
                 </div>
+                </div>
+
               </div>
             </Link>
           </div>
-          <div className="col-3" style={{marginRight:"-8px"}}>
+          <div className="col-2" >
             <Link to="/newevent" className="widget-header">
               <div className="icontext">
                 <div className="icon-wrap">
@@ -223,14 +225,15 @@ class Header extends Component {
                     className="icon-sm fa fa-plus"
                     style={{ color: "#33849F" }}
                   />
-                </div>
-                <div className="text-wrap text-dark" style={{marginLeft:"-5px"}}>
+                                  <div className="text-wrap text-dark" >
                   Create <br /> Booking
                 </div>
+                </div>
+
               </div>
             </Link>
           </div>
-          <div className="col-3" style={{marginRight:"-8px"}}>
+          <div className="col-2" >
             <Link to="/mybooking" className="widget-header">
               <div className="icontext">
                 <div className="icon-wrap">
@@ -238,14 +241,67 @@ class Header extends Component {
                     className="icon-sm fa fa-list-alt"
                     style={{ color: "#33849F" }}
                   />
-                </div>
-                <div className="text-wrap text-dark" style={{marginLeft:"-5px"}}>
+                                  <div className="text-wrap text-dark" >
                   My <br /> Booking
                 </div>
+
+                </div>
+                {/* asdasdadasd */}
               </div>
             </Link>
           </div>
-          <div class="col-3">
+          <div class="col-2">
+            <div class="widget-header dropdown" style={{ marginTop: "-2px" }}>
+              <Link to="/userprofile" data-offset="20,10">
+                <div class="icontext">
+                  <div class="icon-wrap">
+                    <i
+                      class=" icon-sm fa fa-bell"
+                      style={{ color: "#33849F" }}
+                    />
+                                  <div className="text-wrap text-dark" >
+                  My <br /> Notif
+                </div>
+                  </div>
+                </div>
+              </Link>
+              <div class="dropdown-menu" style={{ marginTop: "-2px" }}  style={{marginLeft:"-200px"}}>
+                <form class="px-4 py-3" onSubmit={e => e.preventDefault()}>
+                  <center>
+                    <div class="form-group">
+                      <label>Username: {this.props.mySelf.username}</label>
+                      <br />
+                      <label>Name: {this.props.mySelf.name}</label>
+                      <br />
+                      <label>Tipe: {this.props.mySelf.user_type}</label>
+                      <br />
+                    </div>
+                    <div class="form-group">
+                      <Link to="/edituser">
+                        <button type="button" class="btn btn-success w-50">
+                          Edit Profile
+                        </button>
+                      </Link>
+                    </div>
+                    <div class="form-group">
+                      <button
+                        onClick={() => {
+                          this.props.signout();
+                          this.state.username = "";
+                          this.state.password = "";
+                        }}
+                        type="submit"
+                        class="btn btn-link"
+                      >
+                        Sign Out
+                      </button>
+                    </div>
+                  </center>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-2">
             <div class="widget-header dropdown" style={{ marginTop: "-2px" }}>
               <Link to="/userprofile" data-offset="20,10">
                 <div class="icontext">
@@ -254,6 +310,9 @@ class Header extends Component {
                       class=" icon-sm fa fa-user"
                       style={{ color: "#33849F" }}
                     />
+                                                      <div className="text-wrap text-dark" >
+                  My <br /> Profile
+                </div>
                   </div>
                 </div>
               </Link>
@@ -298,6 +357,7 @@ class Header extends Component {
               </div>
             </div>
           </div>
+
           </div>
         </sec>
       );
