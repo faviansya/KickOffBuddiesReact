@@ -16,12 +16,14 @@ class UserProfile extends Component {
     };
   }
   componentDidMount = async () => {
+    const mySelf = localStorage.getItem("mySelf")
+    const Bearer = localStorage.getItem("Bearer")
     const self = this;
     const req = {
       method: "get",
-      url: Host + "/api/acceptbooking/" + self.props.mySelf.id,
+      url: Host + "/api/acceptbooking/" + mySelf.id,
       headers: {
-        Authorization: "Bearer " + self.props.Bearer
+        Authorization: "Bearer " + Bearer
       }
     };
     await axios(req)
@@ -33,15 +35,16 @@ class UserProfile extends Component {
       });
   };
   render() {
+    const mySelf = JSON.parse(localStorage.getItem("mySelf"))
     return (
       <section>
         <div className="container">
-          <h4 style={{ textAlign: "center" }}>{this.props.mySelf.name}</h4>
+          <h4 style={{ textAlign: "center" }}>{mySelf.name}</h4>
           <br />
           <div className="row">
             <img
               alt="User Pic"
-              src={this.props.mySelf.url_image}
+              src={mySelf.url_image}
               id="profile-image1"
               className="img-circle img-responsive center"
               style={{ height: "300px", width: "300", borderRadius: "50%" }}
@@ -56,19 +59,19 @@ class UserProfile extends Component {
               <tbody className="text-center">
                 <tr>
                   <td>Username</td>
-                  <td>{this.props.mySelf.username}</td>
+                  <td>{mySelf.username}</td>
                 </tr>
                 <tr>
                   <td>Address</td>
-                  <td>{this.props.mySelf.address}</td>
+                  <td>{mySelf.address}</td>
                 </tr>
                 <tr>
                   <td>Phone</td>
-                  <td>{this.props.mySelf.phone_no}</td>
+                  <td>{mySelf.phone_no}</td>
                 </tr>
                 <tr>
                   <td>Email</td>
-                  <td>{this.props.mySelf.email}</td>
+                  <td>{mySelf.email}</td>
                 </tr>
               </tbody>
             </table>

@@ -18,12 +18,13 @@ class ChatRoom extends Component {
   }
   componentDidMount = async () => {
     this.interval = setInterval(() => {
+      const Bearer = localStorage.getItem("Bearer")
       const self = this;
       const req = {
         method: "get",
         url: Host + "/api/chat",
         headers: {
-          Authorization: "Bearer " + self.props.Bearer
+          Authorization: "Bearer " + Bearer
         },
         params: {
           Room_id: self.props.RoomId
@@ -42,12 +43,13 @@ class ChatRoom extends Component {
     this.setState({
       messageHolder:"",
     });
+    const Bearer = localStorage.getItem("Bearer")
     const self = this;
     const req = {
       method: "post",
       url: Host + "/api/chat",
       headers: {
-        Authorization: "Bearer " + self.props.Bearer
+        Authorization: "Bearer " + Bearer
       },
       params: {
         room_id: self.props.RoomId,
@@ -68,6 +70,7 @@ class ChatRoom extends Component {
     });
   }
   render() {
+    const mySelf = JSON.parse(localStorage.getItem("mySelf"))
     return (
       <div class="container">
         <div class="container-fluid h-100">
@@ -80,12 +83,12 @@ class ChatRoom extends Component {
                       <div class="d-flex bd-highlight">
                         <div class="img_cont">
                           <img
-                            src={this.props.mySelf.url_image}
+                            src={mySelf.url_image}
                             class="rounded-circle user_img"
                           />
                         </div>
                         <div class="user_info">
-                          <span>{this.props.mySelf.name}</span>
+                          <span>{mySelf.name}</span>
                         </div>
                       </div>
                     </li>
@@ -112,7 +115,7 @@ class ChatRoom extends Component {
                 </div>
                 <div class="card-body msg_card_body">
                   {this.state.ChatData.map((item, key) => {
-									if(item.user_id == this.props.mySelf.id){
+									if(item.user_id == mySelf.id){
                     return (
                       <MyChat
                         key={key}

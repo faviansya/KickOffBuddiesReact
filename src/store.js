@@ -18,8 +18,10 @@ export const store = createStore(initialState);
 
 export const actions = store => ({
   postLogout: state => {
-    store.setState({ Bearer: "" });
-    return { is_login: false, userType: "" };
+    localStorage.removeItem("is_login");
+    localStorage.removeItem("Bearer");
+    localStorage.removeItem("mySelf");
+    localStorage.removeItem("userType");
   },
   changeBookingId: (state, id) => {
     store.setState({ bookingId: id });
@@ -49,32 +51,32 @@ export const actions = store => ({
     };
     await axios(req)
       .then(function(response) {
-        store.setState({ Bearer: response.data.token });
-        store.setState({ is_login: true });
+        localStorage.setItem("Bearer", response.data.token);
+        localStorage.setItem("is_login", true);
       })
       .catch(function(error) {
         console.log("ASEM1", error);
       });
 
     //   Get My Dataa
+    const Bearer = localStorage.getItem("Bearer");
     const getMyData = {
       method: "get",
       url: Host + "/api/pemain/me",
       headers: {
-        Authorization: "Bearer " + store.getState().Bearer,
+        Authorization: "Bearer " + Bearer,
         "Content-Type": "application/json"
       }
     };
     await axios(getMyData)
       .then(function(response) {
-        store.setState({
-          mySelf: response.data.data,
-          userType: response.data.data.user_type
-        });
+        localStorage.setItem("mySelf", JSON.stringify(response.data.data));
+        localStorage.setItem("userType", response.data.data.user_type);
       })
       .catch(function(error) {
         console.log("ASEM", error);
       });
+
     const getMyNotification = {
       method: "get",
       url: Host + "/api/notification",
@@ -114,12 +116,12 @@ export const actions = store => ({
   },
   //Sport Category Change
   changeCategory: async (state, category) => {
-    // console.log("MASOKKKKKKKKKKKkk")
+    const Bearer = localStorage.getItem("Bearer");
     const req = {
       method: "get",
       url: Host + "/api/booking/category",
       headers: {
-        Authorization: "Bearer " + store.getState().Bearer
+        Authorization: "Bearer " + Bearer
       },
       params: {
         category: category
@@ -133,15 +135,17 @@ export const actions = store => ({
         console.log("ASEM", error);
       });
   },
+
   //Search Bar At Top
   searchItems: async (state, keyword) => {
+    const Bearer = localStorage.getItem("Bearer");
     if (keyword.length > 2) {
       try {
         const req = {
           method: "get",
           url: Host + "/api/booking/search",
           headers: {
-            Authorization: "Bearer " + store.getState().Bearer
+            Authorization: "Bearer " + Bearer
           },
           params: {
             name: keyword
@@ -154,20 +158,21 @@ export const actions = store => ({
       }
     }
   },
+
   //END OF HEADER METHOD-------------------
   GetMyOwnData: async state => {
-    // console.log("GetMyOwn Data")
+    const Bearer = localStorage.getItem("Bearer");
     const getMyData = {
       method: "get",
       url: Host + "/api/pemain/me",
       headers: {
-        Authorization: "Bearer " + store.getState().Bearer,
+        Authorization: "Bearer " + Bearer,
         "Content-Type": "application/json"
       }
     };
     await axios(getMyData)
       .then(function(response) {
-        store.setState({ mySelf: response.data.data });
+        localStorage.setItem("mySelf", JSON.stringify(response.data.data));
       })
       .catch(function(error) {
         console.log("ASEM", error);
@@ -191,7 +196,7 @@ export const actions = store => ({
       .then(function(response) {
         store.setState({ Bearer: response.data.token });
         store.setState({ is_login: true });
-        console.log(response.data)
+        console.log(response.data);
       })
       .catch(function(error) {
         console.log("ASEM1", error);
@@ -212,8 +217,7 @@ export const actions = store => ({
           mySelf: response.data.data,
           userType: response.data.data.user_type
         });
-        console.log(response.data)
-
+        console.log(response.data);
       })
       .catch(function(error) {
         console.log("ASEM", error);

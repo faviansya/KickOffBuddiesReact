@@ -23,12 +23,13 @@ class PostItem extends Component {
     };
   }
   componentDidMount = async id => {
+    const Bearer = localStorage.getItem("Bearer")
     const self = this;
     const getMyData = {
       method: "get",
       url: Host + "/api/pemain/me",
       headers: {
-        Authorization: "Bearer " + self.props.Bearer,
+        Authorization: "Bearer " + Bearer,
         "Content-Type": "application/json"
       }
     };
@@ -50,12 +51,13 @@ class PostItem extends Component {
   };
   PostItem = async event => {
     event.preventDefault();
+    const Bearer = localStorage.getItem("Bearer")
     const self = this;
     const req = {
       method: "put",
       url: Host + "/api/pemain",
       headers: {
-        Authorization: "Bearer " + self.props.Bearer,
+        Authorization: "Bearer " + Bearer,
         "Content-Type": "application/json"
       },
       data: {
@@ -106,21 +108,22 @@ class PostItem extends Component {
         <section
           class="section-pagetop bg-dark-50"
           style={{
-            backgroundImage: `url("https://indodjaja.com/1mages/Banner/foodBanner.jpg")`
+            backgroundImage: `url("https://www.water-sports.gr/assets/images/watersports/slider/s/slider-02.jpg")`,
+            backgroundPosition: "center"
           }}
         >
-          <div class="container clearfix">
+          <div class="container clearfixcol-lg-6 col-md-6 col-sm-10" style={{backgroundColor:"peachpuff", opacity:"0.75", padding:"10px"}}>
             <strong>
               <h2 class=" text-dark">
                 {" "}
-                <label style={{ backgroundColor: "greenyellow" }}>
-                  Daftar Baru
+                <label>
+                  Edit User Profile
                 </label>
               </h2>
             </strong>
             <h5 class=" text-dark">
-              <label style={{ backgroundColor: "greenyellow" }}>
-                Isikan Semua Keterangan Anda Dibawah
+              <label>
+                Isikan keterangan yang ingin Anda rubah dibawah
               </label>
             </h5>
           </div>

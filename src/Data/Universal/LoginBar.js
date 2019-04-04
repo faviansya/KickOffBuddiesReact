@@ -65,7 +65,10 @@ class Header extends Component {
         this.state.DataGoogle.googleId + "Rekt$"
       );
     };
-    if (!this.props.is_login) {
+    const is_login = localStorage.getItem("is_login")
+    const userType = localStorage.getItem("userType")
+    const mySelf = JSON.parse(localStorage.getItem("mySelf"))
+    if (!is_login) {
       return (
         <div className="row">
           <div className="col-lg-6 col-md-6 col-sm-6">
@@ -197,7 +200,7 @@ class Header extends Component {
           </div>
         </div>
       );
-    } else if (this.props.userType != "pebisnis") {
+    } else if (userType != "pebisnis") {
       return (
         <sec>
           <div className="row">
@@ -217,6 +220,40 @@ class Header extends Component {
                   </div>
                 </div>
               </Link>
+              <div class="dropdown-menu" style={{ marginTop: "-2px" }}  style={{marginLeft:"-200px"}}>
+                <form class="px-4 py-3" onSubmit={e => e.preventDefault()}>
+                  <center>
+                    <div class="form-group">
+                      <label>Username: {mySelf.username}</label>
+                      <br />
+                      <label>Name: {mySelf.name}</label>
+                      <br />
+                      <label>Tipe: {mySelf.user_type}</label>
+                      <br />
+                    </div>
+                    <div class="form-group">
+                      <Link to="/edituser">
+                        <button type="button" class="btn btn-success w-50">
+                          Edit Profile
+                        </button>
+                      </Link>
+                    </div>
+                    <div class="form-group">
+                      <button
+                        onClick={() => {
+                          this.props.signout();
+                          this.state.username = "";
+                          this.state.password = "";
+                        }}
+                        type="submit"
+                        class="btn btn-link"
+                      >
+                        Sign Out
+                      </button>
+                    </div>
+                  </center>
+                </form>
+              </div>
             </div>
             <div className="col-2">
               <Link to="/newevent" className="widget-header">
@@ -374,6 +411,7 @@ class Header extends Component {
                     </div>
                     <div className="text-wrap text-dark">New Field</div>
                   </div>
+        {/*
                 </Link>
               </div>
               <div className="col-4">
@@ -383,7 +421,25 @@ class Header extends Component {
                       <i
                         className="icon-sm fa fa-list-alt"
                         style={{ color: "#33849F" }}
-                      />
+                      />*/}
+
+                </div>
+              </Link>
+              <div class="dropdown-menu" style={{ marginTop: "-2px" }}  style={{marginLeft:"-200px"}}>
+                <form class="px-4 py-3" onSubmit={e => e.preventDefault()}>
+                  <center>
+                    <Link to="/userprofile" data-offset="20,10">
+                      <div class="form-group">
+                        <img src={mySelf.url_image} height="130px" />
+                      </div>
+                    </Link>
+                    <div class="form-group">
+                      <label>Username: {mySelf.username}</label>
+                      <br />
+                      <label>Name: {mySelf.name}</label>
+                      <br />
+                      <label>Tipe: {mySelf.user_type}</label>
+                      <br />
                     </div>
                     <div className="text-wrap text-dark">
                       My <br /> Fields

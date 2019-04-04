@@ -23,12 +23,13 @@ class PostItem extends Component {
     };
   }
   componentDidMount = async id => {
+    const Bearer = localStorage.getItem("Bearer")
     const self = this;
     const getMyData = {
       method: "get",
       url: Host + "/api/pemain/me",
       headers: {
-        Authorization: "Bearer " + self.props.Bearer,
+        Authorization: "Bearer " + Bearer,
         "Content-Type": "application/json"
       }
     };
@@ -50,12 +51,13 @@ class PostItem extends Component {
   };
   PostItem = async event => {
     event.preventDefault();
+    const Bearer = localStorage.getItem("Bearer")
     const self = this;
     const req = {
       method: "put",
       url: Host + "/api/pemain",
       headers: {
-        Authorization: "Bearer " + self.props.Bearer,
+        Authorization: "Bearer " + Bearer,
         "Content-Type": "application/json"
       },
       data: {

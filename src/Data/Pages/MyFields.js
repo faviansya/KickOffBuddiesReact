@@ -16,12 +16,13 @@ class Home extends Component {
         };
       };
     componentDidMount = async () => {
+        const Bearer = localStorage.getItem("Bearer")
         const self = this;
         const req = {
           method: "get",
           url: Host + "/api/playerlist/mylist",
           headers: {
-            Authorization: "Bearer " + self.props.Bearer
+            Authorization: "Bearer " + Bearer
           }
         };
         await axios(req)
