@@ -12,7 +12,8 @@ class ChatRoom extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ChatData: []
+      ChatData: [],
+      messageHolder: ""
     };
   }
   componentDidMount = async () => {
@@ -38,6 +39,9 @@ class ChatRoom extends Component {
 
   sendChatting = async event => {
     event.preventDefault();
+    this.setState({
+      messageHolder:"",
+    });
     const self = this;
     const req = {
       method: "post",
@@ -58,7 +62,11 @@ class ChatRoom extends Component {
   componentWillUnmount() {
     clearInterval(this.interval);
   }
-
+  FormHandler = (e)=>{
+    this.setState({
+      messageHolder: e.target.value
+    });
+  }
   render() {
     return (
       <div class="container">
@@ -140,6 +148,8 @@ class ChatRoom extends Component {
                               class="form-control form-control-lg type_msg"
                               type="text"
                               placeholder="Type your message..."
+                              onChange = {(e)=>{this.FormHandler(e)}}
+                              value = {this.state.messageHolder}
                             />
                           </div>
                         </form>
@@ -153,13 +163,6 @@ class ChatRoom extends Component {
                       </div>
                     </div>
                   </div>
-
-                  {/* <div class="input-group" >
-								<textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
-								<div class="input-group-append">
-									<span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
-								</div>
-							</div> */}
                 </div>
               </div>
             </div>

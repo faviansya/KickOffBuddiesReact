@@ -93,7 +93,6 @@ class PostItem extends Component {
   changeAlamat = e => {
     this.setState({ alamat: e.target.value });
   };
-
   changeUrlimage = e => {
     this.setState({ urlimage: e.target.value });
   };
@@ -129,30 +128,6 @@ class PostItem extends Component {
 
         <div class="container mt-5">
           <form>
-            {/* <div class="form-group col-lg-6">
-              <label for="Passoword">Masukkan Password</label>
-              <input
-                onChange={e => {
-                  this.changePassword(e);
-                }}
-                type="password"
-                class="form-control"
-                id="Passoword"
-                placeholder="New Password"
-                required
-              />
-            </div>
-            <div class="form-group col-lg-6">
-              <label for="ConfirmPassowrd">Confirm Password</label>
-              <input
-                type="password"
-                class="form-control"
-                id="ConfirmPassowrd"
-                placeholder="Confirm New Password"
-                required
-              />
-            </div> */}
-
             <div class="form-group col-lg-6">
               <label for="name">Masukkan Nama</label>
               <input

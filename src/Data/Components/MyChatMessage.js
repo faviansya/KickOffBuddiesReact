@@ -6,12 +6,17 @@ import { actions } from "../../store";
 import { withRouter } from "react-router-dom";
 
 class Item extends Component {
+  fixDate = ()=>{
+    const fixedDate = this.props.date.split(".")
+    return fixedDate[0]
+  }
   render() {
     return (
-      <div class="d-flex justify-content-end mb-4">
+      <div class="d-flex justify-content-end mb-4"
+      >
         <div class="msg_cotainer_send">
         {this.props.message}
-          <span class="msg_time_send">{this.props.date}</span>
+          <span class="msg_time_send">{this.fixDate()}</span>
         </div>
         <div class="img_cont_msg">
           <img src={this.props.img} class="rounded-circle user_img_msg" />

@@ -33,7 +33,6 @@ class ChatRoom extends Component {
       };
 
       ChangeRoomsId = (id) =>{
-        console.log("IDDDIPAGES",id)
         this.props.ChangeRoom(id)
       }
   render() {
