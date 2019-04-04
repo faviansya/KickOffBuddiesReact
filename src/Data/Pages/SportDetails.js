@@ -27,12 +27,13 @@ class Details extends Component {
     };
   }
   GetPlayerList = async ()=>{
+    const Bearer = localStorage.getItem("Bearer")
     const self = this;
     const req = {
       method: "get",
       url: Host + "/api/playerlist/" + self.props.bookingId,
       headers: {
-        Authorization: "Bearer " + self.props.Bearer
+        Authorization: "Bearer " + Bearer
       }
     };
     await axios(req)
@@ -48,7 +49,7 @@ class Details extends Component {
         method: "get",
         url: Host + "/api/booking/" + self.props.bookingId,
         headers: {
-          Authorization: "Bearer " + self.props.Bearer
+          Authorization: "Bearer " + Bearer
         }
       };
       await axios(req2)
@@ -65,12 +66,13 @@ class Details extends Component {
     this.GetPlayerList();
   };
   JoinSport = async () => {
+    const Bearer = localStorage.getItem("Bearer")
     const self = this;
     const reqJoin = {
       method: "post",
       url: Host + "/api/playerlist",
       headers: {
-        Authorization: "Bearer " + self.props.Bearer
+        Authorization: "Bearer " + Bearer
       },
       data: {
         booking_id: self.props.bookingId
@@ -85,12 +87,13 @@ class Details extends Component {
       this.GetPlayerList();
   };
   cancelLobby= async (id)=> {
+    const Bearer = localStorage.getItem("Bearer")
     const self = this;
     const DeleteData = {
       method: "delete",
       url: Host + "/api/playerlist/" + id,
       headers: {
-        Authorization: "Bearer " + self.props.Bearer
+        Authorization: "Bearer " + Bearer
       },
       data: {
         booking_id: self.props.bookingId

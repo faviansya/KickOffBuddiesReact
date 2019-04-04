@@ -15,7 +15,8 @@ class Header extends Component {
     this.props.postSignout();
   };
   render() {
-    if (this.props.userType != "pebisnis") {
+    const userType = localStorage.getItem("userType")
+    if (userType != "pebisnis") {
     return (
       <div>
         <header>
