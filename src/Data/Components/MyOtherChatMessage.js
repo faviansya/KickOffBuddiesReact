@@ -6,6 +6,10 @@ import { actions } from "../../store";
 import { withRouter } from "react-router-dom";
 
 class Item extends Component {
+  fixDate = ()=>{
+    const fixedDate = this.props.date.split(".")
+    return fixedDate[0]
+  }
   render() {
     return (
       <div class="d-flex justify-content-start mb-4">
@@ -14,7 +18,7 @@ class Item extends Component {
       </div>
       <div class="msg_cotainer">
       {this.props.message}
-        <span class="msg_time">{this.props.date}</span>
+        <span class="msg_time">{this.fixDate()}</span>
       </div>
     </div>
 

@@ -103,16 +103,6 @@ class Header extends Component {
                           Pertanyaan Umum
                         </Link>
                       </li>
-                      <li>
-                        <Link className="dropdown-item" to="/" id="inside">
-                          Masalah Lapangan{" "}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="/" id="inside">
-                          Masalah Booking{" "}
-                        </Link>
-                      </li>
                     </ul>
                   </li>
                   <li className="nav-item">
@@ -142,10 +132,10 @@ class Header extends Component {
                     />
                   </Link>
                 </div>
-                <Search />
                   <div className="widgets-wrap float-right row no-gutters py-1 mr-auto">
                     <LoginBar signout={this.signout} />
                   </div>
+                  <Search />
               </div>
             </div>
           </section>

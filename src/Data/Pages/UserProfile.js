@@ -77,7 +77,7 @@ class UserProfile extends Component {
                 </tbody>
               </table>
             </div>
-            <div className="col-lg-6 col-md-6 col-sm-6">
+            <div className="col-12 col-lg-6 col-md-6">
               <div class="card">
                 <div class="card-body">Current Booking.</div>
                 <a
