@@ -64,7 +64,10 @@ class Header extends Component {
         this.state.DataGoogle.googleId + "Rekt$"
       );
     };
-    if (!this.props.is_login) {
+    const is_login = localStorage.getItem("is_login")
+    const userType = localStorage.getItem("userType")
+    const mySelf = JSON.parse(localStorage.getItem("mySelf"))
+    if (!is_login) {
       return (
         <div className="row">
         <div className="col-lg-6 col-md-6 col-sm-6" >
@@ -195,7 +198,7 @@ class Header extends Component {
         </div>
         </div>
       );
-    } else if (this.props.userType != "pebisnis") {
+    } else if (userType != "pebisnis") {
       return (
         <sec>
           <div className="row" >
@@ -269,11 +272,11 @@ class Header extends Component {
                 <form class="px-4 py-3" onSubmit={e => e.preventDefault()}>
                   <center>
                     <div class="form-group">
-                      <label>Username: {this.props.mySelf.username}</label>
+                      <label>Username: {mySelf.username}</label>
                       <br />
-                      <label>Name: {this.props.mySelf.name}</label>
+                      <label>Name: {mySelf.name}</label>
                       <br />
-                      <label>Tipe: {this.props.mySelf.user_type}</label>
+                      <label>Tipe: {mySelf.user_type}</label>
                       <br />
                     </div>
                     <div class="form-group">
@@ -321,15 +324,15 @@ class Header extends Component {
                   <center>
                     <Link to="/userprofile" data-offset="20,10">
                       <div class="form-group">
-                        <img src={this.props.mySelf.url_image} height="130px" />
+                        <img src={mySelf.url_image} height="130px" />
                       </div>
                     </Link>
                     <div class="form-group">
-                      <label>Username: {this.props.mySelf.username}</label>
+                      <label>Username: {mySelf.username}</label>
                       <br />
-                      <label>Name: {this.props.mySelf.name}</label>
+                      <label>Name: {mySelf.name}</label>
                       <br />
-                      <label>Tipe: {this.props.mySelf.user_type}</label>
+                      <label>Tipe: {mySelf.user_type}</label>
                       <br />
                     </div>
                     <div class="form-group">
@@ -415,15 +418,15 @@ class Header extends Component {
                   <center>
                     <Link to="/userprofile" data-offset="20,10">
                       <div class="form-group">
-                        <img src={this.props.mySelf.url_image} height="130px" />
+                        <img src={mySelf.url_image} height="130px" />
                       </div>
                     </Link>
                     <div class="form-group">
-                      <label>Username: {this.props.mySelf.username}</label>
+                      <label>Username: {mySelf.username}</label>
                       <br />
-                      <label>Name: {this.props.mySelf.name}</label>
+                      <label>Name: {mySelf.name}</label>
                       <br />
-                      <label>Tipe: {this.props.mySelf.user_type}</label>
+                      <label>Tipe: {mySelf.user_type}</label>
                       <br />
                     </div>
                     <div class="form-group">

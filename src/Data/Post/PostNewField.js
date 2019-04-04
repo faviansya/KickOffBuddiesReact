@@ -58,12 +58,13 @@ class PostItem extends Component {
 
   PostItem = async event => {
     event.preventDefault();
+    const Bearer = localStorage.getItem("Bearer")
     const self = this;
     const req = {
       method: "post",
       url: Host+"/api/booking",
       headers: {
-        Authorization: "Bearer " + self.props.Bearer
+        Authorization: "Bearer " + Bearer
       },
       data: {
         sport: self.state.sport,

@@ -16,12 +16,14 @@ class UserProfile extends Component {
     };
   }
   componentDidMount = async () => {
+    const Bearer = localStorage.getItem("Bearer")
+    const mySelf = JSON.parse(localStorage.getItem("mySelf"))
     const self = this;
     const req = {
       method: "get",
-      url: Host + "/api/acceptbooking/" + self.props.mySelf.id,
+      url: Host + "/api/acceptbooking/" + mySelf.id,
       headers: {
-        Authorization: "Bearer " + self.props.Bearer
+        Authorization: "Bearer " + Bearer
       }
     };
     await axios(req)
@@ -33,17 +35,18 @@ class UserProfile extends Component {
       });
   };
   render() {
+    const mySelf = JSON.parse(localStorage.getItem("mySelf"))
     return (
       <section>
         <div className="container">
-          <h4 style={{ textAlign: "center" }}>{this.props.mySelf.name}</h4>
+          <h4 style={{ textAlign: "center" }}>{mySelf.name}</h4>
           <br />
           <div className="row">
             <div className="col-sm-12 col-lg-6 col-md-6 col-sm-6">
             <center>
               <img
                 alt="User Pic"
-                src={this.props.mySelf.url_image}
+                src={mySelf.url_image}
                 id="profile-image1"
                 className="img-circle img-responsive center"
                 style={{ height: "150px", width: "150px", borderRadius: "50%" }}
@@ -56,23 +59,23 @@ class UserProfile extends Component {
                 <tbody className="text-center">
                   <tr>
                     <td>Username</td>
-                    <td>{this.props.mySelf.username}</td>
+                    <td>{mySelf.username}</td>
                   </tr>
                   <tr>
                     <td>Address</td>
-                    <td>{this.props.mySelf.address}</td>
+                    <td>{mySelf.address}</td>
                   </tr>
                   <tr>
                     <td>Phone</td>
-                    <td>{this.props.mySelf.phone_no}</td>
+                    <td>{mySelf.phone_no}</td>
                   </tr>
                   <tr>
                     <td>Email</td>
-                    <td>{this.props.mySelf.email}</td>
+                    <td>{mySelf.email}</td>
                   </tr>
                   <tr>
                     <td>Favorite Sport</td>
-                    <td>{this.props.mySelf.favourite_sport}</td>
+                    <td>{mySelf.favourite_sport}</td>
                   </tr>
                 </tbody>
               </table>
