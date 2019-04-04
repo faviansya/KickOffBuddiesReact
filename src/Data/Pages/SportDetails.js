@@ -98,7 +98,6 @@ class Details extends Component {
     };
      await axios(DeleteData)
       .then(function(response) {
-        // console.log("Success");
       })
       .catch(function(error) {
         console.log("ASEM", error);

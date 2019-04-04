@@ -33,7 +33,7 @@ class Profile extends Component {
     };
 
     return (
-      <aside className="col-xl-3 col-lg-3 col-md-6 col-sm-12 text-center wow fadeInUp" >
+      <aside className="col-xl-3 col-lg-3 col-md-6 col-sm-12 text-center wow fadeInUp mt-1" >
         <div className="card" >
         <div class="blog-card spring-fever" style={{backgroundImage:`url(${this.props.img})`,backgroundPosition:"center"}}>
           <div class="title-content">

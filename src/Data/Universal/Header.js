@@ -103,16 +103,6 @@ class Header extends Component {
                           Pertanyaan Umum
                         </Link>
                       </li>
-                      <li>
-                        <Link className="dropdown-item" to="/" id="inside">
-                          Masalah Lapangan{" "}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to="/" id="inside">
-                          Masalah Booking{" "}
-                        </Link>
-                      </li>
                     </ul>
                   </li>
                   <li className="nav-item">
