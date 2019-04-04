@@ -8,7 +8,7 @@ class MyBookingComp extends Component {
 
   render() {
     return (
-                <div className="col-lg-3 col-md-3 col-sm-6" style={{textAlign:"center"}}>
+                <div className="col-12 col-lg-4 col-md-6" style={{textAlign:"center"}}>
                   <img
                     src={this.props.image}
                     alt="barbarian"

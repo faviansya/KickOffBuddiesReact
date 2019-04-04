@@ -21,15 +21,15 @@ class Carousel extends Component {
   };
   render() {
     return (
-      <div className="col-lg-11-24 col-sm-8">
+      <div className="col-lg-8-24 col-12">
         <form action="" className="py-1" onSubmit={e => e.preventDefault()}>
           <div className="input-group w-100">
-            <select className="custom-select" name="category_name">
+            {/* <select className="custom-select" name="category_name">
               <option value="">Semua</option>
               <option value="">Spesial</option>
               <option value="">Terbaik</option>
               <option value="">Terbaru</option>
-            </select>
+            </select> */}
             <input
               onChange={this.handleInputChange}
               type="text"
