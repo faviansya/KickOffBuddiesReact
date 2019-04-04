@@ -3,19 +3,19 @@ import { Link } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../../store";
 import { withRouter } from "react-router-dom";
-import { Host } from "../../Host"
+import { Host } from "../../Host";
 import axios from "axios";
 import GoogleLogin from "react-google-login";
-
+import NotificationList from "../Components/notificationComp";
 class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
       password: "",
-      DataGoogle: ""
+      DataGoogle: "",
     };
-  };
+  }
   postLogin = function() {
     this.props.Login(this.state.username, this.state.password).then(() => {
       this.state.username = "";
@@ -24,18 +24,20 @@ class Header extends Component {
     });
   };
   postLoginPebisnis = function() {
-    this.props.LoginPebisnis(this.state.username, this.state.password).then(() => {
-      this.state.username = "";
-      this.state.password = "";
-      this.props.history.push("/pebisnisprofile");
-    });
+    this.props
+      .LoginPebisnis(this.state.username, this.state.password)
+      .then(() => {
+        this.state.username = "";
+        this.state.password = "";
+        this.props.history.push("/pebisnisprofile");
+      });
   };
   changeUser(e) {
     this.state.username = e.target.value;
-  };
+  }
   changePassword(e) {
     this.state.password = e.target.value;
-  };
+  }
   GetGoogleStatus = async Datas => {
     const self = this;
     const req = {
@@ -49,8 +51,7 @@ class Header extends Component {
       }
     };
     await axios(req)
-      .then(function(response) {
-      })
+      .then(function(response) {})
       .catch(function(error) {
         console.log("ASEM", error);
       });
@@ -70,201 +71,152 @@ class Header extends Component {
     if (!is_login) {
       return (
         <div className="row">
-        <div className="col-lg-6 col-md-6 col-sm-6" >
-          <div className="widget-header dropdown">
-            <div className="icontext">
-              <div className="icon-wrap">
-                <i
-                  className="fa fa-user fa-2x"
-                  style={{ color: "#33849F" }}
-                /> {" "}
+          <div className="col-lg-6 col-md-6 col-sm-6">
+            <div className="widget-header dropdown">
+              <div className="icontext">
+                <div className="icon-wrap">
+                  <i
+                    className="fa fa-user fa-2x"
+                    style={{ color: "#33849F" }}
+                  />{" "}
+                </div>
               </div>
-            </div>
-            <div className="dropdown-menu" style={{ marginTop: "-2px" }}>
-              <form className="px-4 py-3" onSubmit={e => e.preventDefault()}>
-                <div className="form-group">
-                  <label>Username</label>
-                  <input
-                    name="username"
-                    type="username"
-                    className="form-control"
-                    placeholder="Username"
-                    onChange={e => this.changeUser(e)}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Password</label>
-                  <input
-                    name="password"
-                    type="password"
-                    className="form-control"
-                    placeholder="Password"
-                    onChange={e => this.changePassword(e)}
-                  />
-                </div>
-                <button
-                  onClick={e => this.postLogin()}
-                  type="submit"
-                  className="btn btn-primary"
-                >
-                  Sign in
-                </button>
-                <Link to="/newuser">
+              <div className="dropdown-menu" style={{ marginTop: "-2px" }}>
+                <form className="px-4 py-3" onSubmit={e => e.preventDefault()}>
+                  <div className="form-group">
+                    <label>Username</label>
+                    <input
+                      name="username"
+                      type="username"
+                      className="form-control"
+                      placeholder="Username"
+                      onChange={e => this.changeUser(e)}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Password</label>
+                    <input
+                      name="password"
+                      type="password"
+                      className="form-control"
+                      placeholder="Password"
+                      onChange={e => this.changePassword(e)}
+                    />
+                  </div>
                   <button
+                    onClick={e => this.postLogin()}
                     type="submit"
-                    className="btn btn-outline-primary ml-1"
+                    className="btn btn-primary"
                   >
-                    {" "}
-                    Sign Up
+                    Sign in
                   </button>
-                </Link>
-                <GoogleLogin className="w-100 h-100 mt-2"
+                  <Link to="/newuser">
+                    <button
+                      type="submit"
+                      className="btn btn-outline-primary ml-1"
+                    >
+                      {" "}
+                      Sign Up
+                    </button>
+                  </Link>
+                  <GoogleLogin
+                    className="w-100 h-100 mt-2"
                     clientId="741246057517-i3ced26b23scc7r4vk7rng3kol938brd.apps.googleusercontent.com"
                     buttonText="LOGIN WITH GOOGLE"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
                   />
-              </form>
+                </form>
 
-              <hr className="dropdown-divider" />
-              <Link className="dropdown-item" to="/newuser">
-                Don't have an account yet? Sign up
-              </Link>
-              <Link className="dropdown-item" to="">
-                Forgot password?
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-6 col-md-6 col-sm-6" >
-          <div className="widget-header dropdown">
-            <div className="icontext">
-              <div className="icon-wrap">
-                <i 
-                  class="fas fa-user-tie fa-2x" 
-                  style={{ color: "#33849F" }}>
-                </i>
+                <hr className="dropdown-divider" />
+                <Link className="dropdown-item" to="/newuser">
+                  Don't have an account yet? Sign up
+                </Link>
+                <Link className="dropdown-item" to="">
+                  Forgot password?
+                </Link>
               </div>
             </div>
-            <div className="dropdown-menu" style={{ marginTop: "2px" }}>
-              <form className="px-4 py-3" onSubmit={e => e.preventDefault()}>
-                <div className="form-group">
-                  <label>Username</label>
-                  <input
-                    name="username"
-                    type="username"
-                    className="form-control"
-                    placeholder="Username"
-                    onChange={e => this.changeUser(e)}
+          </div>
+          <div className="col-lg-6 col-md-6 col-sm-6">
+            <div className="widget-header dropdown">
+              <div className="icontext">
+                <div className="icon-wrap">
+                  <i
+                    class="fas fa-user-tie fa-2x"
+                    style={{ color: "#33849F" }}
                   />
                 </div>
-                <div className="form-group">
-                  <label>Password</label>
-                  <input
-                    name="password"
-                    type="password"
-                    className="form-control"
-                    placeholder="Password"
-                    onChange={e => this.changePassword(e)}
-                  />
-                </div>
-                <button
-                  onClick={e => this.postLoginPebisnis()}
-                  type="submit"
-                  className="btn btn-primary"
-                >
-                  Sign in
-                </button>
-                <Link to="/newpebisnis">
+              </div>
+              <div className="dropdown-menu" style={{ marginTop: "2px" }}>
+                <form className="px-4 py-3" onSubmit={e => e.preventDefault()}>
+                  <div className="form-group">
+                    <label>Username</label>
+                    <input
+                      name="username"
+                      type="username"
+                      className="form-control"
+                      placeholder="Username"
+                      onChange={e => this.changeUser(e)}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Password</label>
+                    <input
+                      name="password"
+                      type="password"
+                      className="form-control"
+                      placeholder="Password"
+                      onChange={e => this.changePassword(e)}
+                    />
+                  </div>
                   <button
+                    onClick={e => this.postLoginPebisnis()}
                     type="submit"
-                    className="btn btn-outline-primary ml-1"
+                    className="btn btn-primary"
                   >
-                    {" "}
-                    Sign Up
+                    Sign in
                   </button>
-                </Link>
-              </form>
+                  <Link to="/newpebisnis">
+                    <button
+                      type="submit"
+                      className="btn btn-outline-primary ml-1"
+                    >
+                      {" "}
+                      Sign Up
+                    </button>
+                  </Link>
+                </form>
 
-              <hr className="dropdown-divider" />
-              <Link className="dropdown-item" to="/newpebisnis">
-                Don't have an account yet? Sign up
-              </Link>
-              <Link className="dropdown-item" to="">
-                Forgot password?
-              </Link>
+                <hr className="dropdown-divider" />
+                <Link className="dropdown-item" to="/newpebisnis">
+                  Don't have an account yet? Sign up
+                </Link>
+                <Link className="dropdown-item" to="">
+                  Forgot password?
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
         </div>
       );
     } else if (userType != "pebisnis") {
       return (
         <sec>
-          <div className="row" >
-          <div className="col-2" >
-          {/* style={{marginRight:"-20px"}} */}
-            <Link to="/chatrooms" className="widget-header">
-              <div className="icontext">
-                <div className="icon-wrap">
-                  <i
-                    className="icon-sm fa fa-comment-dots"
-                    style={{ color: "#33849F" }}
-                  />
-                                  <div className="text-wrap text-dark" >
-                  Chat 
-                  <br /> Group
-                </div>
-                </div>
-
-              </div>
-            </Link>
-          </div>
-          <div className="col-2" >
-            <Link to="/newevent" className="widget-header">
-              <div className="icontext">
-                <div className="icon-wrap">
-                  <i
-                    className="icon-sm fa fa-plus"
-                    style={{ color: "#33849F" }}
-                  />
-                                  <div className="text-wrap text-dark" >
-                  Create <br /> Booking
-                </div>
-                </div>
-
-              </div>
-            </Link>
-          </div>
-          <div className="col-2" >
-            <Link to="/mybooking" className="widget-header">
-              <div className="icontext">
-                <div className="icon-wrap">
-                  <i
-                    className="icon-sm fa fa-list-alt"
-                    style={{ color: "#33849F" }}
-                  />
-                                  <div className="text-wrap text-dark" >
-                  My <br /> Booking
-                </div>
-
-                </div>
-                {/* asdasdadasd */}
-              </div>
-            </Link>
-          </div>
-          <div class="col-2">
-            <div class="widget-header dropdown" style={{ marginTop: "-2px" }}>
-              <Link to="/userprofile" data-offset="20,10">
-                <div class="icontext">
-                  <div class="icon-wrap">
+          <div className="row">
+            <div className="col-2">
+              {/* style={{marginRight:"-20px"}} */}
+              <Link to="/chatrooms" className="widget-header">
+                <div className="icontext">
+                  <div className="icon-wrap">
                     <i
-                      class=" icon-sm fa fa-bell"
+                      className="icon-sm fa fa-comment-dots"
                       style={{ color: "#33849F" }}
                     />
-                                  <div className="text-wrap text-dark" >
-                  My <br /> Notif
-                </div>
+                    <div className="text-wrap text-dark">
+                      Chat
+                      <br /> Group
+                    </div>
                   </div>
                 </div>
               </Link>
@@ -303,64 +255,141 @@ class Header extends Component {
                 </form>
               </div>
             </div>
-          </div>
-          <div class="col-2">
-            <div class="widget-header dropdown" style={{ marginTop: "-2px" }}>
-              <Link to="/userprofile" data-offset="20,10">
-                <div class="icontext">
-                  <div class="icon-wrap">
+            <div className="col-2">
+              <Link to="/newevent" className="widget-header">
+                <div className="icontext">
+                  <div className="icon-wrap">
                     <i
-                      class=" icon-sm fa fa-user"
+                      className="icon-sm fa fa-plus"
                       style={{ color: "#33849F" }}
                     />
-                                                      <div className="text-wrap text-dark" >
-                  My <br /> Profile
-                </div>
+                    <div className="text-wrap text-dark">
+                      Create <br /> Booking
+                    </div>
                   </div>
                 </div>
               </Link>
-              <div class="dropdown-menu" style={{ marginTop: "-2px" }}  style={{marginLeft:"-200px"}}>
-                <form class="px-4 py-3" onSubmit={e => e.preventDefault()}>
-                  <center>
-                    <Link to="/userprofile" data-offset="20,10">
-                      <div class="form-group">
-                        <img src={mySelf.url_image} height="130px" />
+            </div>
+            <div className="col-2">
+              <Link to="/mybooking" className="widget-header">
+                <div className="icontext">
+                  <div className="icon-wrap">
+                    <i
+                      className="icon-sm fa fa-list-alt"
+                      style={{ color: "#33849F" }}
+                    />
+                    <div className="text-wrap text-dark">
+                      My <br /> Booking
+                    </div>
+                  </div>
+                  {/* asdasdadasd */}
+                </div>
+              </Link>
+            </div>
+            <div class="col-2">
+              <div class="widget-header dropdown" style={{ marginTop: "-2px" }}>
+                <Link
+                  to="/userprofile"
+                  data-offset="20,10"
+                  onClick={() => {
+                    this.props.getNotificationsss();
+                  }}
+                >
+                  <div class="icontext">
+                    <div class="icon-wrap">
+                      <i
+                        class=" icon-sm fa fa-bell"
+                        style={{ color: "#33849F" }}
+                      />
+
+                      <div className="text-wrap text-dark">
+                        <span class="badge badge-warning">99 New</span> <br />{" "}
+                        Notif
                       </div>
-                    </Link>
-                    <div class="form-group">
-                      <label>Username: {mySelf.username}</label>
-                      <br />
-                      <label>Name: {mySelf.name}</label>
-                      <br />
-                      <label>Tipe: {mySelf.user_type}</label>
-                      <br />
                     </div>
-                    <div class="form-group">
-                      <Link to="/edituser">
-                        <button type="button" class="btn btn-success w-50">
-                          Edit Profile
-                        </button>
-                      </Link>
-                    </div>
-                    <div class="form-group">
-                      <button
-                        onClick={() => {
-                          this.props.signout();
-                          this.state.username = "";
-                          this.state.password = "";
-                        }}
-                        type="submit"
-                        class="btn btn-link"
-                      >
-                        Sign Out
-                      </button>
-                    </div>
+                  </div>
+                </Link>
+                <div
+                  class="dropdown-menu"
+                  style={{ marginTop: "-2px" }}
+                >
+                  <center>
+                    <ul class="list-group scrollable-menu" role="menu" >
+                      {this.props.MyNotification.map((item, key) => {
+                        return (
+                          <NotificationList 
+                          key={key} 
+                          message={item.notification} />
+                        );
+                      })}
+                    </ul>
                   </center>
-                </form>
+                </div>
               </div>
             </div>
-          </div>
-
+            <div class="col-2">
+              <div class="widget-header dropdown" style={{ marginTop: "-2px" }}>
+                <Link to="/userprofile" data-offset="20,10">
+                  <div class="icontext">
+                    <div class="icon-wrap">
+                      <i
+                        class=" icon-sm fa fa-user"
+                        style={{ color: "#33849F" }}
+                      />
+                      <div className="text-wrap text-dark">
+                        My <br /> Profile
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+                <div
+                  class="dropdown-menu"
+                  style={{ marginTop: "-2px" }}
+                  style={{ marginLeft: "-200px" }}
+                >
+                  <form class="px-4 py-3" onSubmit={e => e.preventDefault()}>
+                    <center>
+                      <Link to="/userprofile" data-offset="20,10">
+                        <div class="form-group">
+                          <img
+                            src={this.props.mySelf.url_image}
+                            height="130px"
+                          />
+                        </div>
+                      </Link>
+                      <div class="form-group">
+                        <label>Username: {this.props.mySelf.username}</label>
+                        <br />
+                        <label>Name: {this.props.mySelf.name}</label>
+                        <br />
+                        <label>Tipe: {this.props.mySelf.user_type}</label>
+                        <br />
+                      </div>
+                      <div class="form-group">
+                        <Link to="/edituser">
+                          <button type="button" class="btn btn-success w-50">
+                            Edit Profile
+                          </button>
+                        </Link>
+                      </div>
+                      <div class="form-group">
+                        <button
+                          onClick={() => {
+                            this.props.signout();
+                            this.state.username = "";
+                            this.state.password = "";
+                          }}
+                          type="submit"
+                          class="btn btn-link"
+                        >
+                          Sign Out
+                        </button>
+                      </div>
+                    </center>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </sec>
       );
@@ -368,49 +397,32 @@ class Header extends Component {
       return (
         <div>
           <sec>
-          <div className="row" >
-          {" "}
-          <div className="col-4 ">
-            <Link to="/newfield" className="widget-header">
-              <div className="icontext">
-                <div className="icon-wrap">
-                  {" "}
-                  <i
-                    className="icon-sm fa fa-plus"
-                    style={{ color: "#33849F" }}
-                  />
-                </div>
-                <div className="text-wrap text-dark">
-                  New Field
-                </div>
-              </div>
-            </Link>
-          </div>
-          <div className="col-4">
-            <Link to="/myfields" className="widget-header">
-              <div className="icontext">
-                <div className="icon-wrap">
-                  <i
-                    className="icon-sm fa fa-list-alt"
-                    style={{ color: "#33849F" }}
-                  />
-                </div>
-                <div className="text-wrap text-dark">
-                  My <br /> Fields
-                </div>
-              </div>
-            </Link>
-          </div>
-          <div class="col-4">
-            <div class="widget-header dropdown" style={{ marginTop: "-2px" }}>
-              <Link to="/pebisnisprofile" data-offset="20,10">
-                <div class="icontext">
-                  <div class="icon-wrap">
-                    <i
-                      class=" icon-sm fa fa-user-tie"
-                      style={{ color: "#33849F" }}
-                    />
+            <div className="row">
+              {" "}
+              <div className="col-4 ">
+                <Link to="/newfield" className="widget-header">
+                  <div className="icontext">
+                    <div className="icon-wrap">
+                      {" "}
+                      <i
+                        className="icon-sm fa fa-plus"
+                        style={{ color: "#33849F" }}
+                      />
+                    </div>
+                    <div className="text-wrap text-dark">New Field</div>
                   </div>
+        {/*
+                </Link>
+              </div>
+              <div className="col-4">
+                <Link to="/myfields" className="widget-header">
+                  <div className="icontext">
+                    <div className="icon-wrap">
+                      <i
+                        className="icon-sm fa fa-list-alt"
+                        style={{ color: "#33849F" }}
+                      />*/}
+
                 </div>
               </Link>
               <div class="dropdown-menu" style={{ marginTop: "-2px" }}  style={{marginLeft:"-200px"}}>
@@ -429,40 +441,84 @@ class Header extends Component {
                       <label>Tipe: {mySelf.user_type}</label>
                       <br />
                     </div>
-                    <div class="form-group">
-                      <Link to="/editpebisnis">
-                        <button type="button" class="btn btn-success w-50">
-                          Edit Profile
-                        </button>
-                      </Link>
+                    <div className="text-wrap text-dark">
+                      My <br /> Fields
                     </div>
-                    <div class="form-group">
-                      <button
-                        onClick={() => {
-                          this.props.signout();
-                          this.state.username = "";
-                          this.state.password = "";
-                        }}
-                        type="submit"
-                        class="btn btn-link"
-                      >
-                        Sign Out
-                      </button>
+                  </div>
+                </Link>
+              </div>
+              <div class="col-4">
+                <div
+                  class="widget-header dropdown"
+                  style={{ marginTop: "-2px" }}
+                >
+                  <Link to="/pebisnisprofile" data-offset="20,10">
+                    <div class="icontext">
+                      <div class="icon-wrap">
+                        <i
+                          class=" icon-sm fa fa-user-tie"
+                          style={{ color: "#33849F" }}
+                        />
+                      </div>
                     </div>
-                  </center>
-                </form>
+                  </Link>
+                  <div
+                    class="dropdown-menu"
+                    style={{ marginTop: "-2px" }}
+                    style={{ marginLeft: "-200px" }}
+                  >
+                    <form class="px-4 py-3" onSubmit={e => e.preventDefault()}>
+                      <center>
+                        <Link to="/userprofile" data-offset="20,10">
+                          <div class="form-group">
+                            <img
+                              src={this.props.mySelf.url_image}
+                              height="130px"
+                            />
+                          </div>
+                        </Link>
+                        <div class="form-group">
+                          <label>Username: {this.props.mySelf.username}</label>
+                          <br />
+                          <label>Name: {this.props.mySelf.name}</label>
+                          <br />
+                          <label>Tipe: {this.props.mySelf.user_type}</label>
+                          <br />
+                        </div>
+                        <div class="form-group">
+                          <Link to="/editpebisnis">
+                            <button type="button" class="btn btn-success w-50">
+                              Edit Profile
+                            </button>
+                          </Link>
+                        </div>
+                        <div class="form-group">
+                          <button
+                            onClick={() => {
+                              this.props.signout();
+                              this.state.username = "";
+                              this.state.password = "";
+                            }}
+                            type="submit"
+                            class="btn btn-link"
+                          >
+                            Sign Out
+                          </button>
+                        </div>
+                      </center>
+                    </form>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          </div>
-        </sec>
+          </sec>
         </div>
-      )
+      );
     }
   }
 }
 
 export default connect(
-  "is_login,mySelf, userType",
+  "is_login,mySelf, userType,MyNotification",
   actions
 )(withRouter(Header));
