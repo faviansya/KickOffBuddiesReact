@@ -47,7 +47,7 @@ class PostItem extends Component {
             }]
         }],
         gestureHandling: "greedy",
-        disableDoubleClickZoom: true,
+        disableDoubleClickZoom: false,
         minZoom: 10,
         maxZoom: 20,
 
