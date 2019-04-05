@@ -6,6 +6,7 @@ import { actions } from "../../store";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 import { Host } from "../../Host";
+import { storage } from "../../firebase/index";
 
 class PostItem extends Component {
   constructor(props) {
@@ -19,11 +20,15 @@ class PostItem extends Component {
       favoritSport: "",
       urlimage: "",
       UserData: [],
-
+      image: null,
+      url: "",
+      progress: 0
     };
+    this.handlechange = this.handlechange.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
   }
   componentDidMount = async id => {
-    const Bearer = localStorage.getItem("Bearer")
+    const Bearer = localStorage.getItem("Bearer");
     const self = this;
     const getMyData = {
       method: "get",
@@ -39,11 +44,9 @@ class PostItem extends Component {
         self.setState({ password: response.data.data.password });
         self.setState({ name: response.data.data.name });
         self.setState({ email: response.data.data.email });
-        self.setState({ urlimage: response.data.data.url_image });
         self.setState({ alamat: response.data.data.address });
         self.setState({ favoritSport: response.data.data.favourite_sport });
         self.setState({ phoneNumber: response.data.data.phone_no });
-        // console.log("MySelf", Bearer);
       })
       .catch(function(error) {
         console.log("ASEM", error);
@@ -51,7 +54,7 @@ class PostItem extends Component {
   };
   PostItem = async event => {
     event.preventDefault();
-    const Bearer = localStorage.getItem("Bearer")
+    const Bearer = localStorage.getItem("Bearer");
     const self = this;
     const req = {
       method: "put",
@@ -95,11 +98,46 @@ class PostItem extends Component {
   changeAlamat = e => {
     this.setState({ alamat: e.target.value });
   };
-  changeUrlimage = e => {
-    this.setState({ urlimage: e.target.value });
-  };
   changefavoritSport = e => {
     this.setState({ favoritSport: e.target.value });
+  };
+  handlechange = e => {
+    if (e.target.files[0]) {
+      this.state.image = e.target.files[0];
+    }
+  };
+  handleUpload = event => {
+    event.preventDefault();
+    try {
+      const uploadTask = storage
+        .ref(`images/${this.state.image.name}`)
+        .put(this.state.image);
+      uploadTask.on(
+        "state_changed",
+        snapshot => {
+          //progrress Function
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          this.setState({ progress });
+        },
+        error => {
+          console.log(error);
+        },
+        () => {
+          //Complete Function
+          storage
+            .ref("images")
+            .child(this.state.image.name)
+            .getDownloadURL()
+            .then(url => {
+              this.setState({ urlimage: url });
+              console.log(this.state.urlimage);
+            });
+        }
+      );
+    } catch (err) {
+      console.log("File Kosong");
+    }
   };
 
   render() {
@@ -112,19 +150,22 @@ class PostItem extends Component {
             backgroundPosition: "center"
           }}
         >
-          <div class="container clearfixcol-lg-6 col-md-6 col-sm-10" style={{backgroundColor:"peachpuff", opacity:"0.75", padding:"10px"}}>
+          <div
+            class="container clearfixcol-lg-6 col-md-6 col-sm-10"
+            style={{
+              backgroundColor: "peachpuff",
+              opacity: "0.75",
+              padding: "10px"
+            }}
+          >
             <strong>
               <h2 class=" text-dark">
                 {" "}
-                <label>
-                  Edit User Profile
-                </label>
+                <label>Edit User Profile</label>
               </h2>
             </strong>
             <h5 class=" text-dark">
-              <label>
-                Isikan keterangan yang ingin Anda rubah dibawah
-              </label>
+              <label>Isikan keterangan yang ingin Anda rubah dibawah</label>
             </h5>
           </div>
         </section>
@@ -141,7 +182,6 @@ class PostItem extends Component {
                 class="form-control"
                 id="name"
                 placeholder={this.state.UserData.name}
-                required
               />
             </div>
 
@@ -155,7 +195,6 @@ class PostItem extends Component {
                 class="form-control"
                 placeholder={this.state.UserData.email}
                 id="Email"
-                required
               />
             </div>
 
@@ -169,7 +208,6 @@ class PostItem extends Component {
                 class="form-control"
                 placeholder={this.state.UserData.phone_no}
                 id="Phone"
-                required
               />
             </div>
 
@@ -183,22 +221,20 @@ class PostItem extends Component {
                 class="form-control"
                 placeholder={this.state.UserData.address}
                 id="Alamat"
-                required
               />
             </div>
 
             <div class="form-group col-lg-6">
-              <label for="urlimage">Masukkan URL Image Anda</label>
-              <input
-                onChange={e => {
-                  this.changeUrlimage(e);
-                }}
-                type="title"
-                class="form-control"
-                placeholder={this.state.UserData.url_image}
-                id="urlimage"
-                required
-              />
+              <label for="urlimage">Upload Your Photo Then Click Upload</label>
+              <br />
+              <progress value={this.state.progress} max="100" />
+              <br />
+
+              <input type="file" onChange={this.handlechange} />
+              <br />
+              <br />
+
+              <button onClick={this.handleUpload}>Upload</button>
             </div>
 
             <div class="form-group col-lg-6">
@@ -211,7 +247,6 @@ class PostItem extends Component {
                 class="form-control"
                 id="favoritSport"
                 placeholder={this.state.UserData.favourite_sport}
-                required
               />
             </div>
 

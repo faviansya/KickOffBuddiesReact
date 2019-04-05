@@ -157,10 +157,10 @@ class ChatRoom extends Component {
                           </div>
                         </form>
                       </div>
-                      <div class="col-2" style={{width:"300px"}}>
+                      <div class="col-2">
                         <div class="input-group-append" >
-                          <span class="input-group-text send_btn">
-                            <i class="fas fa-location-arrow" /> Send
+                          <span class="input-group-text send_btn"  style={{marginLeft:"-30px",width:"300px",height:"60px"}}>
+                            <i class="fas fa-paper-plane" style={{fontSize:"30px",marginLeft:"18px"}}/>
                           </span>
                         </div>
                       </div>
