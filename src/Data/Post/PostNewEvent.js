@@ -11,6 +11,7 @@ import GoogleMapReact from 'google-map-react';
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import Mitra from '../Components/Mitra'
+import { SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS } from "constants";
 
 const CurrentLocation = ({text}) => <div className="row"><span>{text}</span><i class="fas fa-street-view fa-2x"></i></div>;
 class PostItem extends Component {
@@ -31,6 +32,41 @@ class PostItem extends Component {
       listLapangan:[],
     };
   }
+
+  getMapOptions = (maps: Maps) => {
+
+    return {
+        streetViewControl: true,
+        scaleControl: true,
+        fullscreenControl: true,
+        styles: [{
+            featureType: "poi.business",
+            elementType: "labels",
+            stylers: [{
+                visibility: "off"
+            }]
+        }],
+        gestureHandling: "greedy",
+        disableDoubleClickZoom: true,
+        minZoom: 10,
+        maxZoom: 20,
+
+        mapTypeControl: true,
+        mapTypeId: maps.MapTypeId.SATELLITE,
+        mapTypeControlOptions: {
+            style: maps.MapTypeControlStyle.HORIZONTAL_BAR,
+            position: maps.ControlPosition.BOTTOM_CENTER,
+            mapTypeIds: [
+                maps.MapTypeId.ROADMAP,
+                maps.MapTypeId.SATELLITE,
+                maps.MapTypeId.HYBRID
+            ]
+        },
+
+        zoomControl: true,
+        clickableIcons: false
+    };
+}
 
   componentDidMount = async () => {
     const self = this;
@@ -201,6 +237,7 @@ class PostItem extends Component {
                   timeCaption="time"
                   onChange={e => {this.changeTime(e)}}                  
                   inline
+                  minDate={Date.now()}
               />
             </div>
 
@@ -239,6 +276,7 @@ class PostItem extends Component {
                     bootstrapURLKeys={{ key: "AIzaSyB3GHH--AbFb9XDA16VX56gMUjQYSKlviQ" }}
                     center={center}
                     defaultZoom={this.state.zoom}
+                    options={this.getMapOptions}
                   >
                   <CurrentLocation
                     lat={this.state.lat}
