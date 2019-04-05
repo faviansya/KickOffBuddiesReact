@@ -13,7 +13,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import Mitra from '../Components/Mitra'
 import { SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS } from "constants";
 
-const CurrentLocation = ({text}) => <div className="row"><span>{text}</span><i class="fas fa-street-view fa-2x"></i></div>;
+const CurrentLocation = ({text}) => <div className="row"><span style={{color:"red", fontWeight:"800", fontSize:"15px"}}>{text}</span>
+<img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png" 
+style={{height:"35px", width:"30px"}}
+/></div>;
 class PostItem extends Component {
   constructor(props) {
     super(props);
@@ -22,16 +25,51 @@ class PostItem extends Component {
       player: "",
       time: "",
       location: "",
+      destination: "",
       place: "",
-      zoom: 15,
       lat: "",
       lng:"",
       ip:"",
       listTempat:[],
       calendar:"",
       listLapangan:[],
+      compound:"",
+      map:"",
+      maps:"",
+      polyline:"",
+      distance:"",
+      duration:"",
     };
   }
+
+  apiIsLoaded = (map,maps) => {
+    const directionsService = new (this.state.maps).DirectionsService();
+    const directionsDisplay = new (this.state.maps).DirectionsRenderer();
+    directionsService.route({
+      origin: this.state.compound,
+      destination: this.state.destination,
+      travelMode: 'DRIVING'
+    }, (response, status) => {
+      if (status === 'OK') {
+        directionsDisplay.setDirections(response);
+        console.log(response.routes, 'Ruta')
+        this.setState({ distance: response.routes[0].legs[0].distance.text });
+        this.setState({ duration: response.routes[0].legs[0].duration.text });
+        const routePolyline = new (this.state.maps).Polyline({
+          path: response.routes[0].overview_path
+        });
+        if (this.state.polyline === ""){
+        
+        this.setState({ polyline: routePolyline });
+        (this.state.polyline).setMap((this.state.map))}
+        else{(this.state.polyline).setMap(null)
+          this.setState({ polyline: routePolyline });
+        (this.state.polyline).setMap((this.state.map))};
+      } else {
+        window.alert('Directions request failed due to ' + status);
+        }
+      });
+};
 
   getMapOptions = (maps: Maps) => {
 
@@ -68,22 +106,15 @@ class PostItem extends Component {
     };
 }
 
+
   componentDidMount = async () => {
     const self = this;
-    const req = {
-      method: "get",
-      url: "https://api.ipify.org?format=json",
-    };  
-    await axios(req)
-      .then(function(response) {
-        self.setState({ ip: response.data.ip });
-      })
-      .catch(function(error) {
-        console.log("ASEM", error);
-      });
       const req2 = {
-        method: "get",
-        url: "https://geo.ipify.org/api/v1?apiKey=at_NxTdI2m8QOkqkhKkzgYgKCeqled3Q&ipAddress=" + this.state.ip,
+        method: "post",
+        url: "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBpO1EGv2m99cpTOqshMRP8Rq0xDBE7nTU",
+        data: {
+          considerIp: true
+        }
       };
     await axios(req2)
     .then(function(response) {
@@ -107,6 +138,17 @@ class PostItem extends Component {
       })
       .catch(function(error) {
       });
+      const req4 = {
+        method: "get",
+        url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + this.state.lat + "," + this.state.lng + "&key=AIzaSyBpO1EGv2m99cpTOqshMRP8Rq0xDBE7nTU"
+      };
+    await axios(req4)
+    .then(function(response) {
+      self.setState({ compound: response.data.plus_code.compound_code });
+    })
+    .catch(function(error) {
+      console.log("ASEM", error);
+    });
   };
 
   PostItem = async event => {
@@ -174,13 +216,19 @@ class PostItem extends Component {
 
     this.setState({ time: DateFix, calendar: date });
   };
-  changeLocation = e => {
-    this.setState({ location: e });
+  changeLocation = (namatempat,lokasi) => {
+    this.setState({ location: lokasi });
+    this.setState({ destination: namatempat });
 
   };
   changeLocationMitra = e => {
     this.setState({ location: e });
   };
+  setMap = (map, maps) => {
+    this.setState({ map: map });
+    this.setState({ maps: maps });
+  };
+
 
   render() {
     const center = {lat: this.state.lat, lng: this.state.lng}
@@ -257,7 +305,7 @@ class PostItem extends Component {
                 <div class="panel-body">
                 {this.state.listLapangan.map((item, key) => {
                     return (
-                  <Mitra key={key} doClick={this.changeLocationMitra} name={item.nama_tempat}/>
+                  <Mitra key={key} doClick={this.changeLocationMitra} name={item.nama_tempat} />
                   )
                 })}
                 </div>
@@ -273,10 +321,12 @@ class PostItem extends Component {
                 <div class="panel-body">
                   <div id="mapcanvas" style={{ height: '500px', width: '100%' }}>
                   <GoogleMapReact
-                    bootstrapURLKeys={{ key: "AIzaSyB3GHH--AbFb9XDA16VX56gMUjQYSKlviQ" }}
+                    bootstrapURLKeys={{ key: "AIzaSyBpO1EGv2m99cpTOqshMRP8Rq0xDBE7nTU" }}
                     center={center}
-                    defaultZoom={this.state.zoom}
+                    defaultZoom={15}
                     options={this.getMapOptions}
+                    yesIWantToUseGoogleMapApiInternals={true}
+                    onGoogleApiLoaded={({ map, maps }) => this.setMap(map, maps)}
                   >
                   <CurrentLocation
                     lat={this.state.lat}
@@ -285,11 +335,15 @@ class PostItem extends Component {
                   />
                   {this.state.listTempat.map((item, key) => {
                     return (
-                  <Map key={key} doClick={this.changeLocation} lat={item.geometry.location.lat} lng={item.geometry.location.lng} name={item.name}/>
+                  <Map key={key} doClick={this.changeLocation} doClick2={this.apiIsLoaded} lat={item.geometry.location.lat} lng={item.geometry.location.lng} name={item.name} address={item.plus_code.compound_code} sport={this.state.sport}/>
                   )
                 })}
                 </GoogleMapReact>
                   </div>
+                </div>
+                <div>
+                  <span style={{paddingRight:"40px"}}>Distance: {this.state.distance}</span>
+                  <span>Duration: {this.state.duration}</span> 
                 </div>
             </div>
         </div>        
