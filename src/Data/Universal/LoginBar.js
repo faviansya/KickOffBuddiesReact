@@ -289,7 +289,6 @@ class Header extends Component {
             <div class="col-2">
               <div class="widget-header dropdown" style={{ marginTop: "-2px" }}>
                 <Link
-                  to="/userprofile"
                   data-offset="20,10"
                   onClick={() => {
                     this.props.getNotificationsss();
