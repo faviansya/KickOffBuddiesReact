@@ -36,13 +36,13 @@ class Item extends Component {
                 </div>
 
                 <div class="one-third">
-                  <div class="stat">{this.props.player}</div>
+                  <div class="stat">{this.props.player  - this.props.pemain_now}</div>
                   <div class="stat-value">Player Needed</div>
                 </div>
 
                 <div class="one-third no-border">
                   <div class="stat">{this.props.player}</div>
-                  <div class="stat-value">Location</div>
+                  <div class="stat-value">Total Player</div>
                 </div>
               </div>
             </div>

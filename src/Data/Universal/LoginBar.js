@@ -228,8 +228,6 @@ class Header extends Component {
                       <br />
                       <label>Name: {mySelf.name}</label>
                       <br />
-                      <label>Tipe: {mySelf.user_type}</label>
-                      <br />
                     </div>
                     <div class="form-group">
                       <Link to="/edituser">
@@ -360,8 +358,6 @@ class Header extends Component {
                         <label>Username: {mySelf.username}</label>
                         <br />
                         <label>Name: {mySelf.name}</label>
-                        <br />
-                        <label>Tipe: {mySelf.user_type}</label>
                         <br />
                       </div>
                       <div class="form-group">

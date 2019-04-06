@@ -10,29 +10,32 @@ class Content extends Component {
                 <div className="row">
                     <div className="col-lg-4 col-md-6 cold-sm-12" style={{textAlign:"center"}}>
                         <h4 style={{textAlign:"center"}}>Badminton</h4>
-                            <img src="http://images.toronto2015.org/system/asset_images/6221/m/09057957.jpg" 
-                            alt="badminton player" class="img-responsive" style={{height:"250px", width:"250px", borderRadius:"50%"}} /> 
+                            <img src="https://www.teachpe.com/images/badminton/badminton-doubles-620.jpg" 
+                            alt="badminton player" class="img-responsive" style={{height:"250px", width:"350px", borderRadius:"25%"}} /> 
                         <p style={{color:"black", textAlign:"justify"}}>
-                            Berlari, menerjang, dan memukul bola yang dilakukan saat bermain badminton dapat 
-                            membakar sekitar 450 kalori per jam. 
+                        Between the running, lunging, diving and ball hitting, playing badminton burns fat at 
+                        approximately 450 calories per hour. This kind of cardiovascular workout can help keep you in tip top shape, 
+                        especially if you’re looking for a good alternative cross-training exercise.
                         </p>
                     </div>  
                     <div className="col-lg-4 col-md-6 cold-sm-12" style={{textAlign:"center"}}>
                         <h4 style={{textAlign:"center"}}>Futsal</h4>
                             <img src="https://collegesport.org.nz/wp-content/uploads/2019/03/20190313-Futsal-%E2%80%93-CSW-Regional-Futsal-Tournament-163.jpg" 
-                            alt="badminton player" class="img-responsive" style={{height:"250px", width:"250px", borderRadius:"50%"}} /> 
+                            alt="badminton player" class="img-responsive" style={{height:"250px", width:"350px", borderRadius:"25%"}} /> 
                         <p style={{color:"black", textAlign:"justify"}} className="center">
-                        Bermain futsal dengan intensitas yang tinggi dapat memacu jantung agar 
-                        lebih kuat sehingga dapat mencegah gangguan jantung dan serangan jantung. 
+                        Engaging in sports like Futsal can also be great for your social and emotional wellbeing. 
+                        Though Futsal focuses mainly on individual skill, it does also require some elements of teamwork and 
+                        therefore good communication skills. By joining a Futsal team, you can make friends for life.  
                         </p>
                     </div>  
                     <div className="col-lg-4 col-md-6 cold-sm-12" style={{textAlign:"center"}}>
                         <h4 style={{textAlign:"center"}}>Basketball</h4>
                             <img src="https://ichef.bbci.co.uk/news/624/cpsprodpb/14FB6/production/_103224958_gettyimages-940813152.jpg" 
-                            alt="badminton player" class="img-responsive" style={{height:"250px", width:"250px", borderRadius:"50%"}} /> 
+                            alt="badminton player" class="img-responsive" style={{height:"250px", width:"350px", borderRadius:"25%"}} /> 
                         <p style={{color:"black", textAlign:"justify"}}>
-                        Basket adalah permainan cepat yang melibatkan banyak lari, melompat, dan melempar. 
-                        Olahraga ini merupakan latihan kardiovaskular yang efektif.
+                        Basketball is a fast-moving game where your heart rate is constantly increased, 
+                        helping to not only reduce the risk of heart disease or a stroke later in life but also 
+                        reduce emotional and mental health issues such as anxiety and depression. 
                         </p>
                     </div>    
                 </div>

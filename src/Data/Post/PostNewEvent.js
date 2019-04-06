@@ -189,7 +189,7 @@ class PostItem extends Component {
         <section class="section-pagetop bg-dark-50" style={{backgroundImage:`url("https://www.sportslaw.org/images/SliderImg-04.jpg")`,  backgroundPosition:"center"}}>
           <div class="container clearfix">
             <strong><h2 class=" text-white">Create a New Player Room</h2></strong>
-            <h5 class=" text-white" style={{textShadow:"1px 1px black"}}>Isikan Semua Field Agar Keterangan Player Room Anda Lengkap</h5>
+            <h5 class=" text-white" style={{textShadow:"1px 1px black"}}>Fill all the required fields so that your player room will be complete.</h5>
 
           </div>
         </section>
@@ -197,7 +197,7 @@ class PostItem extends Component {
         <div class="container mt-5">
           <form>
             <div class="form-group col-lg-6">
-              <label for="location" style={{color:"#007bff"}}><h4>Olahraga</h4></label>
+              <label for="location" style={{color:"#007bff"}}><h4>Sport</h4></label>
               <select
                 onChange={e => {
                   this.changeOlagraga(e);
@@ -206,14 +206,14 @@ class PostItem extends Component {
                 placeholder="Masukkan sport Item"
                 id="sport"
               >
-                <option disabled selected value>Pilih Olahraga</option>
+                <option disabled selected value>Choose a sport</option>
                 <option>badminton</option>
                 <option>basketball</option>
                 <option>futsal</option>
               </select>
             </div>
             <div class="form-group col-lg-6">
-              <label for="player" style={{color:"#007bff"}}><h4>Jumlah Pemain</h4></label>
+              <label for="player" style={{color:"#007bff"}}><h4>Number of players</h4></label>
               <input
                 onChange={e => {
                   this.changePlayer(e);
@@ -221,13 +221,13 @@ class PostItem extends Component {
                 type="number"
                 class="form-control"
                 id="player"
-                placeholder="Masukkan Jumlah Pemain"
+                placeholder="How many players you want to play with, including you."
                 required
               />
             </div>
 
             <div class="form-group col-lg-6">
-              <label for="waktu olahraga" style={{color:"#007bff"}}><h4>Waktu Olahraga</h4></label><br/>
+              <label for="waktu olahraga" style={{color:"#007bff"}}><h4>Intended Time to Play</h4></label><br/>
               <DatePicker 
                   selected={this.state.calendar}
                   showTimeSelect
@@ -243,16 +243,12 @@ class PostItem extends Component {
 
 
             <div class="form-group col-lg-6">
-              <label for="waktu olahraga" style={{color:"#007bff"}}><h4>Tempat Olahraga</h4></label><br/>
-              <span>Pilih salah satu: mitra kami atau tempat olahraga terdekat</span>
+              <label for="waktu olahraga" style={{color:"#007bff"}}><h4>Sport Venue</h4></label><br/>
+              <span>Click below to choose which sport venue you want to play at.</span><br />
+              <span>Zoom out to see more choices, zoom in to see detailed vanue.</span><br /><br/>
             <div class="container">
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#first">Mitra Kami</a>
-                    </h4>
-                </div>
             <div id="first" class="panel-collapse collapse in">
                 <div class="panel-body">
                 {this.state.listLapangan.map((item, key) => {
@@ -266,7 +262,7 @@ class PostItem extends Component {
         <div id="map-acc" class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#second">Tempat Olahraga Terdekat </a>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#second">Sport Venue </a>
                 </h4>
             </div>
             <div id="second" class="panel-collapse collapse">

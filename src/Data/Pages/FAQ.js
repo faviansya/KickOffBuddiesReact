@@ -26,15 +26,19 @@ class FAQ extends Component {
                 <div className="panel-heading">
                     <h5 className="panel-title">
                         <br />
-                        <a className="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Apakah Kick Off Buddies?</a>
+                        <a className="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">What is Kick Off Buddies?</a>
                     </h5>
                 </div>
                 <div id="collapseOne" className="panel-collapse collapse in">
-                    <div className="panel-body">
-                        <strong>Kick Off Buddies</strong> merupakan aplikasi yang membantu penggunanya untuk menemukan kawan/pemain lain untuk berolahraga.
-                        Di aplikasi ini juga, pengguna bisa langsung melakukan booking tempat olahraga dan membayar
-                         biaya sewa lapangan secara otomatis lewat aplikasi sesuai jumlah pemain. 
-                         <br />
+                    <div className="panel-body" style={{textAlign:"justify"}}>
+                        <strong>Kick Off Buddies</strong> is a web-based application that helps users to find other friends / players 
+                        to play sport together.
+                        In this application too, users can immediately book a sport venue and pay 
+                        the cost of renting the field automatically through the application and share the fee accordingly to the number of players. 
+                        For example, if you play Badminton with the total players of four, including you, the fee of Rp 35,000,- per hour will be deducted 
+                        automatically with the amount of Rp 35,000,- per hour divided by four. That will give you a very convenient way of finding friends to play sport with 
+                        as well as share the booking fee of the sport venue all in one single app.
+                        <br />
                     </div>
                 </div>
             </div>
@@ -42,13 +46,13 @@ class FAQ extends Component {
                 <div className="panel-heading">
                     <h5 className="panel-title">
                         <br />
-                        <a className="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">Bagaimana cara menggunakan aplikasi Kick Off Buddies?</a>
+                        <a className="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">How can I use Kick Off Buddies application?</a>
                     </h5>
                 </div>
                 <div id="collapseEleven" className="panel-collapse collapse">
-                    <div className="panel-body">
-                        Mudah saja, kamu tinggal download aplikasi ini di goole store atau app store, register dan pilih olahraga yang kamu inginkan. 
-                        Aplikasi Kick Off Buddies akan mempertemukan kamu dengan pemain lain yang juga punya hobby olahraga yang sama dengan yang kamu miliki.
+                    <div className="panel-body" style={{textAlign:"justify"}}>
+                        It's actually pretty simple, you can access our website through mobile or laptop, register and well done. Even if you use your mobile phone, 
+                        you can easily add the website to your phone and use it as a mobile application.
                         <br />
                     </div>
                 </div>
@@ -58,30 +62,17 @@ class FAQ extends Component {
                 <div className="panel-heading">
                     <h5 className="panel-title">
                         <br />
-                        <a className="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Siapa yang bisa mendaftar untuk menjadi penyedia lapangan Olahraga?</a>
-                    </h5>
-                </div>
-                <div id="collapseTwo" className="panel-collapse collapse">
-                    <div className="panel-body">
-                        Siapa pun yang memiliki lapangan olahraga yang disewakan bisa mendaftarkan diri dan usahanya untuk di publikasikan melalui <strong>Kick Off Buddies</strong>.
-                        <br />
-                    </div>
-                </div>
-            </div>
-            <div className="panel panel-default">
-                <div className="panel-heading">
-                    <h5 className="panel-title">
-                        <br />
-                        <a className="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Apakah pendaftarannya gratis?</a>
+                        <a className="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Is the registration free?</a>
                     </h5>
                 </div>
                 <div id="collapseThree" className="panel-collapse collapse">
-                    <div className="panel-body">
-                        Ya. Pendaftarannya gratis. Langkah-langkah yang perlu dilakukan untuk mendaftar sebagai berikut: 
+                    <div className="panel-body" style={{textAlign:"justify"}}>
+                        Yes, the registration is completely free, you will be asked to top up your credit for you to easily pay the booking fee of the sport venue.
+                        Here are the easy steps you need to do to sign up at Kick Off Buddies: 
                         <ul>
                             <li>Sign up</li>
-                            <li>Isi data diri</li>
-                            <li>Kemudian kamu bisa melakukan pencarian teman untuk olahraga lewat my booking.</li>
+                            <li>Fill your username and password. Make sure not to tell these to anyone else, except yourself.</li>
+                            <li>Then, you can edit your profile anytime you want and find other people to play sports together.</li>
                         </ul>
                     </div>
                 </div>
@@ -90,19 +81,42 @@ class FAQ extends Component {
                 <div className="panel-heading">
                     <h5 className="panel-title">
                         <br />
-                        <a className="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Apa itu player room?</a>
+                        <a className="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">What is a Player Room?</a>
                     </h5>
                 </div>
                 <div id="collapseFour" className="panel-collapse collapse">
-                    <div className="panel-body">
-                        Player room merupakan ruang untuk kamu bertemu dan bergabung dengan pemain lain untuk berolahraga bersama di waktu dan tempat yang diinginkan 
-                        dengan langkah-langkah sebagai berikut:
+                    <div className="panel-body" style={{textAlign:"justify"}}> 
+                        Player room is a space for you to meet and join other players to play sports together at the desired time and place
+                        with the following steps:
                         <ul>
-                            <li>Tinggal click di empty slot.</li>
-                            <li>Profile kamu akan muncul dan tergabung di ruang pemain tersebut.</li>
-                            <li>Tunggu sampai jumlah pemain yang diinginkan sudah terpenuhi. Data di ruang player kamu akan muncul di user profile sebelah kanan bawah
-                                di bagian current booking.
-                            </li>
+                            <li>Click on the Sports at the navigation bar on the top. Click on one of the sports that you would like to choose.</li>
+                            <li>Click on the room that you would like to choose, you can see how many players needed on that particular room.</li>
+                            <li>Click on the empty slot.</li>
+                            <li>Your profile will appear on that room.</li>
+                            <li>Wait until the player room has reached its maximum capacity, then you will get a notification about it.</li>
+                            <li>You can also chat all other players in that player room through the chat group.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div className="panel panel-default">
+                <div className="panel-heading">
+                    <h5 className="panel-title">
+                        <br />
+                        <a className="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">How can I create a new Player Room?</a>
+                    </h5>
+                </div>
+                <div id="collapseFive" className="panel-collapse collapse">
+                    <div className="panel-body" style={{textAlign:"justify"}}>
+                        <ul>
+                            <li>Choose a sport that you want to play.</li>
+                            <li>Fill in the number of players you want to play with, including yourself.</li>
+                            <li>Choose the time of when you want to play, including date and hour.</li>
+                            <li>Click on the sport venue.</li>
+                            <li>Click on the sport venue that you want to play at on the pop-up map.</li>
+                            <li>Click submit, and then well done. Your new player room has been successfully created.</li>
+                            <li>You can check it out on my booking navigation bar.</li>
+                            <li>Your player room will also appear on the common sports so that other people can join your sport planning and schedule.</li>
                         </ul>
                     </div>
                 </div>
