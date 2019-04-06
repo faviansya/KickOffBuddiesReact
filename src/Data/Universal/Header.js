@@ -61,7 +61,7 @@ class Header extends Component {
                       data-toggle="dropdown"
                     >
                       {" "}
-                      Olahraga{" "}
+                      Sports{" "}
                     </Link>
                     <ul
                       className="dropdown-menu Navbar"
@@ -88,13 +88,25 @@ class Header extends Component {
                             this.props.changeCategory("basket");
                           }}
                         >
-                          Basket{" "}
+                          Basketball{" "}
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          className="dropdown-item medianav"
+                          to="/allsport"
+                          id="inside"
+                          onClick={() => {
+                            this.props.changeCategory("futsal");
+                          }}
+                        >
+                          Futsal
                         </Link>
                       </li>
                     </ul>
                   </li>
                   <li className="nav-item">
-                    <Link to="/faq"> Pertanyaan Umum </Link>
+                    <Link to="/faq"> FAQ </Link>
                     <ul
                       className="dropdown-menu Navbar"
                       style={{ marginTop: "-2px" }}
