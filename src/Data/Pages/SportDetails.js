@@ -16,16 +16,86 @@ import { Redirect } from "react-router-dom";
 import { Host } from "../../Host";
 import DetailsJumlahPemain from "../Components/DetailsJumlahPemain";
 import DetailsOlahRaga from "../Components/DetailsOlahRaga";
+import GoogleMapReact from 'google-map-react';
 
+const CurrentLocation = ({text}) => <div className="row"><span style={{color:"red", fontWeight:"800", fontSize:"13px"}}>{text}</span>
+<img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png" 
+style={{height:"30px", width:"25px"}}
+/></div>;
 class Details extends Component {
   constructor(props) {
     super(props);
     this.state = {
       listDetails: [],
       listPemain: [],
-      status: ""
+      status: "",
+      destination: "",
+      compound: "",
+      lat: "",
+      lng: "",
+      lat_tujuan: "",
+      lng_tujuan: "",
+      vicinity: "",
     };
   }
+
+  apiIsLoaded = (map,maps) => {
+    const directionsService = new maps.DirectionsService();
+    const directionsDisplay = new maps.DirectionsRenderer();
+    directionsService.route({
+      origin: this.state.compound,
+      destination: this.state.destination,
+      travelMode: 'DRIVING'
+    }, (response, status) => {
+      if (status === 'OK') {
+        directionsDisplay.setDirections(response);
+        console.log(response, 'Ruta')
+        const routePolyline = new maps.Polyline({
+          path: response.routes[0].overview_path
+        });
+        routePolyline.setMap(map)
+      } else {
+        window.alert('Directions request failed due to ' + status);
+        }
+      });
+};
+
+
+  getMapOptions = (maps: Maps) => {
+
+    return {
+        streetViewControl: true,
+        scaleControl: true,
+        fullscreenControl: true,
+        styles: [{
+            featureType: "poi.business",
+            elementType: "labels",
+            stylers: [{
+                visibility: "off"
+            }]
+        }],
+        gestureHandling: "greedy",
+        disableDoubleClickZoom: false,
+        minZoom: 10,
+        maxZoom: 20,
+
+        mapTypeControl: true,
+        mapTypeId: maps.MapTypeId.ROADMAP,
+        mapTypeControlOptions: {
+            style: maps.MapTypeControlStyle.HORIZONTAL_BAR,
+            position: maps.ControlPosition.BOTTOM_CENTER,
+            mapTypeIds: [
+                maps.MapTypeId.ROADMAP,
+                maps.MapTypeId.SATELLITE,
+                maps.MapTypeId.HYBRID
+            ]
+        },
+
+        zoomControl: true,
+        clickableIcons: false
+    };
+}
+
   GetPlayerList = async ()=>{
     const Bearer = localStorage.getItem("Bearer")
     const self = this;
@@ -55,6 +125,8 @@ class Details extends Component {
       await axios(req2)
       .then(function(response) {
         self.setState({ listDetails: response.data.data });
+        self.setState({ destination: response.data.data.compound });
+        self.setState({ vicinity: response.data.data.vicinity });
       })
       .catch(function(error) {
         alert("Your Room Has Been Deleted Because It's Empty")
@@ -63,7 +135,47 @@ class Details extends Component {
       });
   }
   componentDidMount = async () => {
-    this.GetPlayerList();
+    const self = this;
+    await self.GetPlayerList();
+    const req2 = {
+      method: "post",
+      url: "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBpO1EGv2m99cpTOqshMRP8Rq0xDBE7nTU",
+      data: {
+        considerIp: true
+      }
+    };
+  await axios(req2)
+  .then(function(response) {
+    self.setState({ lat: response.data.location.lat,
+                    lng: response.data.location.lng
+     });
+      })
+      .catch(function(error) {
+        console.log("ASEM", error);
+      });
+      const req4 = {
+        method: "get",
+        url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + this.state.lat + "," + this.state.lng + "&key=AIzaSyBpO1EGv2m99cpTOqshMRP8Rq0xDBE7nTU"
+      };
+    await axios(req4)
+    .then(function(response) {
+      self.setState({ compound: response.data.plus_code.compound_code });
+    })
+    .catch(function(error) {
+      console.log("ASEM", error);
+    });
+    const req3 = {
+      method: "get",
+      url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + this.state.listDetails.location + ", " + this.state.vicinity + "&key=AIzaSyBpO1EGv2m99cpTOqshMRP8Rq0xDBE7nTU"
+    };
+  await axios(req3)
+  .then(function(response) {
+    self.setState({ lat_tujuan: response.data.results[0].geometry.location.lat });
+    self.setState({ lng_tujuan: response.data.results[0].geometry.location.lng });
+  })
+  .catch(function(error) {
+    console.log("ASEM", error);
+  });
   };
   JoinSport = async () => {
     const Bearer = localStorage.getItem("Bearer")
@@ -109,6 +221,7 @@ class Details extends Component {
   }
 
   render() {
+    const center = {lat: this.state.lat, lng: this.state.lng}
     if (this.state.status == "failed") {
       alert("Kamu Telah Join Di Game Ini");
       this.setState({ status: "" });
@@ -156,6 +269,27 @@ class Details extends Component {
             </div>
           </div>
         </section>
+        <div id="mapcanvas" style={{ height: '500px', width: '100%' }}>
+          <GoogleMapReact
+            bootstrapURLKeys={{ key: "AIzaSyBpO1EGv2m99cpTOqshMRP8Rq0xDBE7nTU" }}
+            center={center}
+            defaultZoom={15}
+            options={this.getMapOptions}
+            yesIWantToUseGoogleMapApiInternals={true}
+            onGoogleApiLoaded={({ map, maps }) => this.apiIsLoaded(map, maps)}
+          >
+          <CurrentLocation
+            lat={this.state.lat}
+            lng={this.state.lng}
+            text="You're here"
+          />
+          <div className="row" lat={this.state.lat_tujuan} lng={this.state.lng_tujuan}>
+            <span style={{color:"red", fontWeight:"800", fontSize:"13px"}}>{this.state.listDetails.location}</span>
+            <img src="http://www.newdesignfile.com/postpic/2012/01/red-flag-icon_252146.png" style={{height:"30px", width:"25px"}}/>
+            </div>
+        </GoogleMapReact>
+          </div>
+
       </div>
     );
   }
