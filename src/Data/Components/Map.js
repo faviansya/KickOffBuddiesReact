@@ -8,7 +8,7 @@ const AnyReactComponent = ({text}) => <div className="row"><span>{text}</span><i
  
 class Map extends Component {
   changeLocation = async event => {
-    await this.props.doClick(event.target.id,event.target.value);
+    await this.props.doClick(event.target.id,event.target.value,this.props.vicinity);
     this.props.doClick2()
   };
   

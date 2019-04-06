@@ -39,6 +39,7 @@ class PostItem extends Component {
       polyline:"",
       distance:"",
       duration:"",
+      vicinity:"",
     };
   }
 
@@ -90,7 +91,7 @@ class PostItem extends Component {
         maxZoom: 20,
 
         mapTypeControl: true,
-        mapTypeId: maps.MapTypeId.SATELLITE,
+        mapTypeId: maps.MapTypeId.ROADMAP,
         mapTypeControlOptions: {
             style: maps.MapTypeControlStyle.HORIZONTAL_BAR,
             position: maps.ControlPosition.BOTTOM_CENTER,
@@ -166,6 +167,8 @@ class PostItem extends Component {
         player: self.state.player,
         time: self.state.time,
         location: self.state.location,
+        compound: self.state.destination,
+        vicinity: self.state.vicinity,
       }
     };
     await axios(req)
@@ -216,10 +219,10 @@ class PostItem extends Component {
 
     this.setState({ time: DateFix, calendar: date });
   };
-  changeLocation = (namatempat,lokasi) => {
+  changeLocation = (namatempat,lokasi,vicinity) => {
     this.setState({ location: lokasi });
     this.setState({ destination: namatempat });
-
+    this.setState({ vicinity: vicinity });
   };
   changeLocationMitra = e => {
     this.setState({ location: e });
@@ -335,7 +338,7 @@ class PostItem extends Component {
                   />
                   {this.state.listTempat.map((item, key) => {
                     return (
-                  <Map key={key} doClick={this.changeLocation} doClick2={this.apiIsLoaded} lat={item.geometry.location.lat} lng={item.geometry.location.lng} name={item.name} address={item.plus_code.compound_code} sport={this.state.sport}/>
+                  <Map key={key} doClick={this.changeLocation} doClick2={this.apiIsLoaded} lat={item.geometry.location.lat} lng={item.geometry.location.lng} name={item.name} address={item.plus_code.compound_code} vicinity={item.vicinity} sport={this.state.sport}/>
                   )
                 })}
                 </GoogleMapReact>
@@ -343,7 +346,7 @@ class PostItem extends Component {
                 </div>
                 <div>
                   <span style={{paddingRight:"40px"}}>Distance: {this.state.distance}</span>
-                  <span>Duration: {this.state.duration}</span> 
+                  <span>Duration: {this.state.duration} By Driving</span> 
                 </div>
             </div>
         </div>        
