@@ -692,3 +692,21 @@ textarea:hover
 	max-height: 200px;
 	overflow-x: hidden;
 }
+
+/* ************Text on Slider images*********** */
+.container1 {
+  position: relative;
+  text-align: center;
+  color: black;
+}
+
+.centered {
+	position: absolute;
+	padding: 20px;
+	opacity: 0.8;
+	text-align: justify;
+  top: 50%;
+  left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: lightblue;
+}
