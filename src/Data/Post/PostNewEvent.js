@@ -66,9 +66,7 @@ class PostItem extends Component {
         else{(this.state.polyline).setMap(null)
           this.setState({ polyline: routePolyline });
         (this.state.polyline).setMap((this.state.map))};
-      } else {
-        window.alert('Directions request failed due to ' + status);
-        }
+      }
       });
 };
 

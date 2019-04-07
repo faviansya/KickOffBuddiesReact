@@ -54,9 +54,7 @@ class Details extends Component {
           path: response.routes[0].overview_path
         });
         routePolyline.setMap(map)
-      } else {
-        window.alert('Directions request failed due to ' + status);
-        }
+      }
       });
 };
 
