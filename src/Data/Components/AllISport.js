@@ -25,9 +25,10 @@ class Item extends Component {
               <div class="clash-card__level clash-card__level--barbarian">
                 -------------
               </div>
-              <div class="clash-card__unit-name">Location</div>
+              <div class="clash-card__unit-name">{this.props.locationssss}</div>
               <div class="clash-card__unit-description">
-                {this.props.locationssss}
+                <span>{this.props.time.slice(10,19)}</span><br/>
+                {this.props.time.slice(0,10)}
               </div>
               <div class="clash-card__unit-stats clash-card__unit-stats--barbarian clearfix">
                 <div class="one-third">

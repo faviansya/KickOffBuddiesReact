@@ -103,6 +103,18 @@ class Header extends Component {
                           Futsal
                         </Link>
                       </li>
+                      <li>
+                        <Link
+                          className="dropdown-item medianav"
+                          to="/allsport"
+                          id="inside"
+                          onClick={() => {
+                            this.props.changeCategory("tennis");
+                          }}
+                        >
+                          Tennis
+                        </Link>
+                      </li>
                     </ul>
                   </li>
                   <li className="nav-item">

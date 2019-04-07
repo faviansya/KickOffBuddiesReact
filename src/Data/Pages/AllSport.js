@@ -12,7 +12,7 @@ class Home extends Component {
         <section class="section-content bg padding-y-sm">
           <div class="container">
             <div class="padding-y-sm">
-              <span>... Booking "Ditemukan"</span>
+              <span>... Booking "Ditemukan"</span><br/>
             </div>
             <div class="row-sm">
               {this.props.categoryItem.map((item, key) => {
@@ -29,6 +29,7 @@ class Home extends Component {
                     img={arc_img}
                     pemain_now={item.pemain_saat_ini}
                     locationssss={item.location}
+                    time={item.time}
                   />
                 );
               })}

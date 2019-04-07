@@ -15,9 +15,9 @@ class DetailsJumlahPemain extends Component {
               <i class="fas fa-users white"></i>
             </span>
             <figcaption class="text-wrap">
-              <h5 class="title">Pemain</h5>
+              <h5 class="title">Number of Player</h5>
               <p class="text-muted">
-              {this.props.player} Pemain
+              {this.props.player} Players
               </p>
             </figcaption>
           </figure>

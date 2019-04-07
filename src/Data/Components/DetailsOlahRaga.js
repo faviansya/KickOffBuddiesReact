@@ -15,7 +15,7 @@ class DetailsOlahRaga extends Component {
               <i class="fas fa-volleyball-ball white"></i>
             </span>
             <figcaption class="text-wrap">
-              <h5 class="title">Olah Raga</h5>
+              <h5 class="title">Sport</h5>
               <p class="text-muted">
                 {this.props.sport}
               </p>

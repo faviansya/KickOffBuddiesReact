@@ -17,7 +17,7 @@ class DetailsLocation extends Component {
             <figcaption class="text-wrap">
               <h5 class="title">
               
-              Tempat</h5>
+              Location</h5>
               <p class="text-muted">
               {this.props.DetailsLocation}
               </p>
