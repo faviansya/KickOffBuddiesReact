@@ -127,32 +127,33 @@ class PostItem extends Component {
           }}
         >
           <div
-            class="container clearfix col-lg-4 col-md-4 col-sm-10"
+            class="container clearfix col-lg-6 col-md-6 col-sm-10"
             style={{
               backgroundColor: "peachpuff",
               opacity: "0.75",
-              padding: "10px"
+              padding: "10px",
+              textAlign: "center"
             }}
           >
             <strong>
               <h2 class=" text-dark">
                 {" "}
                 <label>
-                  <strong>Daftar Baru</strong>
+                  <strong>Sign Up</strong>
                 </label>
               </h2>
             </strong>
             <h5 class=" text-dark">
-              <label>Isikan Semua Keterangan Anda Dibawah</label>
+              <label>Fill in all the required fields below. You can edit your user profile anytime once you have registered.</label>
             </h5>
           </div>
-          <div className="col-lg-8 col-md-8 col-sm-2" />
+          <div className="col-lg-6 col-md-6 col-sm-2" />
         </section>
 
         <div class="container mt-5">
           <form>
             <div class="form-group col-lg-6">
-              <label for="username">Masukkan Username</label>
+              <label for="username">Username</label><label style={{color:"red"}}>*</label>
               <input
                 onChange={e => {
                   this.changeUsername(e);
@@ -165,7 +166,7 @@ class PostItem extends Component {
               />
             </div>
             <div class="form-group col-lg-6">
-              <label for="password">Masukkan Password</label>
+              <label for="password">Password</label><label style={{color:"red"}}>*</label>
               <input
                 onChange={e => {
                   this.changePassword(e);
@@ -178,7 +179,7 @@ class PostItem extends Component {
               />
             </div>
             <div class="form-group col-lg-6">
-              <label for="Cpassword">Confirm Password</label>
+              <label for="Cpassword">Confirm Password</label><label style={{color:"red"}}>*</label>
               <input
                 type="password"
                 class="form-control"
@@ -189,7 +190,7 @@ class PostItem extends Component {
             </div>
 
             <div class="form-group col-lg-6">
-              <label for="name">Masukkan Nama</label>
+              <label for="name">Full Name</label>
               <input
                 onChange={e => {
                   this.changeName(e);
@@ -197,13 +198,13 @@ class PostItem extends Component {
                 type="title"
                 class="form-control"
                 id="name"
-                placeholder="name"
+                placeholder="Your Full Name"
                 required
               />
             </div>
 
             <div class="form-group col-lg-6">
-              <label for="Email">Masukkan Email Anda</label>
+              <label for="Email">Email Address</label>
               <input
                 onChange={e => {
                   this.changeEmail(e);
@@ -217,7 +218,7 @@ class PostItem extends Component {
             </div>
 
             <div class="form-group col-lg-6">
-              <label for="Phone">Masukkan Nomor Telepon Anda</label>
+              <label for="Phone">Phone No.</label>
               <input
                 onChange={e => {
                   this.changephoneNumber(e);
@@ -231,21 +232,21 @@ class PostItem extends Component {
             </div>
 
             <div class="form-group col-lg-6">
-              <label for="Alamat">Masukkan Alamat Anda</label>
+              <label for="Alamat">Address</label>
               <input
                 onChange={e => {
                   this.changeAlamat(e);
                 }}
                 type="title"
                 class="form-control"
-                placeholder="Alamat"
+                placeholder="Your Adress"
                 id="Alamat"
                 required
               />
             </div>
 
             <div class="form-group col-lg-6">
-              <label for="urlimage">Upload Your Photo Then Click Upload</label>
+              <label for="urlimage">Choose Your Photo Then Click Upload</label>
               <br />
               <progress value={this.state.progress} max="100" />
               <br />
@@ -256,7 +257,7 @@ class PostItem extends Component {
             </div>
 
             <div class="form-group col-lg-6">
-              <label for="favoritSport">Masukkan Olahraga Favorit Anda</label>
+              <label for="favoritSport">Favourite Sport</label>
               <input
                 onChange={e => {
                   this.changefavoritSport(e);
@@ -264,7 +265,7 @@ class PostItem extends Component {
                 type="title"
                 class="form-control"
                 id="favoritSport"
-                placeholder="favoritSport"
+                placeholder="Favorite Sport, e.g. Badminton"
                 required
               />
             </div>
