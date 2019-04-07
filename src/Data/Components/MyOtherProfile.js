@@ -12,13 +12,13 @@ class Item extends Component {
         <div class="d-flex bd-highlight">
           <div class="img_cont">
             <img
-              src="https://www.freshmorningquotes.com/wp-content/uploads/2015/11/cute-and-beautifull-girls-profile-pictures.jpg"
+              src={this.props.img}
               class="rounded-circle user_img"
             />
           </div>
           <div class="user_info">
-            <span>Khadija Mehr</span>
-            <p>Khadija left 50 mins ago</p>
+            <span>{this.props.name}</span>
+            <p></p>
           </div>
         </div>
       </li>
