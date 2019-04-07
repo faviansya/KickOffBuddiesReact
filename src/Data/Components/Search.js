@@ -21,7 +21,7 @@ class Carousel extends Component {
   };
   render() {
     return (
-      <div className="col-lg-8-24 col-12">
+      <div className="col-lg-7-24 col-12">
         <form action="" className="py-1" onSubmit={e => e.preventDefault()}>
           <div className="input-group w-100">
             {/* <select className="custom-select" name="category_name">

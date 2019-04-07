@@ -299,7 +299,7 @@ class Header extends Component {
                       />
 
                       <div className="text-wrap text-dark">
-                        <span class="badge badge-warning">99 New</span> <br />{" "}
+                        <span class="badge badge-warning">New</span> <br />{" "}
                         Notif
                       </div>
                     </div>
@@ -381,6 +381,22 @@ class Header extends Component {
                       </div>
                     </center>
                   </form>
+                </div>
+              </div>
+            </div>
+            <div className="col-2">
+              <div  className="widget-header">
+                <div className="icontext">
+                  <div className="icon-wrap">
+                    <i
+                      className="icon-sm fa fa-money-bill-wave"
+                      style={{ color: "#33849F" }}
+                    />
+                    <div className="text-wrap text-dark">
+                      Duit <br /> Rp.{mySelf.balance}
+                    </div>
+                  </div>
+                  {/* asdasdadasd */}
                 </div>
               </div>
             </div>
