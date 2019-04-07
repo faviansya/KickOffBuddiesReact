@@ -245,6 +245,7 @@ class PostItem extends Component {
 
         <div class="container mt-5">
           <form>
+            <div className="row">
             <div class="form-group col-lg-6">
               <label for="location" style={{color:"#007bff"}}><h4>Sport</h4></label>
               <select
@@ -256,12 +257,13 @@ class PostItem extends Component {
                 id="sport"
               >
                 <option disabled selected value>Choose a sport</option>
-                <option>badminton</option>
-                <option>basketball</option>
-                <option>futsal</option>
+                <option>Badminton</option>
+                <option>Basketball</option>
+                <option>Futsal</option>
+                <option>Tennis</option>
               </select>
-            </div>
-            <div class="form-group col-lg-6">
+            
+            <div class="form-group"><br/>
               <label for="player" style={{color:"#007bff"}}><h4>Number of players</h4></label>
               <input
                 onChange={e => {
@@ -275,7 +277,7 @@ class PostItem extends Component {
               />
             </div>
 
-            <div class="form-group col-lg-6">
+            <div class="form-group">
               <label for="waktu olahraga" style={{color:"#007bff"}}><h4>Intended Time to Play</h4></label><br/>
               <DatePicker 
                   selected={this.state.calendar}
@@ -291,10 +293,17 @@ class PostItem extends Component {
                   maxTime={new Date().setHours(21)}
               />
             </div>
-
+              <button
+                  onClick={this.PostItem}
+                  type="submit"
+                  class="btn btn-primary d-none d-lg-block"
+                >
+                  Submit
+                </button>
+            </div>
 
             <div class="form-group col-lg-6">
-              <label for="waktu olahraga" style={{color:"#007bff"}}><h4>Sport Venue</h4></label><br/>
+              <label for="waktu olahraga" style={{color:"#007bff"}}><h4>{" "}Sport Venue</h4></label><br/>
               <span>Click below to choose which sport venue you want to play at.</span><br />
               <span>Zoom out to see more choices, zoom in to see detailed vanue.</span><br /><br/>
             <div class="container">
@@ -311,14 +320,7 @@ class PostItem extends Component {
             </div>
                 </div>
         <div id="map-acc" class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#second">Sport Venue </a>
-                </h4>
-            </div>
-            <div id="second" class="panel-collapse collapse">
-                <div class="panel-body">
-                  <div id="mapcanvas" style={{ height: '500px', width: '100%' }}>
+                  <div id="mapcanvas" style={{ height: '350px', width: '100%' }}>
                   <GoogleMapReact
                     bootstrapURLKeys={{ key: "AIzaSyBpO1EGv2m99cpTOqshMRP8Rq0xDBE7nTU" }}
                     center={center}
@@ -339,30 +341,30 @@ class PostItem extends Component {
                 })}
                 </GoogleMapReact>
                   </div>
-                </div>
                 <div>
                   <span style={{paddingRight:"40px"}}>Distance: {this.state.distance}</span>
-                  <span>Duration: {this.state.duration} By Driving</span> 
+                  <span className="ml-5">Duration: {this.state.duration} </span><span className="ml-5">By Driving</span>
                 </div>
-            </div>
+                <br/><br/>
         </div>        
     </div>
 </div>
 </div>
 
 
-        
+
       <div class="form-group ml-3">
             <br /><br />
             <br /><br />
-            <br />
-              <button
-                onClick={this.PostItem}
-                type="submit"
-                class="btn btn-primary"
-              >
-                Submit
-              </button>
+            <br /><br />
+            <button
+                  onClick={this.PostItem}
+                  type="submit"
+                  class="btn btn-primary d-block d-lg-none"
+                >
+                  Submit
+                </button>
+            </div>
             </div>
           </form>
         </div>

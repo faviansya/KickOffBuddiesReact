@@ -13,7 +13,7 @@ class Map extends Component {
   };
   
   render() {
-    if (this.props.sport === "basketball") {
+    if (this.props.sport === "Basketball") {
     return (
     <label className="row" lat={this.props.lat} lng={this.props.lng}>
       <input type="radio" name="test"  onClick={e => {this.changeLocation(e)}} value={this.props.name} id={this.props.address}/>
@@ -22,7 +22,7 @@ class Map extends Component {
       <span style={{color:"blue", fontWeight:"800", fontSize:"15px"}}>{this.props.name}</span>
     </label>
     );
-    } else if (this.props.sport === "badminton") {
+    } else if (this.props.sport === "Badminton") {
       return (
       <label className="row" lat={this.props.lat} lng={this.props.lng}>
         <input type="radio" name="test"  onClick={e => {this.changeLocation(e)}} value={this.props.name} id={this.props.address}/>
@@ -31,11 +31,20 @@ class Map extends Component {
         <span style={{color:"blue", fontWeight:"800", fontSize:"15px"}}>{this.props.name}</span>
       </label>
       );
-    } else if (this.props.sport === "futsal") {
+    } else if (this.props.sport === "Futsal") {
       return (
       <label className="row" lat={this.props.lat} lng={this.props.lng}>
         <input type="radio" name="test"  onClick={e => {this.changeLocation(e)}} value={this.props.name} id={this.props.address}/>
         <img src="https://cdn3.iconfinder.com/data/icons/olympic-games-15/48/Football-512.png"
+        style={{height:"40px", width:"40px"}} />
+        <span style={{color:"blue", fontWeight:"800", fontSize:"15px"}}>{this.props.name}</span>
+      </label>
+      );
+    } else {
+      return (
+      <label className="row" lat={this.props.lat} lng={this.props.lng}>
+        <input type="radio" name="test"  onClick={e => {this.changeLocation(e)}} value={this.props.name} id={this.props.address}/>
+        <img src="https://cdn3.iconfinder.com/data/icons/olympic-games-15/48/Tennis-512.png"
         style={{height:"40px", width:"40px"}} />
         <span style={{color:"blue", fontWeight:"800", fontSize:"15px"}}>{this.props.name}</span>
       </label>

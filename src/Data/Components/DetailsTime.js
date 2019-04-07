@@ -15,7 +15,7 @@ class DetailsTime extends Component {
               <i class="far fa-clock white"></i>
             </span>
             <figcaption class="text-wrap">
-              <h5 class="title">Waktu</h5>
+              <h5 class="title">Time</h5>
               <p class="text-muted">
                 {this.props.time}
               </p>
