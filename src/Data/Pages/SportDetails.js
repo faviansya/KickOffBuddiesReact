@@ -10,7 +10,6 @@ import Empty from "../Components/EmptySlot";
 import DetailsLocation from "../Components/DetailsLocation";
 import DetailsTime from "../Components/DetailsTime";
 
-
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { Host } from "../../Host";
@@ -36,6 +35,9 @@ class Details extends Component {
       lat_tujuan: "",
       lng_tujuan: "",
       vicinity: "",
+      loading:false,
+      distance:"",
+      duration:"",
     };
   }
 
@@ -49,7 +51,9 @@ class Details extends Component {
     }, (response, status) => {
       if (status === 'OK') {
         directionsDisplay.setDirections(response);
-        console.log(response, 'Ruta')
+        console.log(response, 'ANJENG')
+        this.setState({ distance: response.routes[0].legs[0].distance.text });
+        this.setState({ duration: response.routes[0].legs[0].duration.text });
         const routePolyline = new maps.Polyline({
           path: response.routes[0].overview_path
         });
@@ -176,6 +180,7 @@ class Details extends Component {
   });
   };
   JoinSport = async () => {
+    this.setState({loading:true})
     const Bearer = localStorage.getItem("Bearer")
     const self = this;
     const reqJoin = {
@@ -189,12 +194,17 @@ class Details extends Component {
       }
     };
     await axios(reqJoin)
-      .then(function(response) {})
+      .then(function(response) {
+        self.setState({loading:false})
+
+      })
       .catch(function(error) {
         console.log("ASEM", error);
         self.setState({ status: "failed" });
+        self.setState({loading:false})
       });
-      this.GetPlayerList();
+      self.GetPlayerList();
+      self.setState({loading:false})
   };
   cancelLobby= async (id)=> {
     const Bearer = localStorage.getItem("Bearer")
@@ -223,7 +233,29 @@ class Details extends Component {
     if (this.state.status == "failed") {
       alert("Kamu Telah Join Di Game Ini");
       this.setState({ status: "" });
+      this.setState({loading:false})
     }
+    const Maps = 
+    <div id="mapcanvas" style={{ height: '500px', width: '100%' }}>
+    <GoogleMapReact
+      bootstrapURLKeys={{ key: "AIzaSyBpO1EGv2m99cpTOqshMRP8Rq0xDBE7nTU" }}
+      center={center}
+      defaultZoom={15}
+      options={this.getMapOptions}
+      yesIWantToUseGoogleMapApiInternals={true}
+      onGoogleApiLoaded={({ map, maps }) => this.apiIsLoaded(map, maps)}
+    >
+    <CurrentLocation
+      lat={this.state.lat}
+      lng={this.state.lng}
+      text="You're here"
+    />
+    <div className="row" lat={this.state.lat_tujuan} lng={this.state.lng_tujuan}>
+      <span style={{color:"red", fontWeight:"800", fontSize:"13px"}}>{this.state.listDetails.location}</span>
+      <img src="http://www.newdesignfile.com/postpic/2012/01/red-flag-icon_252146.png" style={{height:"30px", width:"25px"}}/>
+      </div>
+  </GoogleMapReact>
+    </div>
     return (
       <div onClick={() => {}}>
         <section className="section-topbar border-top padding-y-sm wow slideInUp" style={{textAlign:"center"}}>
@@ -233,8 +265,11 @@ class Details extends Component {
           </div>
         </section>
         <div class="row ">
-          <DetailsOlahRaga  sport={this.state.listDetails.sport}/>          
-          <DetailsLocation DetailsLocation={this.state.listDetails.location}/>
+          <DetailsOlahRaga  sport={this.state.listDetails.sport} />          
+          <DetailsLocation map={Maps} DetailsLocation={this.state.listDetails.location} 
+                distance = {this.state.distance}
+                duration = {this.state.duration}
+          />
           <DetailsTime time={this.state.listDetails.time}/>
           <DetailsJumlahPemain player={this.state.listDetails.player}/>
         </div>
@@ -261,33 +296,12 @@ class Details extends Component {
                     />
                   );
                 } else {
-                  return <Empty JoinSport={this.JoinSport} />;
+                  return <Empty JoinSport={this.JoinSport} loading={this.state.loading} />;
                 }
               })}
             </div>
           </div>
         </section>
-        <div id="mapcanvas" style={{ height: '500px', width: '100%' }}>
-          <GoogleMapReact
-            bootstrapURLKeys={{ key: "AIzaSyBpO1EGv2m99cpTOqshMRP8Rq0xDBE7nTU" }}
-            center={center}
-            defaultZoom={15}
-            options={this.getMapOptions}
-            yesIWantToUseGoogleMapApiInternals={true}
-            onGoogleApiLoaded={({ map, maps }) => this.apiIsLoaded(map, maps)}
-          >
-          <CurrentLocation
-            lat={this.state.lat}
-            lng={this.state.lng}
-            text="You're here"
-          />
-          <div className="row" lat={this.state.lat_tujuan} lng={this.state.lng_tujuan}>
-            <span style={{color:"red", fontWeight:"800", fontSize:"13px"}}>{this.state.listDetails.location}</span>
-            <img src="http://www.newdesignfile.com/postpic/2012/01/red-flag-icon_252146.png" style={{height:"30px", width:"25px"}}/>
-            </div>
-        </GoogleMapReact>
-          </div>
-
       </div>
     );
   }

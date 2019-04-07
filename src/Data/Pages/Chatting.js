@@ -5,6 +5,7 @@ import { actions } from "../../store";
 import axios from "axios";
 import MyChat from "../Components/MyChatMessage";
 import OtherChat from "../Components/MyOtherChatMessage";
+import OtherChatProfile from "../Components/MyOtherProfile"
 
 import { Host } from "../../Host";
 
@@ -13,12 +14,13 @@ class ChatRoom extends Component {
     super(props);
     this.state = {
       ChatData: [],
+      PlayerData:[],
       messageHolder: ""
     };
   }
   componentDidMount = async () => {
     this.interval = setInterval(() => {
-      const Bearer = localStorage.getItem("Bearer")
+      const Bearer = localStorage.getItem("Bearer");
       const self = this;
       const req = {
         method: "get",
@@ -33,6 +35,8 @@ class ChatRoom extends Component {
       axios(req)
         .then(function(response) {
           self.setState({ ChatData: response.data.data });
+          self.setState({ PlayerData: response.data.player });
+          console.log(response.data)
         })
         .catch(function(error) {});
     }, 1000);
@@ -41,9 +45,9 @@ class ChatRoom extends Component {
   sendChatting = async event => {
     event.preventDefault();
     this.setState({
-      messageHolder:"",
+      messageHolder: ""
     });
-    const Bearer = localStorage.getItem("Bearer")
+    const Bearer = localStorage.getItem("Bearer");
     const self = this;
     const req = {
       method: "post",
@@ -64,13 +68,14 @@ class ChatRoom extends Component {
   componentWillUnmount() {
     clearInterval(this.interval);
   }
-  FormHandler = (e)=>{
+  FormHandler = e => {
     this.setState({
       messageHolder: e.target.value
     });
-  }
+  };
   render() {
-    const mySelf = JSON.parse(localStorage.getItem("mySelf"))
+    const mySelf = JSON.parse(localStorage.getItem("mySelf"));
+    const active = "active"
     return (
       <div class="container">
         <div class="container-fluid h-100">
@@ -79,19 +84,15 @@ class ChatRoom extends Component {
               <div class="card cardbro mb-sm-3 mb-md-0 contacts_card">
                 <div class="card-body contacts_body">
                   <ui class="contacts">
-                    <li class="active">
-                      <div class="d-flex bd-highlight">
-                        <div class="img_cont">
-                          <img
-                            src={mySelf.url_image}
-                            class="rounded-circle user_img"
-                          />
-                        </div>
-                        <div class="user_info">
-                          <span>{mySelf.name}</span>
-                        </div>
-                      </div>
-                    </li>
+                    {this.state.PlayerData.map((item, key) => {
+                      return (
+                        <OtherChatProfile
+                          key={key}
+                          name={item.name}
+                          img={item.url_image}
+                        />
+                      );
+                    })}
                   </ui>
                 </div>
                 <div class="card-footer" />
@@ -103,7 +104,7 @@ class ChatRoom extends Component {
                   <div class="d-flex bd-highlight">
                     <div class="img_cont">
                       <img
-											width="60px"
+                        width="60px"
                         src="http://pngimg.com/uploads/football/football_PNG52789.png"
                         class="rounded-circle user_img"
                       />
@@ -115,26 +116,27 @@ class ChatRoom extends Component {
                 </div>
                 <div class="card-body msg_card_body">
                   {this.state.ChatData.map((item, key) => {
-									if(item.user_id == mySelf.id){
-                    return (
-                      <MyChat
-                        key={key}
-                        message={item.message}
-                        name={item.name_user}
-                        date={item.time}
-                        img={item.url_image}
-                      />
-										);}
-										else{
-											return (
-											<OtherChat
-											key={key}
-											message={item.message}
-											name={item.name_user}
-											date={item.time}
-											img={item.url_image}
-										/>
-										);}
+                    if (item.user_id == mySelf.id) {
+                      return (
+                        <MyChat
+                          key={key}
+                          message={item.message}
+                          name={item.name_user}
+                          date={item.time}
+                          img={item.url_image}
+                        />
+                      );
+                    } else {
+                      return (
+                        <OtherChat
+                          key={key}
+                          message={item.message}
+                          name={item.name_user}
+                          date={item.time}
+                          img={item.url_image}
+                        />
+                      );
+                    }
                   })}
                 </div>
                 <div class="card-footer">
@@ -151,16 +153,28 @@ class ChatRoom extends Component {
                               class="form-control form-control-lg type_msg"
                               type="text"
                               placeholder="Type your message..."
-                              onChange = {(e)=>{this.FormHandler(e)}}
-                              value = {this.state.messageHolder}
+                              onChange={e => {
+                                this.FormHandler(e);
+                              }}
+                              value={this.state.messageHolder}
                             />
                           </div>
                         </form>
                       </div>
                       <div class="col-2">
-                        <div class="input-group-append" >
-                          <span class="input-group-text send_btn"  style={{marginLeft:"-30px",width:"300px",height:"60px"}}>
-                            <i class="fas fa-paper-plane" style={{fontSize:"30px",marginLeft:"18px"}}/>
+                        <div class="input-group-append">
+                          <span
+                            class="input-group-text send_btn"
+                            style={{
+                              marginLeft: "-30px",
+                              width: "300px",
+                              height: "60px"
+                            }}
+                          >
+                            <i
+                              class="fas fa-paper-plane"
+                              style={{ fontSize: "30px", marginLeft: "18px" }}
+                            />
                           </span>
                         </div>
                       </div>

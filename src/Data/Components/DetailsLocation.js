@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from "unistore/react";
 import { actions } from "../../store";
 import { withRouter } from "react-router-dom";
+import Modal from "./ModalDetails";
 
 class DetailsLocation extends Component {
   render() {
@@ -12,15 +13,16 @@ class DetailsLocation extends Component {
         <article class="box h-100 ">
           <figure class="itembox text-center">
             <span class="mt-2 icon-wrap rounded icon-sm bg-success">
-              <i class="fas fa-map-marker-alt white"></i>
+              <i class="fas fa-map-marker-alt white" />
             </span>
             <figcaption class="text-wrap">
-              <h5 class="title">
-              
-              Location</h5>
-              <p class="text-muted">
-              {this.props.DetailsLocation}
-              </p>
+              <h5 class="title">Location</h5>
+              <p class="text-muted">{this.props.DetailsLocation}</p>
+              <Modal
+                maps={this.props.map}
+                distances={this.props.distance}
+                durations={this.props.duration}
+              />
             </figcaption>
           </figure>
         </article>

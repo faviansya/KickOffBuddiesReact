@@ -56,6 +56,9 @@ class PostItem extends Component {
         console.log(response.routes, 'Ruta')
         this.setState({ distance: response.routes[0].legs[0].distance.text });
         this.setState({ duration: response.routes[0].legs[0].duration.text });
+        console.log(response.routes[0].legs[0].distance.text)
+        console.log(response.routes[0].legs[0].duration.text)
+
         const routePolyline = new (this.state.maps).Polyline({
           path: response.routes[0].overview_path
         });
