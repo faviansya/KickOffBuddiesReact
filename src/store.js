@@ -11,7 +11,8 @@ const initialState = {
   playlistID: "",
   userType: "",
   RoomId: "",
-  MyNotification: []
+  MyNotification: [],
+  flagLogin: false
 };
 
 export const store = createStore(initialState);
@@ -22,6 +23,7 @@ export const actions = store => ({
     localStorage.removeItem("Bearer");
     localStorage.removeItem("mySelf");
     localStorage.removeItem("userType");
+    store.setState({flagLogin : false});
   },
   changeBookingId: (state, id) => {
     store.setState({ bookingId: id });
@@ -53,47 +55,49 @@ export const actions = store => ({
       .then(function(response) {
         localStorage.setItem("Bearer", response.data.token);
         localStorage.setItem("is_login", true);
+        store.setState({flagLogin : true});
       })
       .catch(function(error) {
         console.log("ASEM1", error);
       });
-
-    //   Get My Dataa
-    const Bearer = localStorage.getItem("Bearer");
-    const getMyData = {
-      method: "get",
-      url: Host + "/api/pemain/me",
-      headers: {
-        Authorization: "Bearer " + Bearer,
-        "Content-Type": "application/json"
-      }
-    };
-    await axios(getMyData)
-      .then(function(response) {
-        localStorage.setItem("mySelf", JSON.stringify(response.data.data));
-        localStorage.setItem("userType", response.data.data.user_type);
-      })
-      .catch(function(error) {
-        console.log("ASEM", error);
-      });
-
-    const getMyNotification = {
-      method: "get",
-      url: Host + "/api/notification",
-      headers: {
-        Authorization: "Bearer " + Bearer,
-        "Content-Type": "application/json"
-      }
-    };
-    await axios(getMyNotification)
-      .then(function(response) {
-        store.setState({
-          MyNotification: response.data.data
+    if (store.getState().flagLogin) {
+      //   Get My Dataa
+      const Bearer = localStorage.getItem("Bearer");
+      const getMyData = {
+        method: "get",
+        url: Host + "/api/pemain/me",
+        headers: {
+          Authorization: "Bearer " + Bearer,
+          "Content-Type": "application/json"
+        }
+      };
+      await axios(getMyData)
+        .then(function(response) {
+          localStorage.setItem("mySelf", JSON.stringify(response.data.data));
+          localStorage.setItem("userType", response.data.data.user_type);
+        })
+        .catch(function(error) {
+          console.log("ASEM", error);
         });
-      })
-      .catch(function(error) {
-        console.log("ASEM", error);
-      });
+
+      const getMyNotification = {
+        method: "get",
+        url: Host + "/api/notification",
+        headers: {
+          Authorization: "Bearer " + Bearer,
+          "Content-Type": "application/json"
+        }
+      };
+      await axios(getMyNotification)
+        .then(function(response) {
+          store.setState({
+            MyNotification: response.data.data
+          });
+        })
+        .catch(function(error) {
+          console.log("ASEM", error);
+        });
+    }
   },
   getNotificationsss: state => {
     const Bearer = localStorage.getItem("Bearer");
@@ -184,9 +188,9 @@ export const actions = store => ({
   LoginPebisnis: async (state, username, password) => {
     const req = {
       method: "post",
-      url: Host+ "/api/login/pebisnis",
+      url: Host + "/api/login/pebisnis",
       headers: {
-        "Content-Type":"application/json",
+        "Content-Type": "application/json"
       },
       data: {
         username: username,
@@ -197,28 +201,27 @@ export const actions = store => ({
       .then(function(response) {
         localStorage.setItem("Bearer", response.data.token);
         localStorage.setItem("is_login", true);
-
       })
       .catch(function(error) {
         console.log("ASEM1", error);
       });
 
-      const Bearer = localStorage.getItem("Bearer")
-      const getMyData = {
-        method: "get",
-        url: Host+ "/api/pebisnis/myprofile",
-        headers: {
-          Authorization: "Bearer " + Bearer,
-          "Content-Type":"application/json",
-        }
-      };
-      await axios(getMyData)
-        .then(function(response) {
-            localStorage.setItem("mySelf", JSON.stringify(response.data.data));
-            localStorage.setItem("userType", response.data.data.user_type);
-       })
-        .catch(function(error) {
-          console.log("ASEM", error);
-        });
-      },
+    const Bearer = localStorage.getItem("Bearer");
+    const getMyData = {
+      method: "get",
+      url: Host + "/api/pebisnis/myprofile",
+      headers: {
+        Authorization: "Bearer " + Bearer,
+        "Content-Type": "application/json"
+      }
+    };
+    await axios(getMyData)
+      .then(function(response) {
+        localStorage.setItem("mySelf", JSON.stringify(response.data.data));
+        localStorage.setItem("userType", response.data.data.user_type);
+      })
+      .catch(function(error) {
+        console.log("ASEM", error);
+      });
+  }
 });
