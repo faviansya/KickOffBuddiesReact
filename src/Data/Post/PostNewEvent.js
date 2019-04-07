@@ -289,6 +289,8 @@ class PostItem extends Component {
                   onChange={e => {this.changeTime(e)}}                  
                   inline
                   minDate={Date.now()}
+                  minTime={new Date().setHours(7)}
+                  maxTime={new Date().setHours(21)}
               />
             </div>
 
