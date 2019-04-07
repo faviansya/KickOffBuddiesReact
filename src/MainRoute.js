@@ -19,7 +19,7 @@ import NewPebisnis from "./Data/Post/PostPebisnis";
 import ChatRooms from './Data/Pages/ChatRoom';
 import Chatting from './Data/Pages/Chatting';
 import EditPebisnis from './Data/Post/EditPebisnis';
-import testUpload from './Data/Pages/imageupload';
+import Invite from './Data/Pages/invite';
 
 
 const MainRoute = () => {
@@ -42,7 +42,7 @@ const MainRoute = () => {
             <Route exact path = "/chatrooms" component = {ChatRooms}/>
             <Route exact path = "/chatting" component = {Chatting}/>
             <Route exact path = "/editpebisnis" component = {EditPebisnis}/>
-            <Route exact path = "/upload" component = {testUpload}/>
+            <Route exact path = "/invite" component = {Invite}/>
 
             <Route component = {PatNolPat}/>
         </Switch>
