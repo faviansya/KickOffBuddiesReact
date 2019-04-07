@@ -23,7 +23,7 @@ class PostItem extends Component {
     this.state = {
       sport: "",
       player: "",
-      time: "",
+      time: null,
       location: "",
       destination: "",
       place: "",
@@ -174,6 +174,7 @@ class PostItem extends Component {
         self.props.history.push("/userprofile");
       })
       .catch(function(error) {
+        alert("please Fill All Field")
         console.log("ASEM", error);
       });
   };
@@ -199,6 +200,7 @@ class PostItem extends Component {
     this.setState({ player: e.target.value });
   };
   changeTime = date => {
+    console.log(date)
     var string = JSON.stringify(date);
     var realdate = string.split(" ")
     var Tanggal = realdate[0].split("T")

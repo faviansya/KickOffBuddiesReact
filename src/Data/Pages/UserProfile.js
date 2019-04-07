@@ -90,10 +90,11 @@ class UserProfile extends Component {
                   role="button"
                   aria-expanded="false"
                   aria-controls="collapseExample"
+                  
                 >
                   Show Table
                 </a>
-                <table class="table collapse" id="collapseExample">
+                <table class="table collapse" id="collapseExample" style={{overflow:"hidden"}}>
                   {this.state.ListDatas.map((item, key) => {
                     const arc_img =
                       item.url_image === null
