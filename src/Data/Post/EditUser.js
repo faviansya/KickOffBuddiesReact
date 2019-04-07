@@ -165,7 +165,7 @@ class PostItem extends Component {
               </h2>
             </strong>
             <h5 class=" text-dark">
-              <label>Isikan keterangan yang ingin Anda rubah dibawah</label>
+              <label>Fill in the details that you want to edit about you.</label>
             </h5>
           </div>
         </section>
@@ -173,7 +173,7 @@ class PostItem extends Component {
         <div class="container mt-5">
           <form>
             <div class="form-group col-lg-6">
-              <label for="name">Masukkan Nama</label>
+              <label for="name">Full Name</label>
               <input
                 onChange={e => {
                   this.changeName(e);
@@ -186,7 +186,7 @@ class PostItem extends Component {
             </div>
 
             <div class="form-group col-lg-6">
-              <label for="Email">Masukkan Email Anda</label>
+              <label for="Email">Email Address</label>
               <input
                 onChange={e => {
                   this.changeEmail(e);
@@ -199,7 +199,7 @@ class PostItem extends Component {
             </div>
 
             <div class="form-group col-lg-6">
-              <label for="Phone">Masukkan Nomor Telepon Anda</label>
+              <label for="Phone">Phone No.</label>
               <input
                 onChange={e => {
                   this.changephoneNumber(e);
@@ -212,7 +212,7 @@ class PostItem extends Component {
             </div>
 
             <div class="form-group col-lg-6">
-              <label for="Alamat">Masukkan Alamat Anda</label>
+              <label for="Alamat">Address</label>
               <input
                 onChange={e => {
                   this.changeAlamat(e);
@@ -225,7 +225,9 @@ class PostItem extends Component {
             </div>
 
             <div class="form-group col-lg-6">
-              <label for="urlimage">Upload Your Photo Then Click Upload</label>
+              <label for="urlimage">Profile Picture</label><br/>
+              <span>Choose a file (.jpg, .png, .jpeg) from your computer or phone.</span><br/>
+              <span>Click upload afterwards.</span><br/>
               <br />
               <progress value={this.state.progress} max="100" />
               <br />
@@ -238,7 +240,7 @@ class PostItem extends Component {
             </div>
 
             <div class="form-group col-lg-6">
-              <label for="favoritSport">Masukkan Olahraga Favorit Anda</label>
+              <label for="favoritSport">Favourite Sport</label>
               <input
                 onChange={e => {
                   this.changefavoritSport(e);
