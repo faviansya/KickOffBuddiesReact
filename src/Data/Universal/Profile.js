@@ -42,8 +42,8 @@ class Profile extends Component {
             <br/>
             <br/><br/><br/><br/>
             <div class="intro" style={{color:"black",textShadow:"0 0 10px #F3F3F3,0 0 10px #F3F3F3,0 0 10px #F3F3F3"}}>Joined The Game</div>
-            <div class="intro" style={{color:"black",textShadow:"0 0 10px #F3F3F3,0 0 10px #F3F3F3,0 0 10px #F3F3F3"}}>Olahraga Favorit : {this.props.favourite_sport}</div>
-            <div class="intro" style={{color:"black",textShadow:"0 0 10px #F3F3F3,0 0 10px #F3F3F3,0 0 10px #F3F3F3"}}>Alamat: {this.props.address}</div>
+            <div class="intro" style={{color:"black",textShadow:"0 0 10px #F3F3F3,0 0 10px #F3F3F3,0 0 10px #F3F3F3"}}>Favourite Sport : {this.props.favourite_sport}</div>
+            <div class="intro" style={{color:"black",textShadow:"0 0 10px #F3F3F3,0 0 10px #F3F3F3,0 0 10px #F3F3F3"}}>Address: {this.props.address}</div>
             {button.buttonDelete}
           </div>
           <div class="gradient-overlay" />

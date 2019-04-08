@@ -18,7 +18,7 @@ class MyBookingComp extends Component {
               <li class="list-group-item"> <center><h5>{this.props.olahraga}</h5></center></li>
 
               {/* <h5>{this.props.olahraga}</h5> */}
-                <li class="list-group-item">Location: {this.props.locationss} , Time: {this.props.waktu} </li>
+                <li class="list-group-item center">Location: {this.props.locationss} , Time: {this.props.waktu} </li>
                 <li class="list-group-item">
                   <div className="row">
                     {players.map((item, key) => {
