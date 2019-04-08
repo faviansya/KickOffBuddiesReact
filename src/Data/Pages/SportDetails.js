@@ -105,8 +105,7 @@ class Details extends Component {
       method: "get",
       url: Host + "/api/playerlist/" + self.props.bookingId,
       headers: {
-        Authorization: "Bearer " + Bearer,
-        Origin: "https://kickoffbuddies.space/"
+        Authorization: "Bearer " + Bearer
       }
     };
     await axios(req)
@@ -122,8 +121,7 @@ class Details extends Component {
         method: "get",
         url: Host + "/api/booking/" + self.props.bookingId,
         headers: {
-          Authorization: "Bearer " + Bearer,
-          Origin: "https://kickoffbuddies.space/"
+          Authorization: "Bearer " + Bearer
         }
       };
       await axios(req2)
@@ -189,8 +187,7 @@ class Details extends Component {
       method: "post",
       url: Host + "/api/playerlist",
       headers: {
-        Authorization: "Bearer " + Bearer,
-        Origin: "https://kickoffbuddies.space/"
+        Authorization: "Bearer " + Bearer
       },
       data: {
         booking_id: self.props.bookingId
@@ -216,8 +213,7 @@ class Details extends Component {
       method: "delete",
       url: Host + "/api/playerlist/" + id,
       headers: {
-        Authorization: "Bearer " + Bearer,
-        Origin: "https://kickoffbuddies.space/"
+        Authorization: "Bearer " + Bearer
       },
       data: {
         booking_id: self.props.bookingId

@@ -35,8 +35,7 @@ class PostItem extends Component {
       url: Host + "/api/pemain/me",
       headers: {
         Authorization: "Bearer " + Bearer,
-        "Content-Type": "application/json",
-        Origin: "https://kickoffbuddies.space/"
+        "Content-Type": "application/json"
       }
     };
     await axios(getMyData)
@@ -64,8 +63,7 @@ class PostItem extends Component {
       url: Host + "/api/pemain",
       headers: {
         Authorization: "Bearer " + Bearer,
-        "Content-Type": "application/json",
-        Origin: "https://kickoffbuddies.space/"
+        "Content-Type": "application/json"
       },
       data: {
         // password: self.state.password,

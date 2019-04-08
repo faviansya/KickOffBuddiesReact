@@ -44,9 +44,6 @@ class Header extends Component {
     const req = {
       method: "post",
       url: Host + "/api/google",
-      headers: {
-        Origin: "https://kickoffbuddies.space/"
-      },
       data: {
         email: Datas.email,
         name: Datas.name,
@@ -68,8 +65,7 @@ class Header extends Component {
       method: "get",
       url: Host + "/api/pemain/bayar",
       headers: {
-        Authorization: "Bearer " + Bearer,
-        Origin: "https://kickoffbuddies.space/"
+        Authorization: "Bearer " + Bearer
       },
       params: {
         balance: self.state.messageHolder,

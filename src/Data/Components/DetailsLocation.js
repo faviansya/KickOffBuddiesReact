@@ -9,7 +9,7 @@ import Modal from "./ModalDetails";
 class DetailsLocation extends Component {
   render() {
     return (
-      <div class="col-3 mb15 border-5">
+      <div class="col-lg-3 col-md-3 col-sm-6 mb15 border-5">
         <article class="box h-100 ">
           <figure class="itembox text-center">
             <span class="mt-2 icon-wrap rounded icon-sm bg-success">

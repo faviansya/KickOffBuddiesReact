@@ -64,8 +64,7 @@ class PostItem extends Component {
       method: "post",
       url: Host+"/api/booking",
       headers: {
-        Authorization: "Bearer " + Bearer,
-        Origin: "https://kickoffbuddies.space/"
+        Authorization: "Bearer " + Bearer
       },
       data: {
         sport: self.state.sport,

@@ -34,9 +34,6 @@ class PostItem extends Component {
     const req = {
       method: "post",
       url: Host + "/api/pemain",
-      headers: {
-        Origin: "https://kickoffbuddies.space/"
-      },
       data: {
         username: self.state.username,
         password: self.state.password,
