@@ -105,11 +105,12 @@ class UserProfile extends Component {
                       return (
                         <tbody class="mt-5">
                           <tr class="thead-dark">
-                            <th scope="col">Images</th>
+                            <th scope="col">Player</th>
                             <th scope="col">Name</th>
                             <th scope="col">Sport</th>
                             <th scope="col">Player</th>
                             <th scope="col">Location</th>
+                            <th scope="col">Time</th>
                           </tr>
                           <ListData
                             key={key}
@@ -119,6 +120,7 @@ class UserProfile extends Component {
                             player_ammount={item.player_amount}
                             sport={item.sport}
                             sport_image={item.sport_image}
+                            time={item.time}
                           />
                         </tbody>
                       );
