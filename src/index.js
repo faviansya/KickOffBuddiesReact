@@ -19,4 +19,4 @@ const render = Component =>
   );
   render(AppRouter);
 
-serviceWorker.unregister();
+serviceWorker.register();

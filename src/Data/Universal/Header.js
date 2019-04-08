@@ -42,7 +42,7 @@ class Header extends Component {
                 <span className="navbar-toggler-icon" />
               </button>
 
-              <div className="collapse navbar-collapse" id="navbarTop">
+              <div className="collapse navbar-collapse auto" id="navbarTop">
                 <ul className="navbar-nav mr-auto">
                   <li>
                     <h6 style={{ color: "white" }}>
