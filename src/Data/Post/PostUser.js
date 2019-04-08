@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 import { Host } from "../../Host";
 import { storage } from "../../firebase/index";
-
+import swal from 'sweetalert'
 class PostItem extends Component {
   constructor(props) {
     super(props);
@@ -49,6 +49,11 @@ class PostItem extends Component {
       .then(function(response) {
         self.props.Login(self.state.username, self.state.password);
         self.props.history.push("/");
+        swal({
+          title: "Success",
+          text: "You are Signed Up!",
+          icon: "success",
+        });
       })
       .catch(function(error) {
         console.log("ASEM", error);

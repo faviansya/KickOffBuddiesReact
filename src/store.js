@@ -1,6 +1,7 @@
 import createStore from "unistore";
 import axios from "axios";
 import { Host } from "./Host";
+import swal from 'sweetalert'
 
 const initialState = {
   is_login: false,
@@ -25,6 +26,11 @@ export const actions = store => ({
     localStorage.removeItem("mySelf");
     localStorage.removeItem("userType");
     store.setState({flagLogin : false});
+    swal({
+      title: "Info",
+      text: "You are Logged Out",
+      icon: "info",
+    });
   },
   changeBookingId: (state, id) => {
     store.setState({ bookingId: id });
@@ -57,9 +63,19 @@ export const actions = store => ({
         localStorage.setItem("Bearer", response.data.token);
         localStorage.setItem("is_login", true);
         store.setState({flagLogin : true});
+        swal({
+          title: "Success",
+          text: "You are logged in",
+          icon: "success",
+        });
       })
       .catch(function(error) {
         console.log("ASEM1", error);
+        swal({
+          title: "Failed",
+          text: "Wrong Username or Password",
+          icon: "error",
+        });
       });
     if (store.getState().flagLogin) {
       //   Get My Dataa
