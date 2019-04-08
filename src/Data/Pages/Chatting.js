@@ -26,8 +26,7 @@ class ChatRoom extends Component {
         method: "get",
         url: Host + "/api/chat",
         headers: {
-          Authorization: "Bearer " + Bearer,
-          Origin: "https://kickoffbuddies.space/"
+          Authorization: "Bearer " + Bearer
         },
         params: {
           Room_id: self.props.RoomId
@@ -54,8 +53,7 @@ class ChatRoom extends Component {
       method: "post",
       url: Host + "/api/chat",
       headers: {
-        Authorization: "Bearer " + Bearer,
-        Origin: "https://kickoffbuddies.space/"
+        Authorization: "Bearer " + Bearer
       },
       params: {
         room_id: self.props.RoomId,

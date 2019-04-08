@@ -23,8 +23,7 @@ class UserProfile extends Component {
       method: "get",
       url: Host + "/api/acceptbooking/" + mySelf.id,
       headers: {
-        Authorization: "Bearer " + Bearer,
-        Origin: "https://kickoffbuddies.space/"
+        Authorization: "Bearer " + Bearer
       }
     };
     await axios(req)

@@ -45,8 +45,7 @@ export const actions = store => ({
       method: "post",
       url: Host + "/api/login",
       headers: {
-        "Content-Type": "application/json",
-        Origin: "https://kickoffbuddies.space/"
+        "Content-Type": "application/json"
       },
       data: {
         username: username,
@@ -70,8 +69,7 @@ export const actions = store => ({
         url: Host + "/api/pemain/me",
         headers: {
           Authorization: "Bearer " + Bearer,
-          "Content-Type": "application/json",
-          Origin: "https://kickoffbuddies.space/"
+          "Content-Type": "application/json"
         }
       };
       await axios(getMyData)
@@ -89,8 +87,7 @@ export const actions = store => ({
         url: Host + "/api/notification",
         headers: {
           Authorization: "Bearer " + Bearer,
-          "Content-Type": "application/json",
-          Origin: "https://kickoffbuddies.space/"
+          "Content-Type": "application/json"
         }
       };
       await axios(getMyNotification)
@@ -111,8 +108,7 @@ export const actions = store => ({
       url: Host + "/api/notification",
       headers: {
         Authorization: "Bearer " + Bearer,
-        "Content-Type": "application/json",
-        Origin: "https://kickoffbuddies.space/"
+        "Content-Type": "application/json"
       }
     };
     axios(getMyNotification)
@@ -132,8 +128,7 @@ export const actions = store => ({
       method: "get",
       url: Host + "/api/booking/category",
       headers: {
-        Authorization: "Bearer " + Bearer,
-        Origin: "https://kickoffbuddies.space/"
+        Authorization: "Bearer " + Bearer
       },
       params: {
         category: category
@@ -157,8 +152,7 @@ export const actions = store => ({
           method: "get",
           url: Host + "/api/booking/search",
           headers: {
-            Authorization: "Bearer " + Bearer,
-            Origin: "https://kickoffbuddies.space/"
+            Authorization: "Bearer " + Bearer
           },
           params: {
             name: keyword
@@ -178,8 +172,7 @@ export const actions = store => ({
       url: Host + "/api/pemain/me",
       headers: {
         Authorization: "Bearer " + Bearer,
-        "Content-Type": "application/json",
-        Origin: "https://kickoffbuddies.space/"
+        "Content-Type": "application/json"
       }
     };
     await axios(getMyData)
@@ -198,8 +191,7 @@ export const actions = store => ({
       url: Host + "/api/pemain/me",
       headers: {
         Authorization: "Bearer " + Bearer,
-        "Content-Type": "application/json",
-        Origin: "https://kickoffbuddies.space/"
+        "Content-Type": "application/json"
       }
     };
     await axios(getMyData)
@@ -219,8 +211,7 @@ export const actions = store => ({
       method: "post",
       url: Host + "/api/login/pebisnis",
       headers: {
-        "Content-Type": "application/json",
-        Origin: "https://kickoffbuddies.space/"
+        "Content-Type": "application/json"
       },
       data: {
         username: username,
@@ -242,8 +233,7 @@ export const actions = store => ({
       url: Host + "/api/pebisnis/myprofile",
       headers: {
         Authorization: "Bearer " + Bearer,
-        "Content-Type": "application/json",
-        Origin: "https://kickoffbuddies.space/"
+        "Content-Type": "application/json"
       }
     };
     await axios(getMyData)
