@@ -22,7 +22,7 @@ class PostItem extends Component {
     super(props);
     this.state = {
       sport: "",
-      player: "",
+      player: 1,
       time: null,
       location: "",
       destination: "",
@@ -40,6 +40,9 @@ class PostItem extends Component {
       distance:"",
       duration:"",
       vicinity:"",
+      fee: "",
+      hargaBooking: 0,
+      hargaPerOrang: 0
     };
   }
 
@@ -185,6 +188,33 @@ class PostItem extends Component {
   changeOlagraga = async e => {
     const self = this
     this.setState({ sport: e.target.value });
+
+    if (e.target.value === "Badminton") {
+      this.setState({ 
+        fee: "40.000,-",
+        hargaBooking: 40000,
+        hargaPerOrang: 40000 / this.state.player
+       });
+    } else if (e.target.value === "Futsal") {
+      this.setState({ 
+        fee: "110.000,-",
+        hargaBooking: 110000,
+        hargaPerOrang: 110000 / this.state.player
+      });
+    } else if (e.target.value === "Basketball") {
+      this.setState({ 
+        fee: "60.000,-",
+        hargaBooking: 60000,
+        hargaPerOrang: 60000 / this.state.player
+      });   
+    } else if (e.target.value === "Tennis") {
+      this.setState({ 
+        fee: "70.000,-",
+        hargaBooking: 70000,
+        hargaPerOrang: 70000 / this.state.player
+      });
+    }
+
     const req3 = {
       method: "get",
       url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.state.lat+","+this.state.lng+"&radius=3000&keyword="+e.target.value+"&key=AIzaSyB3GHH--AbFb9XDA16VX56gMUjQYSKlviQ",
@@ -200,8 +230,14 @@ class PostItem extends Component {
       });
   };
   changePlayer = e => {
-    this.setState({ player: e.target.value });
+    this.setState({ player: e.target.value  });
+    if (e.target.value < 1) {
+      this.setState({ hargaPerOrang: this.state.hargaBooking });
+    } else {
+      this.setState({ hargaPerOrang: this.state.hargaBooking / e.target.value });
+    }
   };
+
   changeTime = date => {
     console.log(date)
     var string = JSON.stringify(date);
@@ -298,10 +334,17 @@ class PostItem extends Component {
                   maxTime={new Date().setHours(21)}
               />
             </div>
+            <div class="form-group">
+              <label for="booking fee" style={{color:"#007bff", marginRight:"20px"}}><h4>Total booking fee</h4></label>
+              <span>{" "}Rp {this.state.fee} /court /hour</span><br/>
+              <label for="booking fee" style={{color:"#007bff", marginRight:"20px"}}><h4>Booking fee per person</h4></label>
+              <span>{" "}Rp {this.state.hargaPerOrang},- /court /hour</span>
+            </div><br/><br/>
               <button
                   onClick={this.PostItem}
                   type="submit"
                   class="btn btn-primary d-none d-lg-block"
+                  style={{marginLeft:"450px"}}
                 >
                   Submit
                 </button>
@@ -348,7 +391,7 @@ class PostItem extends Component {
                   </div>
                 <div>
                   <span style={{paddingRight:"40px"}}>Distance: {this.state.distance}</span>
-                  <span className="ml-5">Duration: {this.state.duration} </span><span className="ml-5">By Driving</span>
+                  <span className="ml-5">Duration: {this.state.duration} </span><span> by driving</span>
                 </div>
                 <br/><br/>
         </div>        

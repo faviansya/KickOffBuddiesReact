@@ -43,8 +43,8 @@ class Modal extends Component {
               </div>
               <div class="modal-body" />
               <h5>Distance: {this.props.distances}, 
-              Duration: {this.props.durations},
-              From Your Location</h5>
+              Duration: {this.props.durations} by driving,
+              from your location</h5>
               {this.props.maps}
               <div class="modal-footer">
                 <button
