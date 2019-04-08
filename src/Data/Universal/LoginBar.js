@@ -105,14 +105,14 @@ class Header extends Component {
     if (!is_login) {
       return (
         <div className="row">
-          <div className="col-lg-6 col-md-6 col-sm-6">
+          <div className="col-lg-2 col-md-2 col-sm-6">
             <div className="widget-header dropdown">
               <div className="icontext">
                 <div className="icon-wrap">
                   <i
                     className="fa fa-user fa-2x"
                     style={{ color: "#33849F" }}
-                  />{" "}
+                  />{" Account "}
                 </div>
               </div>
               <div className="dropdown-menu" style={{ marginTop: "-2px" }}>
@@ -164,66 +164,6 @@ class Header extends Component {
 
                 <hr className="dropdown-divider" />
                 <Link className="dropdown-item" to="/newuser">
-                  Don't have an account yet? Sign up
-                </Link>
-                <Link className="dropdown-item" to="">
-                  Forgot password?
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-6 col-md-6 col-sm-6">
-            <div className="widget-header dropdown">
-              <div className="icontext">
-                <div className="icon-wrap">
-                  <i
-                    class="fas fa-user-tie fa-2x"
-                    style={{ color: "#33849F" }}
-                  />
-                </div>
-              </div>
-              <div className="dropdown-menu" style={{ marginTop: "2px" }}>
-                <form className="px-4 py-3" onSubmit={e => e.preventDefault()}>
-                  <div className="form-group">
-                    <label>Username</label>
-                    <input
-                      name="username"
-                      type="username"
-                      className="form-control"
-                      placeholder="Username"
-                      onChange={e => this.changeUser(e)}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Password</label>
-                    <input
-                      name="password"
-                      type="password"
-                      className="form-control"
-                      placeholder="Password"
-                      onChange={e => this.changePassword(e)}
-                    />
-                  </div>
-                  <button
-                    onClick={e => this.postLoginPebisnis()}
-                    type="submit"
-                    className="btn btn-primary"
-                  >
-                    Sign in
-                  </button>
-                  <Link to="/newpebisnis">
-                    <button
-                      type="submit"
-                      className="btn btn-outline-primary ml-1"
-                    >
-                      {" "}
-                      Sign Up
-                    </button>
-                  </Link>
-                </form>
-
-                <hr className="dropdown-divider" />
-                <Link className="dropdown-item" to="/newpebisnis">
                   Don't have an account yet? Sign up
                 </Link>
                 <Link className="dropdown-item" to="">
@@ -427,7 +367,7 @@ class Header extends Component {
                       style={{ color: "#33849F" }}
                     />
                     <div className="text-wrap text-dark">
-                      Duit <br /> Rp.{this.props.saldo}
+                      Balance <br /> Rp.{mySelf.balance}
                     </div>
                   </div>
                 </div>

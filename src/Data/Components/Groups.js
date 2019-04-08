@@ -15,7 +15,7 @@ class Groups extends Component {
                         <div className="col-3"></div>
                         <div className="col-6">
                             <h4 style={{textAlign:"center"}}>
-                                Click to see the nearest sports fields.
+                                Click to see the nearest sport fields.
                             </h4>
                         </div>
                         <div className="col-3"></div>
