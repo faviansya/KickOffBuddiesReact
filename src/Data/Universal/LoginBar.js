@@ -14,6 +14,8 @@ class Header extends Component {
       username: "",
       password: "",
       DataGoogle: "",
+      messageHolder: ""
+
     };
   }
   postLogin = function() {
@@ -55,6 +57,39 @@ class Header extends Component {
         console.log("ASEM", error);
       });
   };
+  TambahSaldo = async event => {
+    const Bearer = localStorage.getItem("Bearer")
+    event.preventDefault()
+    const self = this;
+    const req = {
+      method: "get",
+      url: Host + "/api/pemain/bayar",
+      headers: {
+        Authorization: "Bearer " + Bearer
+      },
+      params: {
+        balance: self.state.messageHolder,
+      }
+    };
+    await axios(req)
+      .then(function(response) {
+      })
+      .catch(function(error) {
+        console.log("ASEM", error);
+      });
+      this.props.updateBalance();
+      this.setState({
+        messageHolder: ""
+      });
+  };
+  componentDidMount = ()=>{
+    this.props.updateBalance();
+  }
+  FormHandler = e => {
+    this.setState({
+      messageHolder: e.target.value
+    });
+  };
   render() {
     const responseGoogle = async response => {
       await this.setState({ DataGoogle: response.profileObj });
@@ -64,9 +99,9 @@ class Header extends Component {
         this.state.DataGoogle.googleId + "Rekt$"
       );
     };
-    const is_login = localStorage.getItem("is_login")
-    const userType = localStorage.getItem("userType")
-    const mySelf = JSON.parse(localStorage.getItem("mySelf"))
+    const is_login = localStorage.getItem("is_login");
+    const userType = localStorage.getItem("userType");
+    const mySelf = JSON.parse(localStorage.getItem("mySelf"));
     if (!is_login) {
       return (
         <div className="row">
@@ -159,7 +194,11 @@ class Header extends Component {
                   </div>
                 </div>
               </Link>
-              <div class="dropdown-menu" style={{ marginTop: "-2px" }}  style={{marginLeft:"-200px"}}>
+              <div
+                class="dropdown-menu"
+                style={{ marginTop: "-2px" }}
+                style={{ marginLeft: "-200px" }}
+              >
                 <form class="px-4 py-3" onSubmit={e => e.preventDefault()}>
                   <center>
                     <div class="form-group">
@@ -245,17 +284,15 @@ class Header extends Component {
                     </div>
                   </div>
                 </Link>
-                <div
-                  class="dropdown-menu"
-                  style={{ marginTop: "-2px" }}
-                >
+                <div class="dropdown-menu" style={{ marginTop: "-2px" }}>
                   <center>
-                    <ul class="list-group scrollable-menu" role="menu" >
+                    <ul class="list-group scrollable-menu" role="menu">
                       {this.props.MyNotification.map((item, key) => {
                         return (
-                          <NotificationList 
-                          key={key} 
-                          message={item.notification} />
+                          <NotificationList
+                            key={key}
+                            message={item.notification}
+                          />
                         );
                       })}
                     </ul>
@@ -287,10 +324,7 @@ class Header extends Component {
                     <center>
                       <Link to="/userprofile" data-offset="20,10">
                         <div class="form-group">
-                          <img
-                            src={mySelf.url_image}
-                            height="130px"
-                          />
+                          <img src={mySelf.url_image} height="130px" />
                         </div>
                       </Link>
                       <div class="form-group">
@@ -324,19 +358,44 @@ class Header extends Component {
                 </div>
               </div>
             </div>
-            <div className="col-2">
-              <div  className="widget-header">
-                <div className="icontext">
-                  <div className="icon-wrap">
+            <div class="col-2">
+              <div class="widget-header dropdown" style={{ marginTop: "-2px" }}>
+                <div class="icontext">
+                  <div class="icon-wrap">
                     <i
-                      className="icon-sm fa fa-money-bill-wave"
+                      class=" icon-sm fa fa-money-bill-wave"
                       style={{ color: "#33849F" }}
                     />
                     <div className="text-wrap text-dark">
                       Balance <br /> Rp.{mySelf.balance}
                     </div>
                   </div>
-                  {/* asdasdadasd */}
+                </div>
+                <div
+                  class="dropdown-menu"
+                  style={{ marginTop: "-2px" }}
+                  style={{ marginLeft: "-200px" }}
+                >
+                  <form class="px-4 py-3" onSubmit={this.TambahSaldo}>
+                    <center>
+                      <div className="form-group">
+                        <label>Bayar</label>
+                        <input
+                          name="bayar"
+                          type="number"
+                          className="form-control"
+                          placeholder="Masukkan Uang"
+                          onChange={e => {
+                            this.FormHandler(e);
+                          }}
+                          value={this.state.messageHolder}
+                        />
+                      </div>
+                      <button type="submit" class="btn btn-primary">
+                        Bayar
+                      </button>
+                    </center>
+                  </form>
                 </div>
               </div>
             </div>
@@ -347,94 +406,102 @@ class Header extends Component {
       return (
         <div>
           <sec>
-          <div className="row" >
-          {" "}
-          <div className="col-4 ">
-            <Link to="/newfield" className="widget-header">
-              <div className="icontext">
-                <div className="icon-wrap">
-                  {" "}
-                  <i
-                    className="icon-sm fa fa-plus"
-                    style={{ color: "#33849F" }}
-                  />
-                </div>
-                <div className="text-wrap text-dark">
-                  New Field
-                </div>
+            <div className="row">
+              {" "}
+              <div className="col-4 ">
+                <Link to="/newfield" className="widget-header">
+                  <div className="icontext">
+                    <div className="icon-wrap">
+                      {" "}
+                      <i
+                        className="icon-sm fa fa-plus"
+                        style={{ color: "#33849F" }}
+                      />
+                    </div>
+                    <div className="text-wrap text-dark">New Field</div>
+                  </div>
+                </Link>
               </div>
-            </Link>
-          </div>
-          <div className="col-4">
-            <Link to="/myfields" className="widget-header">
-              <div className="icontext">
-                <div className="icon-wrap">
-                  <i
-                    className="icon-sm fa fa-list-alt"
-                    style={{ color: "#33849F" }}
-                  />
-                </div>
-                <div className="text-wrap text-dark">
-                  My <br /> Fields
-                </div>
+              <div className="col-4">
+                <Link to="/myfields" className="widget-header">
+                  <div className="icontext">
+                    <div className="icon-wrap">
+                      <i
+                        className="icon-sm fa fa-list-alt"
+                        style={{ color: "#33849F" }}
+                      />
+                    </div>
+                    <div className="text-wrap text-dark">
+                      My <br /> Fields
+                    </div>
+                  </div>
+                </Link>
               </div>
-            </Link>
-          </div>
-          <div class="col-4">
-            <div class="widget-header dropdown" style={{ marginTop: "-2px" }}>
-              <Link to="/pebisnisprofile" data-offset="20,10">
-                <div class="icontext">
-                  <div class="icon-wrap">
-                    <i
-                      class=" icon-sm fa fa-user-tie"
-                      style={{ color: "#33849F" }}
-                    />
+              <div class="col-4">
+                <div
+                  class="widget-header dropdown"
+                  style={{ marginTop: "-2px" }}
+                >
+                  <Link to="/pebisnisprofile" data-offset="20,10">
+                    <div class="icontext">
+                      <div class="icon-wrap">
+                        <i
+                          class=" icon-sm fa fa-user-tie"
+                          style={{ color: "#33849F" }}
+                        />
+                      </div>
+                    </div>
+                  </Link>
+                  <div
+                    class="dropdown-menu"
+                    style={{ marginTop: "-2px" }}
+                    style={{ marginLeft: "-200px" }}
+                  >
+                    <form class="px-4 py-3" onSubmit={e => e.preventDefault()}>
+                      <center>
+                        <Link to="/userprofile" data-offset="20,10">
+                          <div class="form-group">
+                            <img
+                              src={this.props.mySelf.url_image}
+                              height="130px"
+                            />
+                          </div>
+                        </Link>
+                        <div class="form-group">
+                          <label>Username: {this.props.mySelf.username}</label>
+                          <br />
+                          <label>Name: {this.props.mySelf.name}</label>
+                          <br />
+                          <label>Tipe: {this.props.mySelf.user_type}</label>
+                          <br />
+                        </div>
+                        <div class="form-group">
+                          <Link to="/editpebisnis">
+                            <button type="button" class="btn btn-success w-50">
+                              Edit Profile
+                            </button>
+                          </Link>
+                        </div>
+                        <div class="form-group">
+                          <button
+                            onClick={() => {
+                              this.props.signout();
+                              this.state.username = "";
+                              this.state.password = "";
+                            }}
+                            type="submit"
+                            class="btn btn-link"
+                          >
+                            Sign Out
+                          </button>
+                        </div>
+                      </center>
+                    </form>
                   </div>
                 </div>
-              </Link>
-              <div class="dropdown-menu" style={{ marginTop: "-2px" }}  style={{marginLeft:"-200px"}}>
-                <form class="px-4 py-3" onSubmit={e => e.preventDefault()}>
-                  <center>
-                    <Link to="/userprofile" data-offset="20,10">
-                      <div class="form-group">
-                        <img src={this.props.mySelf.url_image} height="130px" />
-                      </div>
-                    </Link>
-                    <div class="form-group">
-                      <label>Username: {this.props.mySelf.username}</label>
-                      <br />
-                      <label>Name: {this.props.mySelf.name}</label>
-                      <br />
-                      <label>Tipe: {this.props.mySelf.user_type}</label>
-                      <br />
-                    </div>
-                    <div class="form-group">
-                      <Link to="/editpebisnis">
-                        <button type="button" class="btn btn-success w-50">
-                          Edit Profile
-                        </button>
-                      </Link>
-                    </div>
-                    <div class="form-group">
-                      <button
-                        onClick={() => {
-                          this.props.signout();
-                          this.state.username = "";
-                          this.state.password = "";
-                        }}
-                        type="submit"
-                        class="btn btn-link"
-                      >
-                        Sign Out
-                      </button>
-                    </div>
-                  </center>
-                </form>
               </div>
             </div>
-          </div>
-          </div>
-        </sec>
+          </sec>
         </div>
       );
     }
@@ -442,6 +509,6 @@ class Header extends Component {
 }
 
 export default connect(
-  "is_login,mySelf, userType,MyNotification",
+  "Bearer,is_login,mySelf, userType,MyNotification,saldo",
   actions
 )(withRouter(Header));

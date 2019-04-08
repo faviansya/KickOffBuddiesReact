@@ -12,7 +12,8 @@ const initialState = {
   userType: "",
   RoomId: "",
   MyNotification: [],
-  flagLogin: false
+  flagLogin: false,
+  saldo:""
 };
 
 export const store = createStore(initialState);
@@ -75,6 +76,7 @@ export const actions = store => ({
         .then(function(response) {
           localStorage.setItem("mySelf", JSON.stringify(response.data.data));
           localStorage.setItem("userType", response.data.data.user_type);
+          store.setState({saldo:response.data.data.balance})
         })
         .catch(function(error) {
           console.log("ASEM", error);
@@ -163,7 +165,24 @@ export const actions = store => ({
       }
     }
   },
-
+  updateBalance: async state =>{
+    const Bearer = localStorage.getItem("Bearer");
+    const getMyData = {
+      method: "get",
+      url: Host + "/api/pemain/me",
+      headers: {
+        Authorization: "Bearer " + Bearer,
+        "Content-Type": "application/json"
+      }
+    };
+    await axios(getMyData)
+      .then(function(response) {
+        store.setState({saldo:response.data.data.balance})
+      })
+      .catch(function(error) {
+        console.log("ASEM", error);
+      });
+  },
   //END OF HEADER METHOD-------------------
   GetMyOwnData: async state => {
     const Bearer = localStorage.getItem("Bearer");
@@ -178,6 +197,8 @@ export const actions = store => ({
     await axios(getMyData)
       .then(function(response) {
         localStorage.setItem("mySelf", JSON.stringify(response.data.data));
+        store.setState({saldo:response.data.data.balance})
+
       })
       .catch(function(error) {
         console.log("ASEM", error);
