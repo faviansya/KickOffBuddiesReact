@@ -4,7 +4,7 @@ class Content extends Component {
     render(){
     return (
         <section>
-            <div className="container">
+            <div className="container-fluid">
                 <br /><br />
                 <h3 class="w3ls-title center">Welcome !</h3>  
                 <div className="row">

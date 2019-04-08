@@ -86,10 +86,28 @@ class Header extends Component {
     this.props.updateBalance();
   }
   FormHandler = e => {
+    if (e.target.value === "Rp 10.000,-") {
     this.setState({
-      messageHolder: e.target.value
+      messageHolder: 10000
     });
-  };
+    } else if (e.target.value === "Rp 20.000,-") {
+      this.setState({
+        messageHolder: 20000
+      });
+    } else if (e.target.value === "Rp 50.000,-") {
+      this.setState({
+        messageHolder: 50000
+      });
+    } else if (e.target.value === "Rp 100.000,-") {
+      this.setState({
+        messageHolder: 100000
+      });
+    } else if (e.target.value === "Rp 500.000,-") {
+      this.setState({
+        messageHolder: 500000
+      });
+    }
+  }
   render() {
     const responseGoogle = async response => {
       await this.setState({ DataGoogle: response.profileObj });
@@ -380,7 +398,7 @@ class Header extends Component {
                     <center>
                       <div className="form-group">
                         <label>Top up</label>
-                        <input
+                        {/* <input
                           name="bayar"
                           type="number"
                           className="form-control"
@@ -389,7 +407,24 @@ class Header extends Component {
                             this.FormHandler(e);
                           }}
                           value={this.state.messageHolder}
-                        />
+                        /> */}
+                        <select
+                        onChange={e => {
+                          this.FormHandler(e);
+                        }}
+                        className="form-control"
+                        placeholder="Choose an amount"
+                        name="bayar"
+                        type="number"
+                        style={{overflow:"hidden"}}
+                        >
+                          <option disabled selected value>Choose an amount</option>
+                          <option>Rp 10.000,-</option>
+                          <option>Rp 20.000,-</option>
+                          <option>Rp 50.000,-</option>
+                          <option>Rp 100.000,-</option>
+                          <option>Rp 500.000,-</option>
+                        </select>
                       </div>
                       <button type="submit" class="btn btn-primary">
                         Confirm
