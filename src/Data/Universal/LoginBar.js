@@ -367,7 +367,7 @@ class Header extends Component {
                       style={{ color: "#33849F" }}
                     />
                     <div className="text-wrap text-dark">
-                      Balance <br /> Rp.{mySelf.balance}
+                      Balance <br /> Rp.{this.props.saldo}
                     </div>
                   </div>
                 </div>
@@ -379,12 +379,12 @@ class Header extends Component {
                   <form class="px-4 py-3" onSubmit={this.TambahSaldo}>
                     <center>
                       <div className="form-group">
-                        <label>Bayar</label>
+                        <label>Top up</label>
                         <input
                           name="bayar"
                           type="number"
                           className="form-control"
-                          placeholder="Masukkan Uang"
+                          placeholder="Insert Nominal"
                           onChange={e => {
                             this.FormHandler(e);
                           }}
@@ -392,7 +392,7 @@ class Header extends Component {
                         />
                       </div>
                       <button type="submit" class="btn btn-primary">
-                        Bayar
+                        Confirm
                       </button>
                     </center>
                   </form>
