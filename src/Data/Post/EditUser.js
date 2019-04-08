@@ -35,7 +35,8 @@ class PostItem extends Component {
       url: Host + "/api/pemain/me",
       headers: {
         Authorization: "Bearer " + Bearer,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Origin: "https://kickoffbuddies.space/"
       }
     };
     await axios(getMyData)
@@ -47,6 +48,8 @@ class PostItem extends Component {
         self.setState({ alamat: response.data.data.address });
         self.setState({ favoritSport: response.data.data.favourite_sport });
         self.setState({ phoneNumber: response.data.data.phone_no });
+        self.setState({ urlimage: response.data.data.url_image });
+
       })
       .catch(function(error) {
         console.log("ASEM", error);
@@ -61,7 +64,8 @@ class PostItem extends Component {
       url: Host + "/api/pemain",
       headers: {
         Authorization: "Bearer " + Bearer,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Origin: "https://kickoffbuddies.space/"
       },
       data: {
         // password: self.state.password,

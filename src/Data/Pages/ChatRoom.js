@@ -21,7 +21,8 @@ class ChatRoom extends Component {
       method: "get",
       url: Host + "/api/chatplayerlist",
       headers: {
-        Authorization: "Bearer " + Bearer
+        Authorization: "Bearer " + Bearer,
+        Origin: "https://kickoffbuddies.space/"
       }
     };
     await axios(req)

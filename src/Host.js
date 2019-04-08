@@ -1,1 +1,1 @@
-export var Host = "http://localhost:8010/proxy";
+export var Host = "https://cors-anywhere.herokuapp.com/18.138.21.95:5000";

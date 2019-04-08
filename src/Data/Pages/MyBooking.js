@@ -22,7 +22,8 @@ class Home extends Component {
           method: "get",
           url: Host + "/api/playerlist/mylist",
           headers: {
-            Authorization: "Bearer " + Bearer
+            Authorization: "Bearer " + Bearer,
+            Origin: "https://kickoffbuddies.space/"
           }
         };
         await axios(req)
