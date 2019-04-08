@@ -12,6 +12,7 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import Mitra from '../Components/Mitra'
 import { SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS } from "constants";
+import swal from 'sweetalert'
 
 const CurrentLocation = ({text}) => <div className="row"><span style={{color:"red", fontWeight:"800", fontSize:"15px"}}>{text}</span>
 <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png" 
@@ -179,6 +180,11 @@ class PostItem extends Component {
     await axios(req)
       .then(function(response) {
         self.props.history.push("/userprofile");
+        swal({
+          title: "Success",
+          text: "Successfully Created a Room",
+          icon: "success",
+        });
       })
       .catch(function(error) {
         alert("please Fill All Field")

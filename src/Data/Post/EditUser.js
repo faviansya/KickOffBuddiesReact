@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 import { Host } from "../../Host";
 import { storage } from "../../firebase/index";
-
+import swal from 'sweetalert'
 class PostItem extends Component {
   constructor(props) {
     super(props);
@@ -81,9 +81,19 @@ class PostItem extends Component {
       .then(function(response) {
         self.props.GetMyOwnData();
         self.props.history.push("/userprofile");
+        swal({
+          title: "Success",
+          text: "Profile Edited",
+          icon: "success",
+        });
       })
       .catch(function(error) {
         console.log("ASEM", error);
+        swal({
+          title: "Failed",
+          text: "Fail to Edit Profile",
+          icon: "error",
+        });
       });
   };
 

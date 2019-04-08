@@ -16,7 +16,7 @@ import { Host } from "../../Host";
 import DetailsJumlahPemain from "../Components/DetailsJumlahPemain";
 import DetailsOlahRaga from "../Components/DetailsOlahRaga";
 import GoogleMapReact from 'google-map-react';
-
+import swal from 'sweetalert'
 const CurrentLocation = ({text}) => <div className="row"><span style={{color:"red", fontWeight:"800", fontSize:"13px"}}>{text}</span>
 <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png" 
 style={{height:"30px", width:"25px"}}
@@ -114,8 +114,11 @@ class Details extends Component {
         self.setState({ listPemain: response.data.pemain });
       })
       .catch(function(error) {
-        alert("Your Room Has Been Deleted Because It's Empty")
-        self.props.history.push("/");
+        swal({
+          title: "Info",
+          text: "Room Deleted",
+          icon: "info",
+        });        self.props.history.push("/");
         console.log("ASEM", error);
       });
       const req2 = {
@@ -133,8 +136,11 @@ class Details extends Component {
         self.setState({ vicinity: response.data.data.vicinity });
       })
       .catch(function(error) {
-        alert("Your Room Has Been Deleted Because It's Empty")
-        self.props.history.push("/");
+        swal({
+          title: "Info",
+          text: "Room Deleted",
+          icon: "info",
+        });        self.props.history.push("/");
         console.log("ASEM", error);
       });
   }
@@ -199,7 +205,11 @@ class Details extends Component {
     await axios(reqJoin)
       .then(function(response) {
         self.setState({loading:false})
-
+        swal({
+          title: "Success",
+          text: "You are successfully join this room",
+          icon: "success",
+        });
       })
       .catch(function(error) {
         console.log("ASEM", error);
@@ -225,6 +235,11 @@ class Details extends Component {
     };
      await axios(DeleteData)
       .then(function(response) {
+        swal({
+          title: "Cancel",
+          text: "Booking cancelled",
+          icon: "info",
+        });
       })
       .catch(function(error) {
         console.log("ASEM", error);
@@ -235,7 +250,11 @@ class Details extends Component {
   render() {
     const center = {lat: this.state.lat, lng: this.state.lng}
     if (this.state.status == "failed") {
-      alert("Kamu Telah Join Di Game Ini");
+      swal({
+        title: "Warning",
+        text: "Already joined this room",
+        icon: "warning",
+      });;
       this.setState({ status: "" });
       this.setState({loading:false})
     }
