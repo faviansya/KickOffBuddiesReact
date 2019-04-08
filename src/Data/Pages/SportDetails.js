@@ -117,7 +117,8 @@ class Details extends Component {
           title: "Info",
           text: "Room Deleted",
           icon: "info",
-        });        self.props.history.push("/");
+        });        
+        self.props.history.push("/");
         console.log("ASEM", error);
       });
       const req2 = {
@@ -138,7 +139,8 @@ class Details extends Component {
           title: "Info",
           text: "Room Deleted",
           icon: "info",
-        });        self.props.history.push("/");
+        });        
+        self.props.history.push("/");
         console.log("ASEM", error);
       });
   }

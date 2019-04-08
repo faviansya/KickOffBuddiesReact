@@ -321,6 +321,7 @@ class PostItem extends Component {
                 id="player"
                 placeholder="How many players you want to play with, including you."
                 required
+                min="0"
               />
             </div>
 
