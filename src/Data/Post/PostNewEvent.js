@@ -135,6 +135,7 @@ class PostItem extends Component {
       url: Host+ "/api/pebisnis",
       headers: {
         "Content-Type":"application/json",
+        Origin: "https://kickoffbuddies.space/"
       }
     };
     await axios(req3)

@@ -23,7 +23,7 @@ class Footer extends Component {
         </div>	
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
-            <p><u><a href="https://www.kickoffbuddies.com">Super Kick Off buddies</a></u> is a Registered MSP/ISO of Elavon, Inc. Georgia [a wholly owned subsidiary of U.S. Bancorp, Minneapolis, MN]</p>
+            <p><u><a href="https://www.kickoffbuddies.com">Super Kick Off buddies</a></u> is created with heart by Faviansyah Arianda Palas, Pajar W.P. and Fatma Janna</p>
             <p class="h6">Copy All right Reversed.<a class="text-green ml-2" href="https://www.kickoffbuddies.com" target="_blank">Kick Off Buddies</a></p>
           </div>
           <hr/>
