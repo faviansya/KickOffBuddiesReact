@@ -144,7 +144,8 @@ class PostItem extends Component {
               </h2>
             </strong>
             <h5 class=" text-dark">
-              <label>Fill in all the required fields below. You can edit your user profile anytime once you have registered.</label>
+              <label>Fill in all the required fields below, marked with <span style={{color:"red"}}>*</span>.<br/> 
+              You can edit your user profile anytime once you have registered.</label>
             </h5>
           </div>
           <div className="col-lg-6 col-md-6 col-sm-2" />

@@ -19,6 +19,7 @@ class Item extends Component {
         <td>{this.props.sport}</td>
         <td>{this.props.player_ammount}</td>
         <td>{this.props.locationsss}</td>
+        <td>{this.props.time}</td>
       </tr>
     );
   }
