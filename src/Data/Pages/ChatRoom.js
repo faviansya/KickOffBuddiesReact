@@ -39,11 +39,11 @@ class ChatRoom extends Component {
   };
   render() {
     return (
-      <section>
+      <div>
+        <center>
         <h5 style={{ textAlign: "center" }}>Your Chat Room</h5>
         <br />
         <br />
-        <div className="row">
           <div className="col-lg-3 col-md-3 col-sm-3" />
           <div className="col-lg-6 col-md-6 col-sm-6">
             {this.state.chatRoomList.map((item, key) => {
@@ -61,8 +61,8 @@ class ChatRoom extends Component {
             })}
           </div>
           <div className="col-lg-3 col-md-3 col-sm-3" />
-        </div>
-      </section>
+          </center>
+      </div>
     );
   }
 }

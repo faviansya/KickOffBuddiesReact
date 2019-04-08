@@ -39,7 +39,7 @@ class Details extends Component {
       distance:"",
       duration:"",
     };
-  }
+  };
 
   apiIsLoaded = (map,maps) => {
     const directionsService = new maps.DirectionsService();
@@ -264,7 +264,9 @@ class Details extends Component {
             <span style={{color:"rgb(51, 132, 159)"}}><strong>Waiting for more players to join</strong></span>
           </div>
         </section>
-        <div class="row ">
+        <div class="container-fluid">
+
+        <div class="row wow slideInUp">
           <DetailsOlahRaga  sport={this.state.listDetails.sport} />          
           <DetailsLocation map={Maps} DetailsLocation={this.state.listDetails.location} 
                 distance = {this.state.distance}
@@ -273,6 +275,8 @@ class Details extends Component {
           <DetailsTime time={this.state.listDetails.time}/>
           <DetailsJumlahPemain player={this.state.listDetails.player}/>
         </div>
+        </div>
+
         <section className="section-content bg padding-y-sm">
           <div className="container-fluid">
             <div className="row wow slideInUp">

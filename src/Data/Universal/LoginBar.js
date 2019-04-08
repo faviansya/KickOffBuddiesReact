@@ -178,7 +178,7 @@ class Header extends Component {
       return (
         <sec>
           <div className="row">
-            <div className="col-2">
+            <div className="col-4 col-md-2 col-lg-2 col-xl-2">
               {/* style={{marginRight:"-20px"}} */}
               <Link to="/chatrooms" className="widget-header">
                 <div className="icontext">
@@ -231,7 +231,7 @@ class Header extends Component {
                 </form>
               </div>
             </div>
-            <div className="col-2">
+            <div className="col-4 col-md-2 col-lg-2 col-xl-2">
               <Link to="/newevent" className="widget-header">
                 <div className="icontext">
                   <div className="icon-wrap">
@@ -246,7 +246,7 @@ class Header extends Component {
                 </div>
               </Link>
             </div>
-            <div className="col-2">
+            <div className="col-4 col-md-2 col-lg-2 col-xl-2">
               <Link to="/mybooking" className="widget-header">
                 <div className="icontext">
                   <div className="icon-wrap">
@@ -262,7 +262,7 @@ class Header extends Component {
                 </div>
               </Link>
             </div>
-            <div class="col-2">
+            <div class="col-4 col-md-2 col-lg-2 col-xl-2">
               <div class="widget-header dropdown" style={{ marginTop: "-2px" }}>
                 <Link
                   data-offset="20,10"
@@ -300,7 +300,7 @@ class Header extends Component {
                 </div>
               </div>
             </div>
-            <div class="col-2">
+            <div class="col-4 col-md-2 col-lg-2 col-xl-2">
               <div class="widget-header dropdown" style={{ marginTop: "-2px" }}>
                 <Link to="/userprofile" data-offset="20,10">
                   <div class="icontext">
@@ -358,7 +358,7 @@ class Header extends Component {
                 </div>
               </div>
             </div>
-            <div class="col-2">
+            <div class="col-4 col-md-2 col-lg-2 col-xl-2">
               <div class="widget-header dropdown" style={{ marginTop: "-2px" }}>
                 <div class="icontext">
                   <div class="icon-wrap">
