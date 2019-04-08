@@ -1,1 +1,1 @@
-export var Host = "https://cors-anywhere.herokuapp.com/18.138.21.95:5000";
+export var Host = "https://cors-anywhere.herokuapp.com/18.138.21.95";
